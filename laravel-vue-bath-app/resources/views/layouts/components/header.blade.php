@@ -1,5 +1,5 @@
 <header class="header">
-  <a href="{{ url('/') }}">Onsen</a>
+  <a href="{{ url('/') }}">OfLog</a>
   <div class="nav">
     <div>
       <button class="blue-link">ログアウト</button>
