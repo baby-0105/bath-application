@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  @include('layouts.components.header')
   <div id="app">
     @yield('content')
   </div>
