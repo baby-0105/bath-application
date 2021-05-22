@@ -12,3 +12,5 @@
 */
 
 Route::get('/', function () { return view('top'); });
+Route::get('/user/register', function () { return view('user.register'); });
+Route::get('/user/login', function () { return view('user.login'); });

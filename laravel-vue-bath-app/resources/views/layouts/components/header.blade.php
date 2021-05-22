@@ -1,12 +1,12 @@
 <header class="header">
-  <a href="/">Onsen</a>
+  <a href="{{ url('/') }}">Onsen</a>
   <div class="nav">
     <div>
       <button class="blue-link">ログアウト</button>
     </div>
     <div>
-      <a href="/register">新規登録</a>
-      <a href="/login">ログイン</a>
+      <a href="{{ url('/user/register') }}">新規登録</a>
+      <a href="{{ url('/user/login') }}">ログイン</a>
     </div>
   </div>
 </header>
@@ -16,7 +16,6 @@
     display: flex;
     justify-content: space-between;
   }
-
   .header .nav{
     display: flex;
   }
