@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 本登録が完了しているかどうかを返す
+     *
+     * @return bool true:完了、false:未完了
+     */
+    public function hasVerifiedEmail()
+    {
+        return !empty($this->email_verified_at);
+    }
 }

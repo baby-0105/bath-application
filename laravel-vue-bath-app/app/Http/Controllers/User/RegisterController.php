@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Register;
+use App\Http\Requests\User\Register;
 use App\Http\Service\User\RegisterService;
 use App\Mail\EmailVerification;
 use App\Providers\RouteServiceProvider;

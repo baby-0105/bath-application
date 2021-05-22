@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\Login;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class LoginController extends Controller
 {
@@ -40,7 +43,42 @@ class LoginController extends Controller
     }
 
     /**
-     * ログアウト（後で消す）
+     * ログイン処理
+     *
+     * @param Request $request
+     * @access public
+     * @return void
+     */
+    public function login(Login $request)
+    {
+        $this->setCredentials($request);
+        if (Auth::attempt($this->credentials)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('flash_message', 'ログインが完了しました。');
+        }
+
+        $validator = [
+            'error' => 'メールアドレス、もしくは、パスワードが異なります。',
+        ];
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    /**
+     * クレデンシャル情報をセット
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function setCredentials(Login $request):void
+    {
+        $this->credentials = [
+            'email'     => $request->input('email', null),
+            'password'  => $request->input('password', null),
+        ];
+    }
+
+    /**
+     * ログアウト
      *
      * @return void
      */
