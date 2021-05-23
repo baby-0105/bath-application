@@ -5,10 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Login;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Log;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -45,9 +48,8 @@ class LoginController extends Controller
     /**
      * ログイン処理
      *
-     * @param Request $request
-     * @access public
-     * @return void
+     * @param Login $request
+     * @return array
      */
     public function login(Login $request)
     {
@@ -66,8 +68,7 @@ class LoginController extends Controller
     /**
      * クレデンシャル情報をセット
      *
-     * @param Request $request
-     * @return void
+     * @param Login $request
      */
     private function setCredentials(Login $request):void
     {
@@ -80,11 +81,53 @@ class LoginController extends Controller
     /**
      * ログアウト
      *
-     * @return void
      */
     public function logout()
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    /**
+     * Googleへリダイレクト
+     *
+     */
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Google認証後処理
+     *
+     */
+    public function handleGoogleCallback()
+    {
+        $gUser = Socialite::driver('google')->stateless()->user();
+
+        $user = User::where('email', $gUser->email)->first();
+
+        if($user == null) {
+            $user = $this->createUserByGoogle($gUser);
+        }
+
+        // ログイン処理
+        Auth::login($user, true);
+        return redirect('/');
+    }
+
+    /**
+     * Googleでユーザー作成
+     *
+     * @return array
+     */
+    public function createUserByGoogle($gUser)
+    {
+        $user = User::create([
+            'name'     => $gUser->name,
+            'email'    => $gUser->email,
+            'password' => Hash::make($gUser->password),
+        ]);
+        return $user;
     }
 }

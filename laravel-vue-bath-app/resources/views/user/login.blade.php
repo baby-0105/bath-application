@@ -26,6 +26,9 @@
     </div>
     <input class="button" type="submit" value="ログイン">
   </form>
+  <div class="google-login">
+    <a href="/login/google">Googleでログインする</a>
+  </div>
 </div>
 @endsection
 
