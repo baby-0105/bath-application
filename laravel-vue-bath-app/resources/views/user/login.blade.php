@@ -28,6 +28,7 @@
   </form>
   <div class="google-login">
     <a href="/login/google">Googleでログインする</a>
+    <a href="/auth/login/facebook">Facebookでログインする</a>
   </div>
 </div>
 @endsection

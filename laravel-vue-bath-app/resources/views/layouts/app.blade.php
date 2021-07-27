@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="{{ asset('/css/common.css') }}">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
   <title>OFLog ~あなたの風呂活に新たな彩を~</title>
 </head>
 
@@ -17,8 +17,9 @@
       </div>
     @endif
     @yield('content')
+    <foo-bar></foo-bar>
   </div>
 
-  {{-- <script src="{{ mix('js/app.js') }}"></script> --}} <!-- Vue使用時、コメント外す -->
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

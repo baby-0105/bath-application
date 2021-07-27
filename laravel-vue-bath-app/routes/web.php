@@ -23,3 +23,7 @@ Route::namespace('User')->group(function() {
     Route::get('/login/google/callback', 'LoginController@handleGoogleCallback');
 });
 
+Route::namespace('User')->group(function() {
+    Route::get('auth/login/facebook', 'FacebookController@redirectToFacebookProvider');
+    Route::get('auth/facebook/callback', 'FacebookController@handleFacebookProviderCallback');
+});

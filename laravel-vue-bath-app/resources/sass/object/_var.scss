@@ -1,0 +1,54 @@
+/*
+  @mixin & @extend
+---------------------------------------------------- */
+
+// 親要素を無視して画面全体に
+@mixin width_of_screen($position) {
+  width: 100vw;
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// コンテナのwidth
+@mixin container_width {
+  width: $containerWidth;
+  margin: 0 auto;
+}
+
+// SPコンテナのwidth
+@mixin SP_container_width {
+  width: $containerSPWidth;
+  margin: 0 auto;
+}
+
+// Font Awesome（疑似要素）
+@mixin font_awesome_pseudo_ele($number) {
+  content: $number;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+// 親要素に対して上下左右中央よせ
+@mixin center_of_vertically_and_horizontally {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 上下中央よせ
+@mixin centered_vertically {
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+/*
+  変数定義
+---------------------------------------------------- */
+
+// PATH
+$bgPath: '../../assets/images/';
+
+//COLOR
+$colorWhite: #fff;
