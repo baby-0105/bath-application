@@ -1,3 +1,4 @@
-@import "layout/top.scss";
-@import "object/var.scss";
-@import "object/common.scss";
+@import "layout/_top.scss";
+@import "foundation/var.scss";
+@import "foundation/_common.scss";
+@import "object/component/_header.scss";
