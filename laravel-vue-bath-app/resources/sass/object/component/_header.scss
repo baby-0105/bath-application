@@ -1,0 +1,17 @@
+/*// ==========================================================================
+//  ヘッダー
+// ==========================================================================*/
+
+.header{
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header .logo {
+    width: 120px;
+}
+
+.header .nav { display: flex; }
