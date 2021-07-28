@@ -48,3 +48,8 @@ services:
       - 8080:80
     volumes:
       - /sessions
+
+  nodejs:
+    build: ./docker/nodejs
+    volumes:
+      - ./:/app
