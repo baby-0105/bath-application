@@ -2,10 +2,14 @@
 //  TOPページ
 // ==========================================================================*/
 
-.top-page .container {
-    width: 50%;
+.top-page .first-view {
+    width: 80%;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
 }
 
 .top-page .main-text,
