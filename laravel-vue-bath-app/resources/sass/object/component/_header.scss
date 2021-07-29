@@ -7,11 +7,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-}
-
-.header .logo {
-    width: 120px;
+    padding: 10px 20px;
 }
 
 .header .nav { display: flex; }
+
+.header .nav .link:not(:last-child) {
+    margin-right: 10px;
+}
+
+.header .nav .link {
+    position: relative;
+}
+
+.header .nav .link .text {
+    position: relative; /* 背景画像バックにするため */
+    z-index: 2;
+}
+
+.header .nav .link .nav-bg {
+    position: absolute;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+    transform: rotate(15deg);
+}
