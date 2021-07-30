@@ -13,6 +13,7 @@
                 <div class="my-post-block">
                     <a href="{{ url('post/mypost') }}">My投稿</a>
                 </div>
+                <button id="test_jquery">ぽちっとな</button>
             </div>
 
             <div class="recommendation">
