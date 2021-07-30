@@ -8,7 +8,7 @@
                 </div>
                 <div class="title-block">
                     <p class="main-text">さぁ、今日のお風呂を探そう！</p>
-                    <h1 class="main-title">OFLog</h1>
+                    <img class="logo" src="{{ url('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
                 </div>
                 <div class="my-post-block">
                     <a href="{{ url('post/mypost') }}">My投稿</a>
