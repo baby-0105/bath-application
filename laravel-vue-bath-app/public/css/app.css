@@ -248,3 +248,27 @@ h1 {
   transform: rotate(-30deg) !important;
 }
 
+/*// ==========================================================================
+//  フッター
+// ==========================================================================*/
+
+.footer {
+  height: 100px;
+  background-color: gray;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer .logo {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+}
+
+.footer .copy-right {
+  text-align: center;
+  display: block;
+}
+
