@@ -2,5 +2,8 @@
 @import "foundation/_common.scss";
 
 @import "layout/_top.scss";
+@import "layout/user/_register.scss";
+@import "layout/user/_login.scss";
+
 @import "object/component/_header.scss";
 @import "object/component/_footer.scss";

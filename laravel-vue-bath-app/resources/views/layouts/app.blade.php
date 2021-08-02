@@ -8,15 +8,15 @@
   <title>OFLog ~あなたの風呂活に新たな彩を~</title>
 </head>
 
-@include('layouts.components.header')
 <body>
+  @include('layouts.components.header')
     @if (session('flash_message'))
       <div class="flash_message">
         {{ session('flash_message') }}
       </div>
     @endif
     @yield('content')
+    @include('layouts.components.footer')
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
-@include('layouts.components.footer')
 </html>

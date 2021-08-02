@@ -1,0 +1,44 @@
+/*// ==========================================================================
+//  新規登録
+// ==========================================================================*/
+
+.register {
+    width: 50%;
+    margin: 0 auto;
+    height: 500px;
+    padding-top: 150px;
+}
+.register .title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+.register .form {
+    display: flex;
+    flex-direction: column;
+}
+.register .list {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register .list label {
+    font-size: 1.4rem;
+    display: inline-block;
+}
+.register .list .input {
+    width: 70%;
+    padding: 10px;
+}
+
+.register .password-confirm {
+    margin-bottom: 50px;
+}
+
+.register .btn {
+    width: 20%;
+    margin: 0 auto;
+    padding: 10px;
+}
