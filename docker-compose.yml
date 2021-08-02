@@ -49,7 +49,7 @@ services:
     volumes:
       - /sessions
 
-  nodejs:
-    build: ./docker/nodejs
-    volumes:
-      - ./:/app
+  # nodejs:
+  #   build: ./docker/nodejs
+  #   volumes:
+  #     - ./:/app
