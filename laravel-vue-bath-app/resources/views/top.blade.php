@@ -4,16 +4,21 @@
         <div class="container">
             <div class="first-view">
                 <div class="search-btn-area">
-                    <a href="{{ url('post/search') }}">検索する</a>
+                    <a class="search-btn" href="{{ url('post/search') }}">
+                        <span class="btn-name">検索する</span>
+                        <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                    </a>
                 </div>
                 <div class="title-block">
                     <p class="main-text">さぁ、今日のお風呂を探そう！</p>
                     <img class="logo" src="{{ url('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
                 </div>
                 <div class="my-post-block">
-                    <a href="{{ url('post/mypost') }}">My投稿</a>
+                    <a class="search-btn" href="{{ url('post/mypost') }}">
+                        <span class="btn-name">My投稿</span>
+                        <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                    </a>
                 </div>
-                <button id="test_jquery">ぽちっとな</button>
             </div>
 
             <div class="recommendation">
@@ -29,7 +34,65 @@
                     <div class="my-pref">お住まいの都道府県で人気のお風呂一覧</div>
                     <div class="my-region">お住まいの地方で人気のお風呂一覧</div>
                 @endif
-                <div class="popular">人気のお風呂一覧</div>
+                <div class="popular">
+                    <h3 class="title">人気のお風呂一覧</h3>
+                    <ul class="bath">
+                        <li class="list">
+                            <h4 class="title">- 喜多の湯 -</h4>
+                            <div class="desc">
+                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <div class="review">
+                                    <div class="review-num">
+                                        <p class="whole-review">3.5</p>
+                                        <ul class="others-review">
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                        </ul>
+                                    </div>
+                                    <p class="prefecture">大阪府八尾市</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <h4 class="title">- 喜多の湯 -</h4>
+                            <div class="desc">
+                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <div class="review">
+                                    <div class="review-num">
+                                        <p class="whole-review">3.5</p>
+                                        <ul class="others-review">
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                        </ul>
+                                    </div>
+                                    <p class="prefecture">大阪府八尾市</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <h4 class="title">- 喜多の湯 -</h4>
+                            <div class="desc">
+                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <div class="review">
+                                    <div class="review-num">
+                                        <p class="whole-review">3.5</p>
+                                        <ul class="others-review">
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                            <li>3</li>
+                                        </ul>
+                                    </div>
+                                    <p class="prefecture">大阪府八尾市</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

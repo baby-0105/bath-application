@@ -1,23 +1,5 @@
 @charset "UTF-8";
 
-/*// ==========================================================================
-//  TOPページ
-// ==========================================================================*/
-
-.top-page .first-view {
-  width: 80%;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
-}
-
-.top-page .main-text {
-  font-size: 3rem;
-}
-
 /*
   @mixin & @extend
 ---------------------------------------------------- */
@@ -40,6 +22,10 @@ html {
   font-size: 62.5%;
 }
 
+li {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -50,19 +36,182 @@ h1 {
 }
 
 /*// ==========================================================================
+//  TOPページ
+// ==========================================================================*/
+
+/*// -----------------------------------------------------------------
+//  first-block
+// -----------------------------------------------------------------*/
+
+.top-page .container {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.top-page .first-view {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.top-page .main-text {
+  font-size: 3rem;
+}
+
+.top-page .search-btn {
+  position: relative;
+  width: 150px;
+  display: block;
+  border-radius: 50%;
+}
+
+.top-page .search-btn .btn-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  white-space: nowrap;
+}
+
+.top-page .search-btn .bath-mark {
+  border-radius: 50%;
+}
+
+/*// -----------------------------------------------------------------
+//  recommendation
+// -----------------------------------------------------------------*/
+
+.top-page .recommendation {
+  background: #ffc042;
+  border-radius: 20px 20px 5px 5px;
+  padding-bottom: 50px;
+}
+
+.top-page .recommendation .tab-area {
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #222;
+  padding: 20px 0;
+}
+
+.top-page .recommendation .popular {
+  text-align: center;
+}
+
+/*//
+//  popular
+// ---------------------------*/
+
+.top-page .popular {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.top-page .popular .title {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.top-page .popular .bath .list {
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 10px;
+  background: white;
+}
+
+.top-page .popular .bath .list:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.top-page .popular .desc {
+  display: flex;
+}
+
+.top-page .popular .desc .bath-img {
+  width: 20%;
+}
+
+.top-page .popular .desc .review {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.top-page .popular .desc .review-num {
+  display: flex;
+}
+
+.top-page .popular .desc .review-num .whole-review {
+  font-size: 6rem;
+  width: 30%;
+}
+
+.top-page .popular .desc .review-num .whole-review:after {
+  content: "-\7DCF\5408\8A55\4FA1-";
+  display: block;
+  font-size: 1.2rem;
+}
+
+.top-page .popular .desc .review-num .others-review {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-size: 3rem;
+  width: 70%;
+}
+
+.top-page .popular .desc .review-num .others-review li {
+  width: 50%;
+}
+
+.top-page .popular .desc .review-num .others-review li:after {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.top-page .popular .desc .review-num .others-review li:nth-child(1):after {
+  content: "-\98A8\5442\8A55\4FA1-";
+}
+
+.top-page .popular .desc .review-num .others-review li:nth-child(2):after {
+  content: "-\9928\5185\8A55\4FA1-";
+}
+
+.top-page .popular .desc .review-num .others-review li:nth-child(3):after {
+  content: "-\5CA9\76E4\6D74\8A55\4FA1-";
+}
+
+.top-page .popular .desc .review-num .others-review li:nth-child(4):after {
+  content: "-\30B5\30A6\30CA\8A55\4FA1-";
+}
+
+.top-page .popular .prefecture {
+  font-size: 2rem;
+}
+
+/*// ==========================================================================
 //  ヘッダー
 // ==========================================================================*/
 
 .header {
   font-size: 1.8rem;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background: rgba(255, 192, 66, 0.8);
+}
+
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  z-index: 10;
+  height: 80px;
 }
 
 .header .nav {
@@ -91,7 +240,11 @@ h1 {
 .header .nav .link .nav-bg {
   position: absolute;
   left: 20%;
-  transform: translate(-50%, -50%);
   transform: rotate(15deg);
+  transition: 0.5s;
+}
+
+.square-hover {
+  transform: rotate(-30deg) !important;
 }
 
