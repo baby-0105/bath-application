@@ -7,7 +7,6 @@
     position: fixed;
     width: 100%;
     z-index: 10;
-    background: rgba(255,192,66,0.8);
 }
 
 .header .container {
@@ -16,6 +15,10 @@
     align-items: center;
     padding: 10px 20px;
     height: 80px;
+}
+
+.header .logo {
+    width: 100px;
 }
 
 .header .nav {

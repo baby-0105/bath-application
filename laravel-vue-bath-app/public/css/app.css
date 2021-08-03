@@ -59,6 +59,7 @@ h1 {
 
 .top-page .main-text {
   font-size: 3rem;
+  margin-bottom: 30px;
 }
 
 .top-page .search-btn {
@@ -86,7 +87,7 @@ h1 {
 // -----------------------------------------------------------------*/
 
 .top-page .recommendation {
-  background: #ffc042;
+  background: #ACD0D1;
   border-radius: 20px 20px 5px 5px;
   padding-bottom: 50px;
 }
@@ -313,7 +314,6 @@ h1 {
   position: fixed;
   width: 100%;
   z-index: 10;
-  background: rgba(255, 192, 66, 0.8);
 }
 
 .header .container {
@@ -322,6 +322,10 @@ h1 {
   align-items: center;
   padding: 10px 20px;
   height: 80px;
+}
+
+.header .logo {
+  width: 100px;
 }
 
 .header .nav {
@@ -364,7 +368,7 @@ h1 {
 
 .footer {
   height: 100px;
-  background-color: gray;
+  background-color: #dfdfdf;
   padding: 10px;
   display: flex;
   flex-direction: column;
