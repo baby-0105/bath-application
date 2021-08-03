@@ -1,6 +1,6 @@
 <header class="header">
   <div class="container">
-    <a href="{{ url('/') }}"><img class="logo" src="{{ url('svg/OFLog-translate.svg') }}" alt="ヘッダーのロゴ"></a>
+    <a href="{{ url('/') }}"><img class="logo" src="{{ url('img/OFLog-logo2.png') }}" alt="ヘッダーのロゴ"></a>
     <div class="nav" id="nav">
       {{-- <img src="svg/menu.svg" class="menu-icon"> --}}
       @if(Auth::check())
