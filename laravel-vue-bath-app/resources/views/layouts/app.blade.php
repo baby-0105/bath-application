@@ -10,13 +10,17 @@
 
 <body>
   @include('layouts.components.header')
+
+  <div class="main">
     @if (session('flash_message'))
       <div class="flash_message">
         {{ session('flash_message') }}
       </div>
     @endif
     @yield('content')
-    @include('layouts.components.footer')
-    <script src="{{ mix('js/app.js') }}"></script>
+  </div>
+
+  @include('layouts.components.footer')
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

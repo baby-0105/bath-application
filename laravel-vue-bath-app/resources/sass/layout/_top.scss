@@ -6,10 +6,14 @@
 //  first-block
 // -----------------------------------------------------------------*/
 
-.top-page .container {
+.top-page {
+    position: relative;
+    top: -120px; /* body .container のpadding-bottomと同等にして、上下中央揃え */
+}
+
+.top-page .top-container {
     width: 80%;
     margin: 0 auto;
-    margin-bottom: 30px;
 }
 
 .top-page .first-view {

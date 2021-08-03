@@ -5,11 +5,14 @@
 
 .footer {
     height: 100px;
+    width: 100%;
     background-color: #dfdfdf;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer .logo {

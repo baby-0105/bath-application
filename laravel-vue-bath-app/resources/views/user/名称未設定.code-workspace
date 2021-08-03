@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "/Users/ShoyaBaba/application/my-app/bath-application"
+		},
+		{
+			"path": "/Users/ShoyaBaba/application/templates/my-template"
+		},
+		{
+			"path": "/Users/ShoyaBaba/application/my-app/portfolio"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.tpl": "html"
+		}
+	}
+}

@@ -1,0 +1,64 @@
+/*// ==========================================================================
+//  マイページ
+// ==========================================================================*/
+
+
+/*// -----------------------------------------------------------------
+//  user-info
+// -----------------------------------------------------------------*/
+
+.mypage {
+    padding: 0 100px;
+}
+
+.mypage .user-info {
+    margin-bottom: 80px;
+}
+
+.mypage .user-info .basic {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mypage .person {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage .person .user-icon {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.mypage .person .name {
+    font-size: 3.0rem;
+}
+
+.mypage .user-info .prefecture {
+    font-size: 3.0rem;
+    color: gray;
+    display: flex;
+    align-items: center;
+}
+
+.mypage .user-info .intro {
+    border: 2px solid #dfdfdf;
+    border-radius: 10px;
+    padding: 10px;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+/*// -----------------------------------------------------------------
+//  link-area
+// -----------------------------------------------------------------*/
+
+.mypage .link-area {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+}  

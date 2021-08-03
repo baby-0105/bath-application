@@ -10,6 +10,7 @@ Route::group(['middleware' => 'verified'], function() {
 Route::get('/', function () { return view('top'); });
 Route::get('/user/register', function () { return view('user.register'); });
 Route::get('/user/login', function () { return view('user.login'); });
+Route::get('/user/mypage', function () { return view('user.mypage'); });
 
 Route::namespace('User')->group(function() {
     Route::group(['prefix' => 'user'], function() {

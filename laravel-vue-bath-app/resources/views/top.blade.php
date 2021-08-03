@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div id="toppage" class="top-page">
-        <div class="container">
+        <div class="top-container">
             <div class="first-view">
                 <div class="search-btn-area">
                     <a class="search-btn" href="{{ url('post/search') }}">
