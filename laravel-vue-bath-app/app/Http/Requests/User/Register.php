@@ -38,7 +38,7 @@ class Register extends FormRequest
     public function attributes()
     {
         return[
-            'name'     => '名前',
+            'name'     => 'ユーザー名',
             'email'    => 'メールアドレス',
             'password' => 'パスワード',
         ];
