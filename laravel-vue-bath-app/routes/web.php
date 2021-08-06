@@ -33,11 +33,11 @@ Route::namespace('User')->group(function() {
 
     Route::post('/user/login', 'LoginController@login')->name('user.login');
     Route::get('/logout', 'LoginController@logout')->name('logout');
-    Route::get('/login/google', 'LoginController@redirectToGoogle');
-    Route::get('/login/google/callback', 'LoginController@handleGoogleCallback');
 });
 
-Route::namespace('User')->group(function() {
-    Route::get('auth/login/facebook', 'FacebookController@redirectToFacebookProvider');
-    Route::get('auth/facebook/callback', 'FacebookController@handleFacebookProviderCallback');
+Route::namespace('Auth')->group(function() {
+    Route::get('/login/google', 'SocialController@redirectToGoogle');
+    Route::get('/login/google/callback', 'SocialController@handleGoogleCallback');
+    Route::get('auth/login/facebook', 'SocialController@redirectToFacebookProvider');
+    Route::get('auth/facebook/callback', 'SocialController@handleFacebookProviderCallback');
 });

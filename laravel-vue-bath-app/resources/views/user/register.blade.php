@@ -34,5 +34,9 @@
             </div>
             <input class="btn" type="submit" value="登録する">
         </form>
+        <div class="sns">
+            <a class="google" href="/login/google">Googleでログインする</a>
+            <a class="facebook" href="/auth/login/facebook">Facebookでログインする</a>
+        </div>
     </div>
 @endsection

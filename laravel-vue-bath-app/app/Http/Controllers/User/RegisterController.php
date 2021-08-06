@@ -4,10 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Register;
-use App\Http\Service\User\RegisterService;
+use App\Service\User\RegisterService;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Log;
 
 class RegisterController extends Controller
 {

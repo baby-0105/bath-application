@@ -1,13 +1,15 @@
 /*// ==========================================================================
-//  ログイン
+//  sns
 // ==========================================================================*/
 
-.login .sns {
+.login .sns,
+.register .sns {
     font-size: 1.4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.login .sns .google {
+.login .sns .google,
+.register .sns .google {
     margin-bottom: 10px;
 }
