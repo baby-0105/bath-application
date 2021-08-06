@@ -4,6 +4,9 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * 新規登録 リクエストクラス
+ */
 class Register extends FormRequest
 {
     /**

@@ -8,23 +8,16 @@ use App\Service\User\RegisterService;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/**
+ * 新規登録コントローラー
+ */
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * 新規登録後、リダイレクト先
      *
      * @var string
      */
@@ -33,7 +26,6 @@ class RegisterController extends Controller
     /**
      * コンストラクタ
      *
-     * @return void
      */
     public function __construct(RegisterService $register_service)
     {
@@ -44,8 +36,8 @@ class RegisterController extends Controller
     /**
      * 新規登録と、メール送信
      *
-     * @param Register $request
-     * @return void
+     * @param Register $request リクエストクラス インスタンス
+     * @return array
      */
     public function sendAndCreate(Register $request)
     {
@@ -62,7 +54,7 @@ class RegisterController extends Controller
      * 本登録完了ページ
      *
      * @param [type] $email_token
-     * @return void
+     * @return str エラー or 登録完了メッセージ
      */
     public function showVerify($token)
     {

@@ -2,15 +2,17 @@
 
 namespace App\Http\Requests\User;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
+/**
+ * ログイン リクエストクラス
+ */
 class Login extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * ユーザーがこのリクエストの権限を持っているかを判断する
      *
      * @return bool
      */
@@ -20,7 +22,7 @@ class Login extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * ユーザー登録リクエストに適用するバリデーションルールを取得
      *
      * @return array
      */

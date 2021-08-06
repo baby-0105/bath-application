@@ -1,16 +1,19 @@
 /*// ==========================================================================
-//  メール送信後画面
+//  メール送信後画面 / 本登録完了画面
 // ==========================================================================*/
 
-.check-email {
+.check-email,
+.register-confirm {
     text-align: center;
 }
 
-.check-email .title {
+.check-email .title,
+.register-confirm .title  {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-.check-email .text {
+.check-email .text,
+.register-confirm .text {
     font-size: 1.5rem;
 }

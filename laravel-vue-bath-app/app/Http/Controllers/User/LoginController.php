@@ -8,30 +8,23 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * ログインコントローラー
+ */
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * ログイン後のリダイレクト先
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
+     * コンストラクタ
      *
      * @return void
      */
@@ -43,8 +36,8 @@ class LoginController extends Controller
     /**
      * ログイン処理
      *
-     * @param Login $request
-     * @return array
+     * @param Login $request リクエストインスタンス
+     * @return str ログイン可 / 不可　メッセージ
      */
     public function login(Login $request)
     {
@@ -74,7 +67,7 @@ class LoginController extends Controller
     }
 
     /**
-     * ログアウト
+     * ログアウト処理
      *
      */
     public function logout()

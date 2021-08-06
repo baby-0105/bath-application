@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
@@ -25,6 +25,7 @@ class SocialController extends Controller
     /**
      * Google認証：登録 or ログイン
      *
+     *
      */
     public function handleGoogleCallback()
     {
@@ -42,7 +43,7 @@ class SocialController extends Controller
     }
 
     /**
-     * Googleでユーザー作成
+     * Google認証でユーザー作成
      *
      * @return array
      */
@@ -57,7 +58,7 @@ class SocialController extends Controller
     }
 
     /**
-     * Redirect the user to the GitHub authentication page.
+     * Facebookへリダイレクト
      *
      * @return Response
      */
@@ -67,7 +68,7 @@ class SocialController extends Controller
     }
 
     /**
-     * Obtain the user information from GitHub.
+     * Facebook認証：登録 or ログイン
      *
      * @return Response
      */
