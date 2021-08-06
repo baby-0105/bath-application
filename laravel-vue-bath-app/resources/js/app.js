@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./top');
+require('./components/header.js');
 
 window.Vue = require('vue');
 

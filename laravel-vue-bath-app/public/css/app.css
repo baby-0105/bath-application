@@ -214,99 +214,73 @@ h1 {
 }
 
 /*// ==========================================================================
-//  新規登録
+//  ユーザーフォーム（ログイン/ 新規登録 / ユーザー情報変更 / パスワード変更 / メールアドレス変更）
 // ==========================================================================*/
 
-.register {
+.user-form {
   width: 50%;
   margin: 0 auto;
 }
 
-.register .title {
+.user-form .title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
 
-.register .form {
+.user-form .form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
-.register .list {
+.user-form .list {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.register .list label {
+.user-form .list label {
   font-size: 1.4rem;
   display: inline-block;
+  width: 25%;
 }
 
-.register .list .input {
+.user-form .list .input,
+.user-form .list .select {
   width: 70%;
   padding: 10px;
 }
 
-.register .password-confirm {
+.user-form .password-confirm {
   margin-bottom: 50px;
 }
 
-.register .btn {
+.user-form .btn {
   width: 20%;
   margin: 0 auto;
   padding: 10px;
+}
+
+.user-form .other-links {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+}
+
+.user-form .other-links .link {
+  color: #7edbe6;
+  text-decoration: underline;
+}
+
+.user-form .other-links .link:hover {
+  text-decoration: none;
 }
 
 /*// ==========================================================================
 //  ログイン
 // ==========================================================================*/
-
-.login {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.login .title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-}
-
-.login .form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login .list {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.login .list label {
-  font-size: 1.4rem;
-  display: inline-block;
-}
-
-.login .list .input {
-  width: 70%;
-  padding: 10px;
-}
-
-.login .password {
-  margin-bottom: 50px;
-}
-
-.login .btn {
-  width: 20%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 10px;
-}
 
 .login .sns {
   font-size: 1.4rem;
@@ -445,15 +419,18 @@ h1 {
 // ==========================================================================*/
 
 .footer {
-  height: 100px;
   width: 100%;
   background-color: #dfdfdf;
-  padding: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  bottom: 0;
+  height: 100px;
+  padding: 10px;
 }
 
 .footer .logo {

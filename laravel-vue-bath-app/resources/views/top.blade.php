@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <div id="toppage" class="top-page">
         <div class="top-container">
             <div class="first-view">
                 <div class="search-btn-area">
-                    <a class="search-btn" href="{{ url('post/search') }}">
+                    <a class="search-btn" href="{{ route('post.search') }}">
                         <span class="btn-name">検索する</span>
                         <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                     </a>
@@ -14,7 +14,7 @@
                     <img class="logo" src="{{ url('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
                 </div>
                 <div class="my-post-block">
-                    <a class="search-btn" href="{{ url('post/mypost') }}">
+                    <a class="search-btn" href="{{ route('post.mypost') }}">
                         <span class="btn-name">My投稿</span>
                         <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                     </a>

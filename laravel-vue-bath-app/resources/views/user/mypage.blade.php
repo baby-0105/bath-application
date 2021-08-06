@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <div class="mypage">
         <div class="user-info">
@@ -19,9 +19,9 @@
             </p>
         </div>
         <div class="link-area">
-            <a href="user/edit">ユーザー情報編集</a>
-            <a href="post/mypost">My投稿</a>
-            <a href="user/favorite">お気に入り</a>
+            <a href="{{ route('user.edit') }}">ユーザー情報編集</a>
+            <a href="{{ route('post.mypost') }}">My投稿</a>
+            <a href="{{ route('user.favorite') }}">お気に入り</a>
         </div>
     </div>
 @endsection

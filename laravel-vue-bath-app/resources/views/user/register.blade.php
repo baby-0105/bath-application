@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
-    <div class="register">
+    <div class="user-form register">
         <h2 class="title">新規登録ページ</h2>
         <form class="form" method="POST" action="{{ route('user.check_email') }}">
             @csrf

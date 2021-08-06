@@ -8,9 +8,20 @@ Route::group(['middleware' => 'verified'], function() {
 });
 
 Route::get('/', function () { return view('top'); });
-Route::get('/user/register', function () { return view('user.register'); });
-Route::get('/user/login', function () { return view('user.login'); });
-Route::get('/user/mypage', function () { return view('user.mypage'); });
+Route::group(['prefix' => 'user'], function() {
+    Route::get('register', function () { return view('user.register'); })->name('user.register');
+    Route::get('login', function () { return view('user.login'); })->name('user.login');
+    Route::get('mypage', function () { return view('user.mypage'); })->name('user.mypage');
+    Route::get('edit', function () { return view('user.edit'); })->name('user.edit');;
+    Route::get('change_password', function () { return view('user.change_password'); })->name('user.change_password');;
+    Route::get('change_email', function () { return view('user.change_email'); })->name('user.change_email');;
+    Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');;
+});
+
+Route::group(['prefix' => 'post'], function() {
+    Route::get('mypost', function () { return view('post.mypost'); })->name('post.mypost');;
+    Route::get('search', function () { return view('post.search'); })->name('post.search');;
+});
 
 Route::namespace('User')->group(function() {
     Route::group(['prefix' => 'user'], function() {

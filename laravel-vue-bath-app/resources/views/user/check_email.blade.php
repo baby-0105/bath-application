@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 <div class="check-email">
   <h2>メースを送信しました</h2>

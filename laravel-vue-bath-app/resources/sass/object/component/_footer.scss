@@ -2,17 +2,19 @@
 //  フッター
 // ==========================================================================*/
 
-
 .footer {
-    height: 100px;
     width: 100%;
     background-color: #dfdfdf;
-    padding: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: absolute;
-    bottom: 0;
+    height: 100px;
+    padding: 10px;
 }
 
 .footer .logo {
