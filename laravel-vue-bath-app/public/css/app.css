@@ -414,6 +414,140 @@ h1 {
 }
 
 /*// ==========================================================================
+//  投稿一覧
+// ==========================================================================*/
+
+.post-index {
+  text-align: center;
+}
+
+/*//
+//  title-block
+// ---------------------------*/
+
+.post-index .title-block {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.post-index .title-block .title {
+  font-size: 2.5rem;
+}
+
+.post-index .title-block .key-img {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  right: 40%;
+}
+
+/*//
+//  index
+// ---------------------------*/
+
+.post-index .index {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.post-index .index .bath .list {
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 10px;
+  background: white;
+}
+
+.post-index .index .bath .list:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.post-index .index .bath .list .title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.post-index .index .desc {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.post-index .index .desc .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-index .index .desc .bath-img {
+  display: flex;
+  justify-content: center;
+}
+
+.post-index .index .desc .main-img {
+  width: 40%;
+  margin-right: 10px;
+}
+
+.post-index .index .desc .sub-img {
+  width: 10%;
+}
+
+.post-index .index .desc .review {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.post-index .index .desc .review .thoughts {
+  text-align: left;
+}
+
+.post-index .index .desc .review-num {
+  display: flex;
+  align-items: center;
+}
+
+.post-index .index .desc .review-num li:first-child {
+  font-size: 6rem;
+  width: 30%;
+}
+
+.post-index .index .desc .review-num li:first-child:after {
+  content: "-\7DCF\5408\8A55\4FA1-";
+  display: block;
+  font-size: 1.2rem;
+}
+
+.post-index .index .desc .review-num li:not(:first-child) {
+  width: 50%;
+  font-size: 4rem;
+}
+
+.post-index .index .desc .review-num li:not(:first-child):after {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.post-index .index .desc .review-num li:not(:first-child):nth-child(2):after {
+  content: "-\98A8\5442\8A55\4FA1-";
+}
+
+.post-index .index .desc .review-num li:not(:first-child):nth-child(3):after {
+  content: "-\9928\5185\8A55\4FA1-";
+}
+
+.post-index .index .desc .review-num li:not(:first-child):nth-child(4):after {
+  content: "-\5CA9\76E4\6D74\8A55\4FA1-";
+}
+
+.post-index .index .desc .review-num li:not(:first-child):nth-child(5):after {
+  content: "-\30B5\30A6\30CA\8A55\4FA1-";
+}
+
+/*// ==========================================================================
 //  ヘッダー
 // ==========================================================================*/
 

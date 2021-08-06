@@ -1,0 +1,135 @@
+/*// ==========================================================================
+//  投稿一覧
+// ==========================================================================*/
+
+.post-index {
+    text-align: center;
+}
+
+/*//
+//  title-block
+// ---------------------------*/
+
+.post-index .title-block {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.post-index .title-block .title {
+    font-size: 2.5rem;
+}
+
+.post-index .title-block .key-img {
+    @include centered_vertically;
+    position: absolute;
+    right: 40%;
+}
+
+/*//
+//  index
+// ---------------------------*/
+
+.post-index .index {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.post-index .index .bath .list {
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 10px;
+    background: white;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.post-index .index .bath .list .title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.post-index .index .desc {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.post-index .index .desc .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-index .index .desc .bath-img {
+    display: flex;
+    justify-content: center;
+}
+
+.post-index .index .desc .main-img {
+    width: 40%;
+    margin-right: 10px;
+}
+
+.post-index .index .desc .sub-img {
+    width: 10%;
+}
+
+.post-index .index .desc .review {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.post-index .index .desc .review .thoughts {
+    text-align: left;
+}
+
+.post-index .index .desc .review-num {
+    display: flex;
+    align-items: center;
+}
+.post-index .index .desc .review-num li {
+    &:first-child {
+        font-size: 6.0rem;
+        width: 30%;
+        &:after {
+            content: '-総合評価-';
+            display: block;
+            font-size: 1.2rem;
+        }
+    }
+
+    &:not(:first-child) {
+        width: 50%;
+        font-size: 4.0rem;
+        &:after {
+            display: block;
+            font-size: 1.2rem;
+        }
+        &:nth-child(2) {
+            &:after {
+                content: '-風呂評価-';
+            }
+        }
+        &:nth-child(3) {
+            &:after {
+                content: '-館内評価-';
+            }
+        }
+        &:nth-child(4) {
+            &:after {
+                content: '-岩盤浴評価-';
+            }
+        }
+        &:nth-child(5) {
+            &:after {
+                content: '-サウナ評価-';
+            }
+        }
+    }
+}
