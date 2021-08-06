@@ -231,7 +231,6 @@ h1 {
 .user-form .form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
 }
 
 .user-form .list {
@@ -239,6 +238,10 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.user-form .list:last-of-type {
+  margin-bottom: 50px;
 }
 
 .user-form .list label {
@@ -253,10 +256,6 @@ h1 {
   padding: 10px;
 }
 
-.user-form .password-confirm {
-  margin-bottom: 50px;
-}
-
 .user-form .btn {
   width: 20%;
   margin: 0 auto;
@@ -267,6 +266,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   font-size: 1.5rem;
+  margin-top: 50px;
 }
 
 .user-form .other-links .link {
@@ -355,6 +355,62 @@ h1 {
   display: flex;
   justify-content: space-around;
   font-size: 18px;
+}
+
+/*// ==========================================================================
+//  投稿フォーム（）
+// ==========================================================================*/
+
+.post-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.post-form .title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.post-form .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-form .list {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-form .list:last-of-type {
+  margin-bottom: 50px;
+}
+
+.post-form .list label {
+  font-size: 1.4rem;
+  display: inline-block;
+  width: 25%;
+}
+
+.post-form .list .input,
+.post-form .list .select {
+  width: 70%;
+  padding: 10px;
+}
+
+.post-form .list .input {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.post-form .btn {
+  width: 20%;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 /*// ==========================================================================

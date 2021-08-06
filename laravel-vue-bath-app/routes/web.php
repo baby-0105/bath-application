@@ -20,6 +20,7 @@ Route::group(['prefix' => 'user'], function() {
 
 Route::group(['prefix' => 'post'], function() {
     Route::get('mypost', function () { return view('post.mypost'); })->name('post.mypost');;
+    Route::get('submit', function () { return view('post.submit'); })->name('post.submit');;
     Route::get('search', function () { return view('post.search'); })->name('post.search');;
 });
 

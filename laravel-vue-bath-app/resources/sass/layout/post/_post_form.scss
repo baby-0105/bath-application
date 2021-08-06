@@ -1,21 +1,21 @@
 /*// ==========================================================================
-//  ユーザーフォーム（ログイン/ 新規登録 / ユーザー情報変更 / パスワード変更 / メールアドレス変更）
+//  投稿フォーム（）
 // ==========================================================================*/
 
-.user-form {
+.post-form {
     width: 50%;
     margin: 0 auto;
 }
-.user-form .title {
+.post-form .title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
 }
-.user-form .form {
+.post-form .form {
     display: flex;
     flex-direction: column;
 }
-.user-form .list {
+.post-form .list {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -26,34 +26,26 @@
     }
 }
 
-.user-form .list label {
+.post-form .list label {
     font-size: 1.4rem;
     display: inline-block;
     width: 25%;
 }
-.user-form .list .input,
-.user-form .list .select {
+.post-form .list .input,
+.post-form .list .select {
     width: 70%;
     padding: 10px;
 }
 
-.user-form .btn {
+.post-form .list .input {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.post-form .btn {
     width: 20%;
     margin: 0 auto;
     padding: 10px;
-}
-
-.user-form .other-links {
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.5rem;
-    margin-top: 50px;
-}
-
-.user-form .other-links .link {
-    color: #7edbe6;
-    text-decoration: underline;
-    &:hover {
-        text-decoration: none;
-    }
 }
