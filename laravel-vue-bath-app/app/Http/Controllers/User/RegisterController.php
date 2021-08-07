@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Register;
+use App\Http\Requests\User\RegisterRequest;
 use App\Service\User\RegisterService;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -36,10 +36,10 @@ class RegisterController extends Controller
     /**
      * 新規登録と、メール送信
      *
-     * @param Register $request リクエストクラス インスタンス
+     * @param RegisterRequest $request リクエストクラス インスタンス
      * @return array
      */
-    public function sendAndCreate(Register $request)
+    public function sendAndCreate(RegisterRequest $request)
     {
         $valueObject = $request->toValueObject();
         $this->register_service->sendAndCreate($valueObject);

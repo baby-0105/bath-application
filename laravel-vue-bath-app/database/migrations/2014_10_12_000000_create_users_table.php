@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->integer('status')->comment('ユーザーの状態（仮登録、本登録、利用停止、退会）');
+            $table->string('sns')->nullable()->comment('SNS名称（facebook/google）');
+            $table->string('sns_id')->nullable()->comment('SNS認証用');
             $table->timestamp('email_verified_at')->nullable()->comment('本登録日時');
             $table->rememberToken();
             $table->timestamps();

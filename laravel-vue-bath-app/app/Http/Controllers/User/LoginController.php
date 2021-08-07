@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Login;
+use App\Http\Requests\User\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -36,10 +36,10 @@ class LoginController extends Controller
     /**
      * ログイン処理
      *
-     * @param Login $request リクエストインスタンス
+     * @param LoginRequest $request リクエストインスタンス
      * @return str ログイン可 / 不可　メッセージ
      */
-    public function login(Login $request)
+    public function login(LoginRequest $request)
     {
         $this->setCredentials($request);
         if (Auth::attempt($this->credentials)) {
@@ -56,9 +56,9 @@ class LoginController extends Controller
     /**
      * クレデンシャル情報をセット
      *
-     * @param Login $request
+     * @param LoginRequest $request
      */
-    private function setCredentials(Login $request):void
+    private function setCredentials(LoginRequest $request):void
     {
         $this->credentials = [
             'email'     => $request->input('email', null),

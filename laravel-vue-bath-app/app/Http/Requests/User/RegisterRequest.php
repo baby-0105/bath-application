@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * 新規登録 リクエストクラス
  */
-class Register extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * ユーザーがこのリクエストの権限を持っているかを判断する
@@ -28,7 +28,7 @@ class Register extends FormRequest
     {
         return [
             'name'     => 'required|string|min:2|max:20|unique:users',
-            'email'    => 'required|string|email|unique:users,email',
+            'email'    => 'required|string|email:rfc|unique:users,email',
             'password' => 'required|string|min:8|max:16|regex:/^[!-~]+$/|confirmed',
         ];
     }

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * ログイン リクエストクラス
  */
-class Login extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * ユーザーがこのリクエストの権限を持っているかを判断する

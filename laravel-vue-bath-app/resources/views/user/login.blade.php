@@ -20,8 +20,8 @@
         <input class="btn" type="submit" value="ログイン">
     </form>
     <div class="sns">
-        <a class="google" href="/login/google">Googleでログインする</a>
-        <a class="facebook" href="/auth/login/facebook">Facebookでログインする</a>
+        <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログインする</a>
+        <a class="facebook" href="{{ route('login.sns', ['sns' => 'facebook']) }}">Facebookでログインする</a>
     </div>
 </div>
 @endsection

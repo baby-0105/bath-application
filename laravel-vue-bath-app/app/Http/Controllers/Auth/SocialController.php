@@ -4,95 +4,78 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Service\User\RegisterService;
+use App\Service\User\SocialService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Socialite;
+use Exception;
 
 /**
  * SNS認証用 コントローラー
  */
 class SocialController extends Controller
 {
+
+    private $socialService;
+
     /**
-     * Googleへリダイレクト
+     * Create a new controller instance.
      *
+     * @return void
      */
-    public function redirectToGoogle()
+    public function __construct(SocialService $socialService)
     {
-        return Socialite::driver('google')->redirect();
+        $this->socialService = $socialService;
     }
 
     /**
-     * Google認証：登録 or ログイン
+     * SNSの認証ページへ
      *
-     *
+     * @param [type] $sns
+     * @return void
      */
-    public function handleGoogleCallback()
+    public function redirectToProvider($sns)
     {
-        $gUser = Socialite::driver('google')->stateless()->user();
-
-        $user = User::where('email', $gUser->email)->first();
-
-        if($user == null) {
-            $user = $this->createUserByGoogle($gUser);
-        }
-
-        // ログイン処理
-        Auth::login($user, true);
-        return redirect('/');
+        return Socialite::driver($sns)->redirect();
     }
 
     /**
-     * Google認証でユーザー作成
+     * ユーザーのSNS情報を入手→認証
      *
-     * @return array
+     * @param [type] $sns
+     * @return void
      */
-    public function createUserByGoogle($gUser)
+    public function handleProviderCallback($sns)
     {
-        $user = User::create([
-            'name'     => $gUser->name,
-            'email'    => $gUser->email,
-            'password' => Hash::make($gUser->password),
-        ]);
-        return $user;
-    }
+        try {
+            // 既にログイン済み
+            if(Auth::user()) { return redirect()->route('top'); }
 
-    /**
-     * Facebookへリダイレクト
-     *
-     * @return Response
-     */
-    public function redirectToFacebookProvider()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    /**
-     * Facebook認証：登録 or ログイン
-     *
-     * @return Response
-     */
-    public function handleFacebookProviderCallback()
-    {
-        try{
-            $user = Socialite::driver('facebook')->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
-
-            if($user){
-                $token = $user->token;
-                $refreshToken = $user->refreshToken;
-                $expiresIn = $user->expiresIn;
-
-                $user->getId();
-                $user->getNickname();
-                $user->getName();
-                $user->getEmail();
-                $user->getAvatar();
-
+            $user = Socialite::driver($sns)->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
+            $data = [
+                'name'   => $user->name,
+                'email'  => $user->email,
+                'sns_id' => $user->id,
+                'sns'    => $sns,
+                'status' => config('const.USER_STATUS.REGISTER'),
+                'selectAuthUser'    => $this->socialService->selectAuthUser($user, $sns),
+            ];
+            // DBカラ → 新規登録
+            if(empty($data['selectAuthUser'])) {
+                User::create($data);
+                return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました');
             }
-        }catch(Exception $e){
-            return redirect("/");
+            // ログイン：snsカラム一致時
+            else if ($this->socialService->matchConfirmation($user, $sns)) {
+                $this->socialService->toLoginUser($user, $sns);
+                return redirect()->route('top');
+            }
+            return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました');
         }
 
-        // $user->token;
+        catch (Exception $e) {
+            return redirect()->route('user.login')->with('snsErrorMessage', '認証ができませんでした。');
+        }
+
     }
 }
