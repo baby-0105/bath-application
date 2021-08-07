@@ -44,7 +44,7 @@ class LoginController extends Controller
         $this->setCredentials($request);
         if (Auth::attempt($this->credentials)) {
             $request->session()->regenerate();
-            return redirect('/')->with('flash_message', 'ログインが完了しました。');
+            return redirect()->route('top')->with('is_auth', 'ログインが完了しました。');
         }
 
         $validator = [
@@ -73,6 +73,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('top');
     }
 }

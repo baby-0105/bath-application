@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Service\User\RegisterService;
 use App\Service\User\SocialService;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
@@ -49,7 +48,7 @@ class SocialController extends Controller
     {
         try {
             // 既にログイン済み
-            if(Auth::user()) { return redirect()->route('top'); }
+            if(Auth::user()) { return redirect()->route('top')->with('is_auth', 'すでにログイン済みです。'); }
 
             $user = Socialite::driver($sns)->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
             $data = [
@@ -63,18 +62,19 @@ class SocialController extends Controller
             // DBカラ → 新規登録
             if(empty($data['selectAuthUser'])) {
                 User::create($data);
-                return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました');
+                $this->socialService->toLoginUser($user, $sns);
+                return redirect()->route('top')->with('is_auth', '認証が完了しました');
             }
             // ログイン：snsカラム一致時
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user, $sns);
-                return redirect()->route('top');
+                return redirect()->route('top')->with('is_auth', 'ログインしました');
             }
-            return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました');
+            return redirect()->route('top')->with('is_auth', '認証が完了しました');
         }
 
         catch (Exception $e) {
-            return redirect()->route('user.login')->with('snsErrorMessage', '認証ができませんでした。');
+            return redirect()->route('user.login')->with('authError', '認証ができませんでした。');
         }
 
     }

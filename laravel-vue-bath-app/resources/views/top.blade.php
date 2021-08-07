@@ -1,5 +1,11 @@
 @extends('app')
 @section('content')
+    <div class="popup @if(session('is_auth')) flex @else hide @endif" id="popup">
+        <div class="content">
+            <p class="text">{{ session('is_auth') }}</p>
+            <button class="close" id="close">閉じる</button>
+        </div>
+    </div>
     <div id="toppage" class="top-page">
         <div class="top-container">
             <div class="first-view">

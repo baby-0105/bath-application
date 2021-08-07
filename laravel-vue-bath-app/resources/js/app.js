@@ -1,6 +1,7 @@
 require('./bootstrap');
 require('./top');
 require('./components/header.js');
+require('./components/popup.js');
 
 window.Vue = require('vue');
 
