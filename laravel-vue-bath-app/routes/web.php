@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () { return view('top'); })->name('top');
 
+
 Route::group(['prefix' => 'user'], function() {
     Route::get('register', function () { return view('user.register'); })->name('user.register');
     Route::get('login', function () { return view('user.login'); })->name('user.login');
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'user'], function() {
 Route::namespace('Auth')->group(function() {
     Route::get('/login/{sns}', 'SocialController@redirectToProvider')->where('sns', 'facebook|google')->name('login.sns');
     Route::get('/login/{sns}/callback', 'SocialController@handleProviderCallback')->where('sns', 'facebook|google');
+    Route::post('/', 'SocialController@updateProfile')->name('update.profile');
 });
 
 Route::group(['prefix' => 'post'], function() {

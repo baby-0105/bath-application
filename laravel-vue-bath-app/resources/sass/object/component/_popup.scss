@@ -20,9 +20,35 @@
     text-align: center;
 }
 
+.popup .title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
 .popup .text {
     font-size: 1.8rem;
     margin-bottom: 20px;
+}
+
+.popup .content .list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup .content label {
+    font-size: 1.6rem;
+    width: 20%;
+}
+
+.popup .content .input {
+    width: 70%;
+    padding: 10px;
+}
+
+.popup .content .btn {
+    padding: 5px;
 }
 
 .popup .close {

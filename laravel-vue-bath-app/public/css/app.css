@@ -14,7 +14,7 @@
   font-family: "Wawati SC", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "Hiragino Sans", "Yu Gothic UI", sans-serif;
 }
 
-.form .error {
+.error {
   color: red;
   font-size: 1.5rem;
   text-align: center;
@@ -689,9 +689,35 @@ h1 {
   text-align: center;
 }
 
+.popup .title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
 .popup .text {
   font-size: 1.8rem;
   margin-bottom: 20px;
+}
+
+.popup .content .list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popup .content label {
+  font-size: 1.6rem;
+  width: 20%;
+}
+
+.popup .content .input {
+  width: 70%;
+  padding: 10px;
+}
+
+.popup .content .btn {
+  padding: 5px;
 }
 
 .popup .close {

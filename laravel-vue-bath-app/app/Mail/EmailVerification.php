@@ -34,7 +34,7 @@ class EmailVerification extends Mailable
     {
         return $this
             ->to(['email' => $this->email])
-            ->subject('【OfLog】本登録確認メール')
+            ->subject('【OFLog】本登録確認メール')
             ->view('email.register_verify')
             ->with(['token' => $this->encodeToken,]);
     }

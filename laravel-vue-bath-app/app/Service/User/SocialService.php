@@ -21,7 +21,7 @@ class SocialService{
 	 */
 	public function selectAuthUser($user, $sns)
 	{
-		return User::where('sns_id', $user->id)->where('sns', $sns)->where('name', $user->name)->orWhere('email', $user->email)->first();
+		return User::where('sns_id', $user->id)->where('sns', $sns)->orWhere('email', $user->email)->first();
     }
 
 	/**
