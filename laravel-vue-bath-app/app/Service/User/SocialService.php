@@ -40,7 +40,7 @@ class SocialService{
 	 */
 	public function toLoginUser($user, $sns)
 	{
-        $authUser = User::where('sns_id', $user->id)->where('sns', $sns)->first();
-		return Auth::login($authUser, true);
+		$authUser = User::where('sns_id', $user->id)->where('sns', $sns)->first();
+		return Auth::login($authUser);
 	}
 }

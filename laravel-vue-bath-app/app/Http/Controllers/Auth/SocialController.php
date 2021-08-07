@@ -99,7 +99,7 @@ class SocialController extends Controller
         Mail::to($request->email)->send(new UserSnsRegisterMailSent($request->name));
 
         $authUser = User::where('sns_id', $sns['sns_id'])->where('sns', $sns['sns'])->first();
-		Auth::login($authUser, true);
+		Auth::login($authUser);
         return redirect()->route('top')->with('is_auth', '認証が完了しました');
     }
 }
