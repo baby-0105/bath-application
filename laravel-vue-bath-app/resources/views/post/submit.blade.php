@@ -4,7 +4,7 @@
         <h2 class="title">投稿</h2>
         <form class="form" method="POST" action="">
             @csrf
-            @error('bath-name') <p class="error">{{ $message }}</p> @enderror
+            @error('bath_name') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
                 <label>お風呂名</label>
                 <input class="input" type="text" name="bath-name" value="{{ old('bath-name') }}">
@@ -22,10 +22,10 @@
                     <option>5</option>
                 </select>
             </div>
-            @error('bath-eval') <p class="error">{{ $message }}</p> @enderror
+            @error('hot_water_eval') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
-                <label>風呂評価</label>
-                <select class="select" name="bath-eval">
+                <label>お湯評価</label>
+                <select class="select" name="hot_water_eval">
                     <option>選択してください</option>
                     <option>1</option>
                     <option>2</option>
@@ -34,10 +34,10 @@
                     <option>5</option>
                 </select>
             </div>
-            @error('inside-eval') <p class="error">{{ $message }}</p> @enderror
+            @error('hall_eval') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
                 <label>館内評価</label>
-                <select class="select" name="inside-eval">
+                <select class="select" name="hall_eval">
                     <option>選択してください</option>
                     <option>1</option>
                     <option>2</option>
@@ -46,10 +46,10 @@
                     <option>5</option>
                 </select>
             </div>
-            @error('rock-eval') <p class="error">{{ $message }}</p> @enderror
+            @error('rock_eval') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
                 <label>岩盤浴評価</label>
-                <select class="select" name="rock-eval">
+                <select class="select" name="rock_eval">
                     <option>選択してください</option>
                     <option>1</option>
                     <option>2</option>
@@ -58,10 +58,10 @@
                     <option>5</option>
                 </select>
             </div>
-            @error('sauna-eval') <p class="error">{{ $message }}</p> @enderror
+            @error('sauna_eval') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
                 <label>サウナ評価</label>
-                <select class="select" name="sauna-eval">
+                <select class="select" name="sauna_eval">
                     <option>選択してください</option>
                     <option>1</option>
                     <option>2</option>
