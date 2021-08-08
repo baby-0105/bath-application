@@ -61,7 +61,12 @@ class SocialController extends Controller
             ];
             // DBカラ → 新規登録
             if(empty($data['selectAuthUser'])) {
-                session(['register.sns_id' => $user->id, 'register.sns' => $sns]);
+                session([
+                    'register.sns_id' => $user->id,
+                    'register.sns' => $sns,
+                    'register.name' => $user->name,
+                    'register.email' => $user->email,
+                ]);
                 return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました')->with($data);
             }
             // ログイン：snsカラム一致時
@@ -100,6 +105,6 @@ class SocialController extends Controller
 
         $authUser = User::where('sns_id', $sns['sns_id'])->where('sns', $sns['sns'])->first();
 		Auth::login($authUser);
-        return redirect()->route('top')->with('is_auth', '認証が完了しました');
+        return response()->json(['is_auth' => route('top')]);
     }
 }

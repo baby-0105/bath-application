@@ -11,26 +11,31 @@
     <body>
         @include('layouts.components.header')
         <div class="main">
-            <div class="popup @if(session('is_auth') || session('nonVerify'))flex @else hide @endif" id="popup">
+            <div class="sns-update-profile popup @if(session('snsUpdateProfile') && session('nonVerify'))flex @else hide @endif" id="popup">
                 <div class="content">
                     <h3 class="title">※まだ、ユーザー登録が完了していません</h3>
                     <p class="text">ユーザー登録を完了させてください。</p>
                     <form method="POST" action="{{ route('update.profile') }}">
                         @csrf
-                        @error('name') <p class="error">{{ $message }}</p> @enderror
+                        <p class="status-error error"></p>
+						<p class="timeout-error error"></p>
+                        <p class="name-error error"></p>
                         <div class="list">
                             <label>ユーザー名</label>
-                            <input class="input" type="text" name="name" value="{{ old('name') }}">
+                            <input class="input" type="text" name="name" value="{{ session('register.name') }}">
                         </div>
-                        @error('email') <p class="error">{{ $message }}</p> @enderror
+                        <p class="email-error error">
                         <div class="list">
                             <label>メールアドレス</label>
-                            <input class="input" type="text" name="email" value="{{ old('email') }}">
+                            <input class="input" type="text" name="email" value="{{ session('register.email') }}">
                         </div>
-                        <input class="btn" type="submit" value="登録する">
+                        <input class="submit btn" type="submit" value="登録する">
                     </form>
                 </div>
             </div>
+
+            @include('layouts.components.popup_mail_confirm');
+
             @yield('content')
         </div>
 
