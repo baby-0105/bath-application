@@ -1,0 +1,89 @@
+@extends('app')
+@section('content')
+    <div class="post-form post-topost" id="toPost">
+        <h2 class="title">投稿</h2>
+        <form class="form" method="POST" action="{{ route('post.submit') }}" enctype="multipart/form-data">
+            @csrf
+            @error('title') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <label class="field-name"><span class="red">*</span>お風呂名</label>
+                <input class="field" type="text" name="title" value="{{ old('title') }}">
+            </div>
+
+            @error('eval') <p class="error">{{ $message }}</p> @enderror
+            @error('hot_water_eval') <p class="error">{{ $message }}</p> @enderror
+            @error('rock_eval') <p class="error">{{ $message }}</p> @enderror
+            @error('sauna_eval') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <label class="field-name"><span class="red">*</span>評価</label>
+                <select class="eval" name="eval">
+                    <option value="" hidden>*全体評価</option>
+                    @foreach ($evals as $eval)
+                        <option value="{{ $eval->code }}">{{ $eval->name }}</option>
+                    @endforeach
+                </select>
+                <select class="eval" name="hot_water_eval">
+                    <option value="" hidden>お湯評価</option>
+                    @foreach ($evals as $eval)
+                        <option value="{{ $eval->code }}">{{ $eval->name }}</option>
+                    @endforeach
+                </select>
+                <select class="eval" name="rock_eval">
+                    <option value="" hidden>岩盤浴評価</option>
+                    @foreach ($evals as $eval)
+                        <option value="{{ $eval->code }}">{{ $eval->name }}</option>
+                    @endforeach
+                </select>
+                <select class="eval" name="sauna_eval">
+                    <option value="" hidden>サウナ評価</option>
+                    @foreach ($evals as $eval)
+                        <option value="{{ $eval->code }}">{{ $eval->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            @error('thoughts') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <label class="field-name">感想</label>
+                <textarea class="field wide-field" type="text" name="thoughts">{{ old('thoughts') }}</textarea>
+            </div>
+
+            @error('main_img') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <span class="field-name">お風呂画像</span>
+                <label class="img-label" for="mainImg">
+                    <input class="field file" id="mainImg" type="file" name="main_img" value="{{ old('main_img') }}">
+                    <img class="preview-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="お風呂メイン画像 プレビュー">
+                </label>
+                <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+            </div>
+            @error('sub1_img') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <span class="field-name">お風呂サブ画像1</span>
+                <label class="img-label" for="subImg1">
+                    <input class="field file" id="subImg1" type="file" name="sub1_img" value="{{ old('sub1_img') }}">
+                    <img class="preview-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="お風呂サブ画像1 プレビュー">
+                </label>
+                <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+            </div>
+            @error('sub2_img') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <span class="field-name">お風呂サブ画像2</span>
+                <label class="img-label" for="subImg2">
+                    <input class="field file" id="subImg2" type="file" name="sub2_img" value="{{ old('sub2_img') }}">
+                    <img class="preview-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="お風呂サブ画像2 プレビュー">
+                </label>
+                <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+            </div>
+            @error('sub3_img') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <span class="field-name">お風呂サブ画像3</span>
+                <label class="img-label" for="subImg3">
+                    <input class="field file" id="subImg3" type="file" name="sub3_img" value="{{ old('sub3_img') }}">
+                    <img class="preview-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="お風呂サブ画像3 プレビュー">
+                </label>
+                <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+            </div>
+            <button class="btn" type="submit">登録する</button>
+        </form>
+    </div>
+@endsection

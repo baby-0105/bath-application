@@ -4,11 +4,11 @@
         <div class="user-info">
             <div class="basic">
                 <div class="person">
-                    <a class="user-icon" href=""><img src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="ユーザーアイコン"></a>
+                    <a class="user-icon" href=""><img src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="ユーザーアイコン"></a>
                     <p class="name">馬場翔矢</p>
                 </div>
                 <p class="prefecture">
-                    <img src="{{ url('svg/location.svg') }}" alt="場所のアイコン">
+                    <img src="{{ asset('svg/location.svg') }}" alt="場所のアイコン">
                     <span>大阪府</span>
                 </p>
             </div>

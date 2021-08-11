@@ -3,6 +3,7 @@ require('./common.js');
 require('./top');
 require('./components/header.js');
 require('./components/popup.js');
+require('./post/topost.js');
 
 window.Vue = require('vue');
 

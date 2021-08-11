@@ -13,9 +13,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');
     });
 
-    Route::group(['prefix' => 'post'], function() {
+    Route::group(['prefix' => 'post', 'namespace' => 'Post'], function() {
         Route::get('mypost', function () { return view('post.mypost'); })->name('post.mypost');
-        Route::get('submit', function () { return view('post.submit'); })->name('post.submit');
+        Route::get('topost', 'ToPostController@show')->name('post.topost');
+        Route::post('topost', 'ToPostController@submit')->name('post.submit');
     });
 });
 

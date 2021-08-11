@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * ユーザー作成 マイグレーションクラス
+ */
 class CreateUsersTable extends Migration
 {
     /**
@@ -22,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('sns')->nullable()->comment('SNS名称（facebook/google）');
             $table->string('sns_id')->nullable()->comment('SNS認証用');
             $table->timestamp('email_verified_at')->nullable()->comment('本登録日時');
+            $table->string('email_verify_token')->nullable()->comment('本登録確認トークン');
             $table->rememberToken();
             $table->timestamps();
         });

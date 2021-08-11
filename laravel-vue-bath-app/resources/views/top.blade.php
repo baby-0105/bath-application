@@ -12,17 +12,17 @@
                 <div class="search-btn-area">
                     <a class="search-btn" href="{{ route('post.search') }}">
                         <span class="btn-name">検索する</span>
-                        <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                        <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                     </a>
                 </div>
                 <div class="title-block">
                     <p class="main-text">さぁ、今日のお風呂を探そう！</p>
-                    <img class="logo" src="{{ url('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
+                    <img class="logo" src="{{ asset('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
                 </div>
                 <div class="my-post-block">
                     <a class="search-btn" href="{{ route('post.mypost') }}">
                         <span class="btn-name">My投稿</span>
-                        <img class="bath-mark" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                        <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                     </a>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <li class="list">
                             <h4 class="title">- 喜多の湯 -</h4>
                             <div class="desc">
-                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="review">
                                     <div class="review-num">
                                         <p class="whole-review">3.5</p>
@@ -64,7 +64,7 @@
                         <li class="list">
                             <h4 class="title">- 喜多の湯 -</h4>
                             <div class="desc">
-                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="review">
                                     <div class="review-num">
                                         <p class="whole-review">3.5</p>
@@ -82,7 +82,7 @@
                         <li class="list">
                             <h4 class="title">- 喜多の湯 -</h4>
                             <div class="desc">
-                                <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="review">
                                     <div class="review-num">
                                         <p class="whole-review">3.5</p>

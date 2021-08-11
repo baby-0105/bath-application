@@ -35,6 +35,20 @@
                 <label>パスワード（確認用）</label>
                 <textarea class="input" type="text" name="introduce"></textarea>
             </div>
+            @error('pub_or_pri') <p class="error">{{ $message }}</p> @enderror
+            <div class="list">
+                <label><span class="red">*</span>公開設定</label>
+                <div class="input">
+                    @if(!empty($post))
+                        @foreach($pub_or_pri as $p)
+                            <label><input type="radio" name=pub_or_pri value="{{ old($p->code) }}" @if($post->pub_or_pri_cd == $p->code) checked="checked" @endif>{{ $p->name }}</label>
+                        @endforeach
+                    @elseif(empty($post))
+                        <label><input type="radio" name=pub_or_pri value="1" checked="checked">公開</label>
+                        <label><input type="radio" name=pub_or_pri value="2">非公開</label>
+                    @endif
+                </div>
+            </div>
             <input class="btn" type="submit" value="登録する">
         </form>
         <div class="other-links">
