@@ -12,11 +12,11 @@
                     <div class="desc">
                         <div class="info">
                             <div class="bath-img">
-                                <img class="main-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="main-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="sub-img">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
                                 </div>
                             </div>
                             <p class="prefecture">大阪府八尾市</p>
@@ -42,11 +42,11 @@
                     <div class="desc">
                         <div class="info">
                             <div class="bath-img">
-                                <img class="main-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="main-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="sub-img">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
                                 </div>
                             </div>
                             <p class="prefecture">大阪府八尾市</p>
@@ -72,11 +72,11 @@
                     <div class="desc">
                         <div class="info">
                             <div class="bath-img">
-                                <img class="main-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
+                                <img class="main-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂の画像">
                                 <div class="sub-img">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
-                                    <img class="bath-img" src="{{ url('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
+                                    <img class="bath-img" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="風呂のサブ画像">
                                 </div>
                             </div>
                             <p class="prefecture">大阪府八尾市</p>

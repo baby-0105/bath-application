@@ -31,14 +31,12 @@ $(function () {
                 },
             })
             .done(function(data) {
-                console.log(data);
                 $('.sns-update-profile').addClass('hide');
                 $('.sns-update-profile').removeClass('flex');
                 $('.popup-mail-confirm').removeClass('hide');
                 $('.popup-mail-confirm').addClass('flex');
             })
             .fail(function(xhr) {
-                console.log(xhr);
                 if (419 === xhr.status) {
                     $statusError.html('セッションが無効になりました。再読み込みします。');
                     window.location.reload();

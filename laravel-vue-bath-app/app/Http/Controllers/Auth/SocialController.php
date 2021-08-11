@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\SocialRequest;
 use App\Mail\UserSnsRegisterMailSent;
 use App\Models\User;
-use App\Service\User\SocialService;
+use App\Services\User\SocialService;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Exception;
