@@ -29,17 +29,17 @@
                         <div class="desc">
                             <div class="info">
                                 <div class="bath-img">
-                                    <img class="main-img" src="@if($post->main_image_path) {{ asset(Storage::url($post->main_image_path)) }} @else {{ asset('svg/bath-mark-light-blue.svg') }} @endif" alt="風呂の画像">
+                                    <img class="main-img" src="@if($post->main_image_path) {{ asset(Storage::url($post->main_image_path) . '?' . $post->updated_at->format('YmdHis')) }} @else {{ asset('svg/bath-mark-light-blue.svg') }} @endif" alt="風呂の画像">
                                     @if($post->sub_picture1_path || $post->sub_picture2_path || $post->sub_picture3_path)
                                         <div class="sub-imgs">
                                             @if($post->sub_picture1_path)
-                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture1_path)) }}" alt="風呂のサブ画像">
+                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture1_path) . '?' . $post->updated_at->format('YmdHis')) }}" alt="風呂のサブ画像">
                                             @endif
                                             @if($post->sub_picture2_path)
-                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture2_path)) }}" alt="風呂のサブ画像">
+                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture2_path) . '?' . $post->updated_at->format('YmdHis')) }}" alt="風呂のサブ画像">
                                             @endif
                                             @if($post->sub_picture3_path)
-                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture3_path)) }}" alt="風呂のサブ画像">
+                                                <img class="sub-img" src="{{ asset(Storage::url($post->sub_picture3_path) . '?' . $post->updated_at->format('YmdHis')) }}" alt="風呂のサブ画像">
                                             @endif
                                         </div>
                                     @endif
