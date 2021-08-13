@@ -1,3 +1,7 @@
+/*
+ * top.js トップページ
+ */
+
 $(function () {
     if($('#toppage').length > 0) {
         $('.top-page .search-btn').hover(

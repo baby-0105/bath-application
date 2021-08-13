@@ -4,6 +4,10 @@
     <div class="nav" id="nav">
       @if(Auth::check())
         <p>{{ Auth::user()->name }}</p>
+        <a class="link" href="{{ route('post.mypost') }}">
+          <span class="text">My投稿</span>
+          <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
+        </a>
         <a class="link" href="{{ route('post.topost') }}">
           <span class="text">投稿する</span>
           <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">

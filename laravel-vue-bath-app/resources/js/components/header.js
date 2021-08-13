@@ -1,3 +1,7 @@
+/*
+ * header.js ヘッダー
+ */
+
 $(function () {
     if($('#header').length > 0) {
         $('#nav .link').hover(function() {

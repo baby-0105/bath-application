@@ -1,3 +1,7 @@
+/*
+ * topost.js 投稿
+ */
+
 $(function () {
     if($('#toPost').length > 0) {
         // 画像プレビュー表示

@@ -41,6 +41,27 @@ class ToPostRequest extends FormRequest
     }
 
     /**
+     * メイン画像がアップロードされているかのチェック
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if(empty($this->main_img) && isset($this->sub1_img)) {
+                $validator->errors()->add('sub1_img', 'メイン画像無しでは、サブ画像1のアップロードは出来ません。');
+            }
+            if(empty($this->main_img) && isset($this->sub2_img)) {
+                $validator->errors()->add('sub2_img', 'メイン画像無しでは、サブ画像2のアップロードは出来ません。');
+            }
+            if(empty($this->main_img) && isset($this->sub3_img)) {
+                $validator->errors()->add('sub3_img', 'メイン画像無しでは、サブ画像3のアップロードは出来ません。');
+            }
+        });
+    }
+
+    /**
      * 属性定義
      *
      */

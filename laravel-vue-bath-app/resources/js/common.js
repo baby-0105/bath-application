@@ -1,3 +1,6 @@
+/*
+ * common.js 共通
+ */
 
 $(function () {
     const AJAX_TIMEOUT = 30000;
