@@ -258,13 +258,13 @@ h1 {
   margin-bottom: 50px;
 }
 
-.user-form .list label {
+.user-form .list .field-name {
   font-size: 1.4rem;
   display: inline-block;
   width: 25%;
 }
 
-.user-form .list .input,
+.user-form .list .field,
 .user-form .list .select {
   width: 70%;
   padding: 10px;
@@ -343,6 +343,10 @@ h1 {
   margin-right: 20px;
 }
 
+.mypage .person .user-icon-img {
+  width: 100px;
+}
+
 .mypage .person .name {
   font-size: 3rem;
 }
@@ -414,6 +418,22 @@ h1 {
 }
 
 /*// ==========================================================================
+//  ユーザー編集ページ
+// ==========================================================================*/
+
+.user-edit .form .introduce {
+  max-width: 70%;
+  min-width: 70%;
+  min-height: 80px;
+}
+
+.user-edit .form .is-release {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.4rem;
+}
+
+/*// ==========================================================================
 //  投稿フォーム
 // ==========================================================================*/
 
@@ -464,53 +484,6 @@ h1 {
   font-size: 1.5rem;
   display: inline-block;
   width: 25%;
-}
-
-.post-form .list .img-label {
-  width: 60%;
-  padding: 10px;
-  text-align: center;
-  border: 4px solid #dfdfdf;
-  border-radius: 10px;
-  position: relative;
-}
-
-.post-form .list .img-label:hover:after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  content: "\753B\50CF\3092\9078\629E\3057\3066\304F\3060\3055\3044";
-  font-size: 1.8rem;
-  display: block;
-  width: 50%;
-}
-
-.post-form .list .img-label .file {
-  display: none;
-}
-
-.post-form .list .img-label .preview-img {
-  height: 200px;
-}
-
-.post-form .list .flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.post-form .list .dlt-img {
-  font-size: 1.5rem;
-  border-radius: 50%;
-  background-color: #dfdfdf;
-  width: 50px;
-  height: 50px;
-}
-
-.post-form .list .dlt-img:hover {
-  background-color: red;
-  color: white;
 }
 
 .post-form .list .eval {
@@ -828,5 +801,56 @@ h1 {
 
 .popup .btn {
   padding: 5px;
+}
+
+/*// ==========================================================================
+//  画像選択フィールド
+// ==========================================================================*/
+
+.choose-img .img-label {
+  width: 70%;
+  padding: 10px;
+  text-align: center;
+  border: 4px solid #dfdfdf;
+  border-radius: 10px;
+  position: relative;
+}
+
+.choose-img .img-label:hover:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "\753B\50CF\3092\9078\629E\3057\3066\304F\3060\3055\3044";
+  font-size: 1.8rem;
+  display: block;
+  width: 50%;
+}
+
+.choose-img .img-label .file {
+  display: none;
+}
+
+.choose-img .img-label .preview-img {
+  height: 200px;
+}
+
+.choose-img .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-img .dlt-img {
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: #dfdfdf;
+  width: 50px;
+  height: 50px;
+}
+
+.choose-img .dlt-img:hover {
+  background-color: red;
+  color: white;
 }
 

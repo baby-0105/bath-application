@@ -17,7 +17,7 @@
         </div>
         <div class="title-block">
             <h2 class="title">My投稿一覧</h2>
-            <img class="key-img" src="{{ asset('svg/key-icon.svg') }}" alt="鍵マーク">
+            <img class="key-img @if(auth()->user()->user_info->is_release) hide @endif" src="{{ asset('svg/key-icon.svg') }}" alt="鍵マーク">
         </div>
         <div class="index">
             <ul class="bath">

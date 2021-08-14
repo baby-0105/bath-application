@@ -76,8 +76,8 @@ class CodeNameTableSeeder extends Seeder
             ['group_key' => 'EVAL', 'code' => 4.5, 'name' => '4.5', 'sort' => 90],
             ['group_key' => 'EVAL', 'code' => 5, 'name' => '5', 'sort' => 100],
 
-            ['group_key' => 'PUB_OR_PRI', 'code' => 1, 'name' => '公開', 'sort' => 10],
-            ['group_key' => 'PUB_OR_PRI', 'code' => 2, 'name' => '非公開', 'sort' => 20],
+            ['group_key' => 'IS_RELEASE', 'code' => 1, 'name' => '公開', 'sort' => 10],
+            ['group_key' => 'IS_RELEASE', 'code' => 0, 'name' => '非公開', 'sort' => 20],
         ]);
     }
 }

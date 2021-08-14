@@ -26,12 +26,12 @@
     }
 }
 
-.user-form .list label {
+.user-form .list .field-name {
     font-size: 1.4rem;
     display: inline-block;
     width: 25%;
 }
-.user-form .list .input,
+.user-form .list .field,
 .user-form .list .select {
     width: 70%;
     padding: 10px;

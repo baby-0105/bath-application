@@ -1,0 +1,15 @@
+/*// ==========================================================================
+//  ユーザー編集ページ
+// ==========================================================================*/
+
+.user-edit .form .introduce {
+    max-width: 70%;
+    min-width: 70%;
+    min-height: 80px;
+}
+
+.user-edit .form .is-release {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.4rem;
+}

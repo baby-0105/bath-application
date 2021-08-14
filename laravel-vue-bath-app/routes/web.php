@@ -7,7 +7,8 @@
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'user'], function() {
         Route::get('mypage', 'User\MyPageController@show')->name('user.mypage');
-        Route::get('edit', function () { return view('user.edit'); })->name('user.edit');
+        Route::get('edit', 'User\EditController@show')->name('user.edit.show');
+        Route::post('edit', 'User\EditController@submit')->name('user.edit.submit');
         Route::get('change_password', function () { return view('user.change_password'); })->name('user.change_password');
         Route::get('change_email', function () { return view('user.change_email'); })->name('user.change_email');
         Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');

@@ -6,7 +6,7 @@
             @csrf
             @error('title') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
-                <label class="field-name"><span class="red">*</span>お風呂名</label>
+                <label class="field-name">お風呂名<span class="red">*</span></label>
                 <input class="field" type="text" name="title" value="{{ old('title') }}">
             </div>
 
@@ -15,9 +15,9 @@
             @error('rock_eval') <p class="error">{{ $message }}</p> @enderror
             @error('sauna_eval') <p class="error">{{ $message }}</p> @enderror
             <div class="list">
-                <label class="field-name"><span class="red">*</span>評価</label>
+                <label class="field-name">評価<span class="red">*</span></label>
                 <select class="eval" name="eval">
-                    <option value="" hidden>*全体評価</option>
+                    <option value="" hidden>全体評価*</option>
                     @foreach ($evals as $eval)
                         <option value="{{ $eval->code }}">{{ $eval->name }}</option>
                     @endforeach
@@ -48,7 +48,7 @@
             </div>
 
             @error('main_img') <p class="error">{{ $message }}</p> @enderror
-            <div class="list">
+            <div class="list choose-img">
                 <span class="field-name">お風呂画像</span>
                 <label class="img-label" for="mainImg">
                     <input class="field file" id="mainImg" type="file" name="main_img" value="{{ old('main_img') }}">
@@ -57,7 +57,7 @@
                 <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
             </div>
             @error('sub1_img') <p class="error">{{ $message }}</p> @enderror
-            <div class="list">
+            <div class="list choose-img">
                 <span class="field-name">お風呂サブ画像1</span>
                 <label class="img-label" for="subImg1">
                     <input class="field file" id="subImg1" type="file" name="sub1_img" value="{{ old('sub1_img') }}">
@@ -66,7 +66,7 @@
                 <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
             </div>
             @error('sub2_img') <p class="error">{{ $message }}</p> @enderror
-            <div class="list">
+            <div class="list choose-img">
                 <span class="field-name">お風呂サブ画像2</span>
                 <label class="img-label" for="subImg2">
                     <input class="field file" id="subImg2" type="file" name="sub2_img" value="{{ old('sub2_img') }}">
@@ -75,7 +75,7 @@
                 <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
             </div>
             @error('sub3_img') <p class="error">{{ $message }}</p> @enderror
-            <div class="list">
+            <div class="list choose-img">
                 <span class="field-name">お風呂サブ画像3</span>
                 <label class="img-label" for="subImg3">
                     <input class="field file" id="subImg3" type="file" name="sub3_img" value="{{ old('sub3_img') }}">

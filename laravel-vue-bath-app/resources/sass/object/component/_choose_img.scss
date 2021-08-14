@@ -1,0 +1,48 @@
+/*// ==========================================================================
+//  画像選択フィールド
+// ==========================================================================*/
+
+.choose-img .img-label {
+    width: 70%;
+    padding: 10px;
+    text-align: center;
+    border: 4px solid #dfdfdf;
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+        &:after {
+            @include center_of_vertically_and_horizontally;
+            content: '画像を選択してください';
+            font-size: 1.8rem;
+            display: block;
+            width: 50%;
+        }
+    }
+}
+.choose-img .img-label .file {
+    display: none;
+}
+
+.choose-img .img-label .preview-img {
+    height: 200px;
+}
+
+.choose-img .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-img .dlt-img {
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: #dfdfdf;
+    width: 50px;
+    height: 50px;
+
+    &:hover {
+        background-color: red;
+        color: white;
+    }
+}

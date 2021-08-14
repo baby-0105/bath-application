@@ -48,51 +48,6 @@
     width: 25%;
 }
 
-.post-form .list .img-label {
-    width: 60%;
-    padding: 10px;
-    text-align: center;
-    border: 4px solid #dfdfdf;
-    border-radius: 10px;
-    position: relative;
-
-    &:hover {
-        &:after {
-            @include center_of_vertically_and_horizontally;
-            content: '画像を選択してください';
-            font-size: 1.8rem;
-            display: block;
-            width: 50%;
-        }
-    }
-}
-.post-form .list .img-label .file {
-    display: none;
-}
-
-.post-form .list .img-label .preview-img {
-    height: 200px;
-}
-
-.post-form .list .flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.post-form .list .dlt-img {
-    font-size: 1.5rem;
-    border-radius: 50%;
-    background-color: #dfdfdf;
-    width: 50px;
-    height: 50px;
-
-    &:hover {
-        background-color: red;
-        color: white;
-    }
-}
-
 .post-form .list .eval {
     width: 16%;
     padding: 10px;

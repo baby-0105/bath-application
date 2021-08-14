@@ -8,29 +8,29 @@
                 <p class="error">{{ $message }}</p>
             @enderror
             <div class="list">
-                <label>ユーザー名</label>
-                <input class="input" type="text" name="name" value="{{ old('name') }}">
+                <label class="field-name">ユーザー名</label>
+                <input class="field" type="text" name="name" value="{{ old('name') }}">
             </div>
             @error('email')
                 <p class="error">{{ $message }}</p>
             @enderror
             <div class="list">
-                <label>メール</label>
-                <input class="input" type="text" name="email" value="{{ old('email') }}">
+                <label class="field-name">メール</label>
+                <input class="field" type="text" name="email" value="{{ old('email') }}">
             </div>
             @error('password')
                 <p class="error">{{ $message }}</p>
             @enderror
             <div class="list">
-                <label>パスワード</label>
-                <input class="input" type="password" name="password">
+                <label class="field-name">パスワード</label>
+                <input class="field" type="password" name="password">
             </div>
             @error('password_confirmation')
                 <p class="error">{{ $message }}</p>
             @enderror
             <div class="list password-confirm">
-                <label>パスワード（確認用）</label>
-                <input class="input" type="password" name="password_confirmation">
+                <label class="field-name">パスワード（確認用）</label>
+                <input class="field" type="password" name="password_confirmation">
             </div>
             <input class="btn" type="submit" value="登録する">
         </form>

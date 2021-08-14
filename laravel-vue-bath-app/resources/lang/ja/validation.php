@@ -154,6 +154,11 @@ return [
         |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'ユーザー名',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'prefecture' => '都道府県',
+    ],
 
 ];

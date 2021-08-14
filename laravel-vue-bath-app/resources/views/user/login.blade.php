@@ -16,12 +16,12 @@
             @error('password') <p class="error">{{ $message }}</p> @enderror
 
             <div class="list">
-                <label>メールアドレス</label>
-                <input class="input" name="email" type="text" placeholder="メール" value="{{ old('email') }}">
+                <label class="field-name">メールアドレス</label>
+                <input class="field" name="email" type="text" placeholder="メール" value="{{ old('email') }}">
             </div>
             <div class="list password">
-                <label>パスワード</label>
-                <input class="input" name="password" type="password" placeholder="パスワード">
+                <label class="field-name">パスワード</label>
+                <input class="field" name="password" type="password" placeholder="パスワード">
             </div>
             <input class="btn" type="submit" value="ログイン">
         </form>
