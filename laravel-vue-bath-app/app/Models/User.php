@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\UserInfo;
 
 /**
  * ユーザー認証モデルクラス
@@ -38,6 +39,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * ユーザーに関連するユーザー情報を取得
+     *
+     * @return Object ユーザー情報モデル
+     */
+    public function user_info()
+    {
+        return $this->hasOne(UserInfo::class, 'user_id', 'id');
+    }
 
     /**
      * 本登録が完了しているかどうかを返す

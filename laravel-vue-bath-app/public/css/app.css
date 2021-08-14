@@ -347,6 +347,11 @@ h1 {
   font-size: 3rem;
 }
 
+.mypage .person .key-img {
+  width: 25px;
+  margin-left: 20px;
+}
+
 .mypage .user-info .prefecture {
   font-size: 3rem;
   color: gray;
@@ -371,6 +376,21 @@ h1 {
   display: flex;
   justify-content: space-around;
   font-size: 18px;
+}
+
+.mypage .link-area .btn {
+  border: solid 2px #f99f48;
+  border-radius: 20px;
+  background: #f99f48;
+  padding: 20px;
+  color: #ffffff;
+  width: 200px;
+  text-align: center;
+}
+
+.mypage .link-area .btn:hover {
+  background: #ffffff;
+  color: #f99f48;
 }
 
 /*// ==========================================================================

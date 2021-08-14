@@ -10,6 +10,7 @@ use App\Services\User\SocialService;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -90,15 +91,23 @@ class SocialController extends Controller
     public function updateProfile(SocialRequest $request)
     {
         // SNSでのユーザー登録
-        $sns = session('register');
-        $data = [
-            'name'   => $request->name,
-            'email'  => $request->email,
-            'sns_id' => $sns['sns_id'],
-            'sns'    => $sns['sns'],
-            'status' => config('const.USER_STATUS.REGISTER'),
-        ];
-        User::create($data);
+        $sns = DB::transaction(function () use ($request) {
+            $sns = session('register');
+            $data = [
+                'name'   => $request->name,
+                'email'  => $request->email,
+                'sns_id' => $sns['sns_id'],
+                'sns'    => $sns['sns'],
+                'status' => config('const.USER_STATUS.REGISTER'),
+            ];
+            $user = new User($data);
+            $user->save();
+
+            $user->user_info()->create([
+                'is_release' => true,
+            ]);
+            return $sns;
+        });
 
         // 登録メール送信
         Mail::to($request->email)->send(new UserSnsRegisterMailSent($request->name));
