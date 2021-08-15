@@ -1,5 +1,11 @@
 @extends('app')
 @section('content')
+    <div class="popup @if(session('is_change_password')) flex @else hide @endif" id="popup">
+        <div class="content">
+            <p class="text">{{ session('is_change_password') }}</p>
+            <button class="close" id="close">閉じる</button>
+        </div>
+    </div>
     <div class="mypage">
         <div class="user-info">
             <div class="basic">

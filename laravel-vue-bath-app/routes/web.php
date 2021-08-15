@@ -9,7 +9,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('mypage', 'User\MyPageController@show')->name('user.mypage');
         Route::get('edit', 'User\EditController@show')->name('user.edit.show');
         Route::post('edit', 'User\EditController@submit')->name('user.edit.submit');
-        Route::get('change_password', function () { return view('user.change_password'); })->name('user.change_password');
         Route::get('change_email', function () { return view('user.change_email'); })->name('user.change_email');
         Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');
     });
@@ -19,6 +18,14 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('mypost', 'MyPostController@delete')->name('post.delete');
         Route::get('topost', 'ToPostController@show')->name('post.topost');
         Route::post('topost', 'ToPostController@submit')->name('post.submit');
+    });
+
+    /**
+     * ログイン済みの、SNS認証ユーザーの場合
+     */
+    Route::group(['middleware' => 'check.sns', 'prefix' => 'user', 'namespace' => 'User'], function() {
+        Route::get('change_password', 'ChangePasswordController@show')->name('user.change_password.show');
+        Route::post('change_password', 'ChangePasswordController@submit')->name('user.change_password.submit');
     });
 });
 

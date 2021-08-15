@@ -29,7 +29,7 @@
         </form>
         <div class="other-links">
             <a href="{{ route('user.edit.show') }}" class="link">ユーザー情報を変更する</a>
-            <a href="{{ route('user.change_password') }}" class="link">パスワードを変更する</a>
+            <a href="{{ route('user.change_password.show') }}" class="link @if(isset(auth()->user()->sns_id)) hide @endif">パスワードを変更する</a>
         </div>
     </div>
 @endsection
