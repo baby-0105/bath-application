@@ -9,7 +9,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('mypage', 'User\MyPageController@show')->name('user.mypage');
         Route::get('edit', 'User\EditController@show')->name('user.edit.show');
         Route::post('edit', 'User\EditController@submit')->name('user.edit.submit');
-        Route::get('change_email', function () { return view('user.change_email'); })->name('user.change_email');
+        Route::get('change_email', 'User\ChangeEmailController@show')->name('user.change_email.show');
+        Route::post('change_email', 'User\ChangeEmailController@sendEmail')->name('user.change_email.sendEmail');
         Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');
     });
 
@@ -34,7 +35,7 @@ Route::group(['middleware' => 'auth'], function() {
  */
 
 Route::get('/', function () { return view('top'); })->name('top');
-
+Route::get("reset/{token}", "User\ResetEmailController@reset");
 
 Route::group(['prefix' => 'user'], function() {
     Route::get('register', function () { return view('user.register'); })->name('user.register');

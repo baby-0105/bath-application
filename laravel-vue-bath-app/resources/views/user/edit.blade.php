@@ -49,7 +49,7 @@
         </form>
         <div class="other-links">
             <a href="{{ route('user.change_password.show') }}" class="link @if(isset(auth()->user()->sns_id)) hide @endif">パスワードを変更する</a>
-            <a href="{{ route('user.change_email') }}" class="link">メールアドレスを変更する</a>
+            <a href="{{ route('user.change_email.show') }}" class="link">メールアドレスを変更する</a>
         </div>
     </div>
 @endsection

@@ -23,7 +23,7 @@
         </form>
         <div class="other-links">
             <a href="{{ route('user.edit.show') }}" class="link">ユーザー情報を変更する</a>
-            <a href="{{ route('user.change_email') }}" class="link">メールアドレスを変更する</a>
+            <a href="{{ route('user.change_email.show') }}" class="link">メールアドレスを変更する</a>
         </div>
     </div>
 @endsection

@@ -6,6 +6,12 @@
             <button class="close" id="close">閉じる</button>
         </div>
     </div>
+    <div class="popup @if(session('message')) flex @else hide @endif" id="popup">
+        <div class="content">
+            <p class="text">{{ session('message') }}</p>
+            <button class="close" id="close">閉じる</button>
+        </div>
+    </div>
     <div id="toppage" class="top-page">
         <div class="top-container">
             <div class="first-view">
