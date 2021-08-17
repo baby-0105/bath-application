@@ -22,6 +22,25 @@ class UserInfo extends Model
     ];
 
     /**
+     * ユーザー情報の取得
+     */
+    public static function getUserInfo()
+    {
+        return self::find(auth()->user()->id);
+    }
+
+    /**
+     * ユーザー情報を更新する
+     *
+     * @param array $userInfo ユーザー情報のカラムデータ
+     * @return void
+     */
+    public static function updateUserInfo($userInfo)
+    {
+        return self::where('user_id', auth()->user()->id)->update($userInfo);
+    }
+
+    /**
      * アイコン画像パスを返す（null時→デフォルトアイコンを返す）
      *
      * @return String キャッシュバスティング付きアイコン画像パス or デフォルト画像パス

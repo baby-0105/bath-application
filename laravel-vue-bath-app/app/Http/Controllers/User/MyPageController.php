@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserInfo;
 use App\Services\CodeNameService;
+use App\Services\User\UserInfoService;
 
 /**
  * マイページ コントローラー
@@ -13,15 +13,21 @@ class MyPageController extends Controller
 {
     /** コード名称 サービス */
     private $codeNameService;
+    /** ユーザー情報 サービス */
+    private $userInfoService;
 
     /**
      * コンストラクタ
      *
      * @param CodeNameService $codeNameService コード名称サービスのインスタンス
      */
-    public function __construct(CodeNameService $codeNameService)
+    public function __construct(
+        CodeNameService $codeNameService,
+        UserInfoService $userInfoService
+    )
     {
         $this->codeNameService = $codeNameService;
+        $this->userInfoService = $userInfoService;
     }
 
     /**
@@ -31,12 +37,10 @@ class MyPageController extends Controller
      */
     public function show()
     {
-        $userInfo = UserInfo::find(auth()->user()->id);
-        $data = [
-            'prefecture' => $this->codeNameService->getName('PREFECTURE', $userInfo->prefecture_cd),
-            'user_info'  => $userInfo,
-            'icon_path'  => $userInfo->getIconPath(),
-        ];
-        return view('user.mypage')->with($data);
+        return view('user.mypage')->with([
+            'prefecture' => $this->codeNameService->getName('PREFECTURE', $this->userInfoService->getUserInfo()->prefecture_cd),
+            'user_info'  => $this->userInfoService->getUserInfo(),
+            'icon_path'  => $this->userInfoService->getUserInfo()->getIconPath(),
+        ]);
     }
 }

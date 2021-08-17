@@ -59,4 +59,15 @@ class User extends Authenticatable
     {
         return !empty($this->email_verified_at);
     }
+
+    /**
+     * ユーザーを更新する
+     *
+     * @param array $user ユーザーのカラムデータ
+     * @return void
+     */
+    public static function updateUser($user)
+    {
+        return self::where('id', auth()->user()->id)->update($user);
+    }
 }

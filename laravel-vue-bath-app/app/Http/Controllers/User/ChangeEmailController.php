@@ -40,8 +40,8 @@ class ChangeEmailController extends Controller
                 'token' => $token,
             ]);
             DB::commit();
-            $encoded_token = base64_encode($token);
-            $change_email->sendEmailResetNotification($encoded_token);
+            $encodedToken = base64_encode($token);
+            $change_email->sendEmailResetNotification($encodedToken);
             return redirect()->route('top')->with('message', '確認メールを送信しました。ご確認ください。※まだ、メールアドレスの変更は完了していません。');
         } catch (Exception $e) {
             DB::rollback();

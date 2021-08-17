@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\ChangeEmail;
-use App\Models\User;
+use App\Services\User\ChangeEmailService;
+use App\Services\User\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -13,22 +13,43 @@ use Illuminate\Http\Request;
  */
 class ResetEmailController extends Controller
 {
-    public function reset(Request $request, $encoded_token)
+    private $changeEmailService; /** メールアドレス変更 サービス */
+    private $userService; /** ユーザー サービス */
+
+    /**
+     * コンストラクタ
+     *
+     * @param ChangeEmailService $changeEmailService メールアドレス変更 サービス
+     * @param UserService $userService ユーザーサービス
+     * @return void
+     */
+    public function __construct(
+        ChangeEmailService $changeEmailService,
+        UserService $userService
+    )
     {
-        $decoded_token = base64_decode($encoded_token);
-        $change_email = ChangeEmail::where('token', $decoded_token)->first();
+        $this->changeEmailService = $changeEmailService;
+        $this->userService = $userService;
+    }
+
+    /**
+     * メールアドレスリセット処理
+     *
+     * @param Request $request リクエスト インスタンス
+     * @param string $encodedToken エンコードされたトークン
+     * @return void
+     */
+    public function reset(Request $request, $encodedToken)
+    {
+        $changeEmail = $this->changeEmailService->getChangeEmail(base64_decode($encodedToken));
 
         // トークンが存在している、かつ、有効期限が切れていないかチェック
-        if($change_email && !$this->tokenExpired($change_email->created_at)) {
-            User::where('id', auth()->user()->id)
-                ->update([ 'email' => $change_email->new_email ]);
-
-            $change_email->delete();
+        if($changeEmail && !$this->tokenExpired($changeEmail->created_at)) {
+            $this->userService->updateUser([ 'email' => $changeEmail->new_email ]);
+            $changeEmail->delete();
             return redirect()->route('top')->with('message', 'メールアドレスを更新しました。');
         } else {
-            if($change_email) {
-                $change_email->delete();
-            }
+            if($changeEmail) { $changeEmail->delete(); }
             return redirect()->route('top')->with('message', 'メールアドレスの更新に失敗しました。');
         }
 
@@ -40,7 +61,7 @@ class ResetEmailController extends Controller
      * @param  string  $createdAt
      * @return bool
      */
-    protected function tokenExpired($createdAt)
+    private function tokenExpired($createdAt)
     {
         $expires = 60 * 60; // トークンの有効期限は60分
         return Carbon::parse($createdAt)->addSeconds($expires)->isPast();

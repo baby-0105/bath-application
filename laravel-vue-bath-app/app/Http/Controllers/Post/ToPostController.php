@@ -34,7 +34,6 @@ class ToPostController extends Controller
     {
         $data = [
             'evals' => $this->codeNameService->getCodeNames('EVAL'),
-            'post' => Post::where('user_id', auth()->user()->id)->first(),
         ];
         return view('post.topost')->with($data);
     }
@@ -47,36 +46,19 @@ class ToPostController extends Controller
      */
     public function submit(ToPostRequest $request)
     {
-        $mainPath = null;
-        $sub1Path = null;
-        $sub2Path = null;
-        $sub3Path = null;
-
-        $mainImg = $request->file('main_img');
-        $sub1Img = $request->file('sub1_img');
-        $sub2Img = $request->file('sub2_img');
-        $sub3Img = $request->file('sub3_img');
-
-        if($mainImg) { $mainPath = $mainImg->store('uploads', 'public'); }
-        if($sub1Img) { $sub1Path = $sub1Img->store('uploads', 'public'); }
-        if($sub2Img) { $sub2Path = $sub2Img->store('uploads', 'public'); }
-        if($sub3Img) { $sub3Path = $sub3Img->store('uploads', 'public'); }
-
-        $data = [
+        Post::create([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
             'thoughts' => $request->thoughts,
-            'main_image_path' => $mainPath,
-            'sub_picture1_path' => $sub1Path,
-            'sub_picture2_path' => $sub2Path,
-            'sub_picture3_path' => $sub3Path,
+            'main_image_path' => $request->saveUploadImagePath()['mainPath'],
+            'sub_picture1_path' => $request->saveUploadImagePath()['sub1Path'],
+            'sub_picture2_path' => $request->saveUploadImagePath()['sub2Path'],
+            'sub_picture3_path' => $request->saveUploadImagePath()['sub3Path'],
             'eval_cd' => (float)$request->eval,
             'hot_water_eval_cd' => $request->hot_water_eval,
             'rock_eval_cd' => $request->rock_eval,
             'sauna_eval_cd' => $request->sauna_eval,
-        ];
-        Post::create($data);
-
+        ]);
         return redirect()->route('post.mypost');
     }
 }

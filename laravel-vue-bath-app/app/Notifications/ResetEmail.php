@@ -12,16 +12,17 @@ use Illuminate\Notifications\Notification;
 class ResetEmail extends Notification
 {
     use Queueable;
-    private $encoded_token;
+    private $encodedToken;
 
     /**
      * Create a new notification instance.
      *
+     * @param エンコードされたトークン
      * @return void
      */
-    public function __construct($encoded_token)
+    public function __construct($encodedToken)
     {
-        $this->encode_token = $encoded_token;
+        $this->encodedToken = $encodedToken;
     }
 
     /**
@@ -48,7 +49,7 @@ class ResetEmail extends Notification
             ->view('email.change_email')
             ->action(
                 'メールアドレス変更用URL',
-                url('reset', $this->encode_token)
+                url('reset', $this->encodedToken)
             );
     }
 }

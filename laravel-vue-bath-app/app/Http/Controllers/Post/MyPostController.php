@@ -4,13 +4,26 @@ namespace App\Http\Controllers\Post;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Services\Post\MyPostService;
 
 /**
  * My投稿一覧ページ コントローラー
  */
 class MyPostController extends Controller
 {
+    private $myPostService;
+
+    /**
+     * コンストラクタ
+     *
+     * @param MyPostService $myPostService My投稿 サービスクラス インスタンス
+     * @return void
+     */
+    public function __construct(MyPostService $myPostService)
+    {
+        $this->myPostService = $myPostService;
+    }
+
     /**
      * My投稿一覧表示
      *
@@ -18,10 +31,7 @@ class MyPostController extends Controller
      */
     public function index()
     {
-        $data = [
-            'posts' => Post::where('user_id', auth()->user()->id)->latest()->get(),
-        ];
-        return view('post.mypost')->with($data);
+        return view('post.mypost')->with(['posts' => $this->myPostService->getMyPost()]);
     }
 
     /**
@@ -32,7 +42,7 @@ class MyPostController extends Controller
      */
     public function delete(Request $request)
     {
-        Post::where('id', $request->postId)->delete();
+        $this->myPostService->deletePost($request->postId);
         return redirect()->route('post.mypost');
     }
 }

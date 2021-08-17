@@ -64,4 +64,23 @@ class EditRequest extends FormRequest
             'is_release' => '公開設定',
         ];
     }
+
+    /**
+     * アップロードした画像パスを保存する
+     *
+     * @return string 画像パス
+     */
+    public function saveUploadImagePath()
+    {
+        $iconPath = null;
+        // 現在のアイコン画像を更新したかどうか
+        if($this->is_change) {
+            $iconImg = $this->file('icon_path');
+            if($iconImg) { $iconPath = $iconImg->store('uploads', 'public'); }
+            return $iconPath;
+        } else {
+            $iconPath = $this->icon_path;
+            return $iconPath;
+        }
+    }
 }

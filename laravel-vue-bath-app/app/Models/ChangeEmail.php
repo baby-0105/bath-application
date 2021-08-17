@@ -20,12 +20,12 @@ class ChangeEmail extends Model
     /**
      * メールアドレス確定メールを送信
      *
-     * @param [type] $encoded_token
+     * @param string $encodedToken
      *
      */
-    public function sendEmailResetNotification($encoded_token)
+    public function sendEmailResetNotification($encodedToken)
     {
-        $this->notify(new ResetEmail($encoded_token));
+        $this->notify(new ResetEmail($encodedToken));
     }
 
     /**
@@ -37,5 +37,16 @@ class ChangeEmail extends Model
     public function routeNotificationForMail($notification)
     {
         return $this->new_email;
+    }
+
+    /**
+     * 変更するメールアドレスのカラム取得
+     *
+     * @param string $token ハッシュ化されたトークン
+     * @return ChangeEmail メールアドレス変更 モデル
+     */
+    public static function getChangeEmail($token)
+    {
+        return self::where('token', $token)->first();
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\EditRequest;
-use App\Models\User;
-use App\Models\UserInfo;
 use App\Services\CodeNameService;
+use App\Services\User\UserInfoService;
+use App\Services\User\UserService;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -16,15 +16,25 @@ class EditController extends Controller
 {
     /** コード名称 サービス */
     private $codeNameService;
+    /** ユーザー情報 サービス */
+    private $userInfoService;
+    /** ユーザー サービス */
+    private $userService;
 
     /**
      * コンストラクタ
      *
      * @param CodeNameService $codeNameService コード名称サービスのインスタンス
      */
-    public function __construct(CodeNameService $codeNameService)
+    public function __construct(
+        CodeNameService $codeNameService,
+        UserInfoService $userInfoService,
+        UserService $userService
+    )
     {
         $this->codeNameService = $codeNameService;
+        $this->userInfoService = $userInfoService;
+        $this->userService = $userService;
     }
 
     /**
@@ -34,13 +44,11 @@ class EditController extends Controller
      */
     public function show()
     {
-        $userInfo = UserInfo::find(auth()->user()->id);
-        $data = [
-            'user_info' => $userInfo,
+        return view('user.edit')->with([
+            'user_info' => $this->userInfoService->getUserInfo(),
             'prefectures' => $this->codeNameService->getCodeNames('PREFECTURE'),
             'is_release' => $this->codeNameService->getCodeNames('IS_RELEASE'),
-        ];
-        return view('user.edit')->with($data);
+        ]);
     }
 
     /**
@@ -50,27 +58,14 @@ class EditController extends Controller
      */
     public function submit(EditRequest $request)
     {
-        $iconPath = null;
-        // 現在のアイコン画像を更新したかどうか
-        if($request->is_change) {
-            $iconImg = $request->file('icon_path');
-            if($iconImg) { $iconPath = $iconImg->store('uploads', 'public'); }
-        } else {
-            $iconPath = $request->icon_path;
-        }
-
-        $user = DB::transaction(function () use ($request, $iconPath) {
-            User::where('id', auth()->user()->id)->update([
-                'name' => $request->name,
+        $user = DB::transaction(function () use ($request) {
+            $this->userService->updateUser([ 'name' => $request->name ]);
+            $this->userInfoService->updateUserInfo([
+                'prefecture_cd' => $request->prefecture,
+                'introduce' => $request->introduce,
+                'icon_path' => $request->saveUploadImagePath(),
+                'is_release' => $request->is_release,
             ]);
-
-            UserInfo::where('user_id', auth()->user()->id)
-                    ->update([
-                        'prefecture_cd' => $request->prefecture,
-                        'introduce' => $request->introduce,
-                        'icon_path' => $iconPath,
-                        'is_release' => $request->is_release,
-                    ]);
         });
         return redirect()->route('user.mypage');
     }

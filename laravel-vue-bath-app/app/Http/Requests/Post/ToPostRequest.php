@@ -80,4 +80,34 @@ class ToPostRequest extends FormRequest
             'sub3_img' => 'サブ3画像',
         ];
     }
+
+    /**
+     * アップロードした画像パスを保存する
+     *
+     * @return array 画像パス
+     */
+    public function saveUploadImagePath()
+    {
+        $mainPath = null;
+        $sub1Path = null;
+        $sub2Path = null;
+        $sub3Path = null;
+
+        $mainImg = $this->file('main_img');
+        $sub1Img = $this->file('sub1_img');
+        $sub2Img = $this->file('sub2_img');
+        $sub3Img = $this->file('sub3_img');
+
+        if($mainImg) { $mainPath = $mainImg->store('uploads', 'public'); }
+        if($sub1Img) { $sub1Path = $sub1Img->store('uploads', 'public'); }
+        if($sub2Img) { $sub2Path = $sub2Img->store('uploads', 'public'); }
+        if($sub3Img) { $sub3Path = $sub3Img->store('uploads', 'public'); }
+
+        return [
+            'mainPath' => $mainPath,
+            'sub1Path' => $sub1Path,
+            'sub2Path' => $sub2Path,
+            'sub3Path' => $sub3Path,
+        ];
+    }
 }

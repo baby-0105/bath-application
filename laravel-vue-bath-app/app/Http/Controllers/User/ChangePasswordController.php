@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ChangePasswordRequest;
-use App\Models\User;
+use App\Services\User\UserService;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Hash;
  */
 class ChangePasswordController extends Controller
 {
+    /** ユーザー サービス */
+    private $userService;
+
+    /**
+     * コンストラクタ
+     *
+     * @param CodeNameService $codeNameService コード名称サービスのインスタンス
+     */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * パスワード変更ぺージ 描画
      *
@@ -30,9 +43,7 @@ class ChangePasswordController extends Controller
      */
     public function submit(ChangePasswordRequest $request)
     {
-        User::where('id', auth()->user()->id)->update([
-            'password' => Hash::make($request->new_password),
-        ]);
+        $this->userService->updateUser([ 'password' => Hash::make($request->new_password) ]);
         return redirect()->route('user.mypage')->with('is_change_password', 'パスワードを変更しました。');
     }
 }
