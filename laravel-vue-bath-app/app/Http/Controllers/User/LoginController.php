@@ -44,7 +44,7 @@ class LoginController extends Controller
         $this->setCredentials($request);
         if (Auth::attempt($this->credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('top')->with('is_auth', 'ログインが完了しました。');
+            return redirect()->route('top')->with('message', 'ログインが完了しました。');
         }
 
         $validator = [

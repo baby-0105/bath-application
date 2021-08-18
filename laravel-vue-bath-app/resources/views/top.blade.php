@@ -1,11 +1,5 @@
 @extends('app')
 @section('content')
-    <div class="popup @if(session('is_auth')) flex @else hide @endif" id="popup">
-        <div class="content">
-            <p class="text">{{ session('is_auth') }}</p>
-            <button class="close" id="close">閉じる</button>
-        </div>
-    </div>
     <div class="popup @if(session('message')) flex @else hide @endif" id="popup">
         <div class="content">
             <p class="text">{{ session('message') }}</p>

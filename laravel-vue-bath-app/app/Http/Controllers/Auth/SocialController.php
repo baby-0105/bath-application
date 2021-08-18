@@ -52,7 +52,7 @@ class SocialController extends Controller
     {
         try {
             // 既にログイン済み
-            if(Auth::user()) { return redirect()->route('top')->with('is_auth', 'すでにログイン済みです。'); }
+            if(Auth::user()) { return redirect()->route('top')->with('message', 'すでにログイン済みです。'); }
 
             $user = Socialite::driver($sns)->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
 
@@ -73,13 +73,13 @@ class SocialController extends Controller
             // ログイン：snsカラム一致時
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user, $sns);
-                return redirect()->route('top')->with('is_auth', 'ログインしました');
+                return redirect()->route('top')->with('message', 'ログインしました');
             }
-            return redirect()->route('top')->with('is_auth', '認証が完了しました')->with($data);
+            return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
         }
 
         catch (Exception $e) {
-            return redirect()->route('user.login')->with('authError', '認証ができませんでした。');
+            return redirect()->route('user.login')->with('message', '認証ができませんでした。');
         }
     }
 
@@ -114,6 +114,6 @@ class SocialController extends Controller
 
         $authUser = User::where('sns_id', $sns['sns_id'])->where('sns', $sns['sns'])->first();
 		Auth::login($authUser);
-        return response()->json(['is_auth' => route('top')]);
+        return response()->json(['message' => route('top')]);
     }
 }
