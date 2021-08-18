@@ -48,8 +48,14 @@
     width: 25%;
 }
 
+.post-form .list .select-area {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .post-form .list .eval {
-    width: 16%;
+    width: 22%;
     padding: 10px;
 }
 

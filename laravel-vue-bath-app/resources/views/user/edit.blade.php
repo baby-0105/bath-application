@@ -12,12 +12,14 @@
             @error('icon_path') <p class="error">{{ $message }}</p> @enderror
             <div class="list choose-img">
                 <span class="field-name">プロフィール画像</span>
-                <label class="img-label" for="iconImg">
-                    @if(isset($user_info->icon_path)) <input type="hidden" class="current-icon" name="current_icon_path" value="{{ $user_info->icon_path }}"> @endif
-                    <input class="field file" id="iconImg" type="file" name="icon_path" value="">
-                    <img class="preview-img" src="@if(empty($user_info->icon_path)) {{ asset('svg/bath-mark-light-blue.svg') }} @else {{ asset(Storage::url($user_info->icon_path) . '?' . $user_info->updated_at->format('YmdHis')) }} @endif" alt="アイコン画像 プレビュー">
-                </label>
-                <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+                <div class="img-field">
+                    <label class="img-label" for="iconImg">
+                        @if(isset($user_info->icon_path)) <input type="hidden" class="current-icon" name="current_icon_path" value="{{ $user_info->icon_path }}"> @endif
+                        <input class="field file" id="iconImg" type="file" name="icon_path" value="">
+                        <img class="preview-img" src="@if(empty($user_info->icon_path)) {{ asset('svg/bath-mark-light-blue.svg') }} @else {{ asset(Storage::url($user_info->icon_path) . '?' . $user_info->updated_at->format('YmdHis')) }} @endif" alt="アイコン画像 プレビュー">
+                    </label>
+                    <a href="" class="dlt-img hide"><span class="btn-text">削除</span></a>
+                </div>
             </div>
             @error('prefecture') <p class="error">{{ $message }}</p> @enderror
             <div class="list">

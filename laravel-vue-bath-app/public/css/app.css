@@ -11,6 +11,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Wawati SC", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "Hiragino Sans", "Yu Gothic UI", sans-serif;
 }
 
@@ -264,7 +265,11 @@ h1 {
   width: 25%;
 }
 
-.user-form .list .field,
+.user-form .list .field {
+  width: 70%;
+  padding: 10px;
+}
+
 .user-form .list .select {
   width: 70%;
   padding: 10px;
@@ -486,8 +491,14 @@ h1 {
   width: 25%;
 }
 
+.post-form .list .select-area {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .post-form .list .eval {
-  width: 16%;
+  width: 22%;
   padding: 10px;
 }
 
@@ -807,13 +818,21 @@ h1 {
 //  画像選択フィールド
 // ==========================================================================*/
 
-.choose-img .img-label {
+.choose-img .img-field {
   width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.choose-img .img-label {
+  width: 100%;
   padding: 10px;
   text-align: center;
   border: 4px solid #dfdfdf;
   border-radius: 10px;
   position: relative;
+  display: block;
 }
 
 .choose-img .img-label:hover:after {
@@ -847,6 +866,7 @@ h1 {
   background-color: #dfdfdf;
   width: 50px;
   height: 50px;
+  margin-left: 10px;
 }
 
 .choose-img .dlt-img:hover {

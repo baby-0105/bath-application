@@ -31,7 +31,11 @@
     display: inline-block;
     width: 25%;
 }
-.user-form .list .field,
+.user-form .list .field {
+    width: 70%;
+    padding: 10px;
+}
+
 .user-form .list .select {
     width: 70%;
     padding: 10px;
