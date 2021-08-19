@@ -29,7 +29,7 @@
                             <label>メールアドレス</label>
                             <input class="input" type="text" name="email" value="{{ session('register.email') }}">
                         </div>
-                        <input class="submit btn" type="submit" value="登録する">
+                        <button class="submit btn" type="submit">登録する</button>
                     </form>
                 </div>
             </div>

@@ -5,7 +5,6 @@
 $(function () {
     const AJAX_TIMEOUT = 30000;
 
-
     // SNS認証：本登録用モーダル
     if($(".sns-update-profile").length > 0){
         let $nameError    = $('.sns-update-profile .name-error'),

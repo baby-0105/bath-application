@@ -43,11 +43,8 @@ class RegisterController extends Controller
     {
         $valueObject = $request->toValueObject();
         $this->register_service->sendAndCreate($valueObject);
-
-        $data = [
-            'email' => $request->email
-        ];
-        return view('user.check_email')->with($data);
+        $request->session()->regenerateToken();
+        return view('user.check_email')->with(['email' => $request->email]);
     }
 
     /**

@@ -19,14 +19,18 @@ use Illuminate\Support\Facades\Mail;
 class SocialController extends Controller
 {
 
+    /** SNS認証 サービス */
     private $socialService;
 
     /**
-     * Create a new controller instance.
+     * コンストラクタ
      *
+     * @param SocialService $socialService SNS認証サービス インスタンス
      * @return void
      */
-    public function __construct(SocialService $socialService)
+    public function __construct(
+        SocialService $socialService
+    )
     {
         $this->socialService = $socialService;
     }
@@ -52,15 +56,13 @@ class SocialController extends Controller
     {
         try {
             // 既にログイン済み
-            if(Auth::user()) { return redirect()->route('top')->with('message', 'すでにログイン済みです。'); }
-
+            if(auth()->user()) { return redirect()->route('top')->with('message', 'すでにログイン済みです。'); }
             $user = Socialite::driver($sns)->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
-
             $data = [
-                'nonVerify' => User::where('name', session('name'))->value('status') !== config('const.USER_STATUS.REGISTER'),
-                'selectAuthUser' =>$this->socialService->selectAuthUser($user, $sns)
+                'nonVerify' => $this->socialService->isNonVerify(session('name')),
+                'selectAuthUser' => $this->socialService->selectAuthUser($user, $sns)
             ];
-            // DBカラ → 新規登録
+            // DBカラ → セッション保存
             if(empty($data['selectAuthUser'])) {
                 session([
                     'register.sns_id' => $user->id,
@@ -70,50 +72,42 @@ class SocialController extends Controller
                 ]);
                 return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました')->with($data);
             }
-            // ログイン：snsカラム一致時
+            // ログイン（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user, $sns);
                 return redirect()->route('top')->with('message', 'ログインしました');
             }
             return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
         }
-
         catch (Exception $e) {
             return redirect()->route('user.login')->with('message', '認証ができませんでした。');
         }
     }
 
     /**
-     * 認証後、modalでユーザー情報登録
+     * 認証後、modalでユーザー情報登録 / 確認メール送信 / ログイン
      *
+     * @param SocialRequest $request SNS認証リクエスト インスタンス
      * @return json
      */
     public function updateProfile(SocialRequest $request)
     {
-        // SNSでのユーザー登録
         $sns = DB::transaction(function () use ($request) {
             $sns = session('register');
-            $data = [
+            $user = new User([
                 'name'   => $request->name,
                 'email'  => $request->email,
                 'sns_id' => $sns['sns_id'],
                 'sns'    => $sns['sns'],
                 'status' => config('const.USER_STATUS.REGISTER'),
-            ];
-            $user = new User($data);
+            ]);
             $user->save();
 
-            $user->user_info()->create([
-                'is_release' => true,
-            ]);
+            $user->user_info()->create([ 'is_release' => true ]);
             return $sns;
         });
-
-        // 登録メール送信
         Mail::to($request->email)->send(new UserSnsRegisterMailSent($request->name));
-
-        $authUser = User::where('sns_id', $sns['sns_id'])->where('sns', $sns['sns'])->first();
-		Auth::login($authUser);
+        Auth::login($this->socialService->getSnsAuthUser($sns['sns_id'], $sns['sns']));
         return response()->json(['message' => route('top')]);
     }
 }

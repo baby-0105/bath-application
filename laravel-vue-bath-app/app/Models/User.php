@@ -70,4 +70,26 @@ class User extends Authenticatable
     {
         return self::where('id', auth()->user()->id)->update($user);
     }
+
+    /**
+     * SNS認証ユーザーが本登録が完了していない場合、trueを返す
+     *
+     * @param string $name sns認証ユーザー名
+     * @return boolean
+     */
+    public static function isNonVerify($name)
+    {
+        return self::where('name', $name)->value('status') !== config('const.USER_STATUS.REGISTER');
+    }
+
+    /**
+     * SNS認証したユーザーの取得
+     *
+     * @param $snsId snsId , $sns SNS名
+     * @return User
+     */
+    public static function getSnsAuthUser($snsId, $sns)
+    {
+        return self::where('sns_id', $snsId)->where('sns', $sns)->first();
+    }
 }

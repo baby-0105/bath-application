@@ -9,6 +9,9 @@ require('./post/topost.js');
 require('./post/mypost.js');
 
 require('./user/edit.js');
+require('./user/register.js');
+
+require('./auth/social.js');
 
 window.Vue = require('vue');
 

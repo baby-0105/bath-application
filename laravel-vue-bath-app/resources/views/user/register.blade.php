@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="user-form register">
+    <div class="user-form register" id="register">
         <h2 class="title">新規登録ページ</h2>
         <form class="form" method="POST" action="{{ route('user.check_email') }}">
             @csrf
@@ -32,7 +32,7 @@
                 <label class="field-name">パスワード（確認用）</label>
                 <input class="field" type="password" name="password_confirmation">
             </div>
-            <input class="btn" type="submit" value="登録する">
+            <button id="registerBtn" class="btn" type="submit">登録する</button>
         </form>
         <div class="sns">
             <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログインする</a>
