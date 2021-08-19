@@ -35,12 +35,13 @@ class SocialService{
     }
 
 	/**
-	 * ログイン処理
+	 * SNS認証をしたユーザーのログイン処理
 	 *
+	 * @param $snsId snsId , $sns SNS名
 	 */
-	public function toLoginUser($user, $sns)
+	public function toLoginUser($snsId, $sns)
 	{
-		$authUser = User::where('sns_id', $user->id)->where('sns', $sns)->first();
+		$authUser = User::getSnsAuthUser($snsId, $sns);
 		return Auth::login($authUser);
 	}
 
@@ -54,15 +55,4 @@ class SocialService{
     {
         return User::isNonVerify($name);
 	}
-
-    /**
-     * SNS認証したユーザーの取得
-     *
-     * @param $snsId snsId , $sns SNS名
-     * @return User
-     */
-    public static function getSnsAuthUser($snsId, $sns)
-    {
-        return User::getSnsAuthUser($snsId, $sns);
-    }
 }

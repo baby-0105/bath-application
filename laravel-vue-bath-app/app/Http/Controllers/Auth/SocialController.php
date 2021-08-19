@@ -107,7 +107,7 @@ class SocialController extends Controller
             return $sns;
         });
         Mail::to($request->email)->send(new UserSnsRegisterMailSent($request->name));
-        Auth::login($this->socialService->getSnsAuthUser($sns['sns_id'], $sns['sns']));
+        $this->socialService->toLoginUser($sns['sns_id'], $sns['sns']);
         return response()->json(['message' => route('top')]);
     }
 }
