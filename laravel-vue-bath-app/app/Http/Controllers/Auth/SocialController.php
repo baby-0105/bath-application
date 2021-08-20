@@ -74,7 +74,7 @@ class SocialController extends Controller
             }
             // ログイン（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
-                $this->socialService->toLoginUser($user, $sns);
+                $this->socialService->toLoginUser($user->id, $sns);
                 return redirect()->route('top')->with('message', 'ログインしました');
             }
             return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
