@@ -11,10 +11,12 @@ require('./post/mypost.js');
 require('./user/edit.js');
 require('./user/register.js');
 
-// window.Vue = require('vue');
+import Vue from 'vue'
+import Search from './components/Search'
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-// const app = new Vue({
-//   el: '#app',
-// });
+const app = new Vue({
+  el: '#app',
+  components: {
+    Search,
+  }
+})

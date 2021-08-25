@@ -10,7 +10,7 @@
         <div class="top-container">
             <div class="first-view">
                 <div class="search-btn-area">
-                    <a class="search-btn" href="{{ route('post.search') }}">
+                    <a class="search-btn" href="{{ route('bath.search') }}">
                         <span class="btn-name">検索する</span>
                         <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                     </a>

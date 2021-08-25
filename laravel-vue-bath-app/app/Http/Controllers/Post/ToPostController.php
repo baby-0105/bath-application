@@ -32,10 +32,7 @@ class ToPostController extends Controller
      */
     public function show()
     {
-        $data = [
-            'evals' => $this->codeNameService->getCodeNames('EVAL'),
-        ];
-        return view('post.topost')->with($data);
+        return view('post.topost')->with(['evals' => $this->codeNameService->getCodeNames('EVAL')]);
     }
 
     /**

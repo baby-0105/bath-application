@@ -10,7 +10,7 @@
 
     <body>
         @include('layouts.components.header')
-        <div class="main">
+        <div class="main" id="app">
             <div class="sns-update-profile popup @if(session('snsUpdateProfile') && session('nonVerify'))flex @else hide @endif" id="popup">
                 <div class="content">
                     <h3 class="title">※まだ、ユーザー登録が完了していません</h3>

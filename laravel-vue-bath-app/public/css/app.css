@@ -670,6 +670,68 @@ h1 {
 }
 
 /*// ==========================================================================
+//  お風呂検索
+// ==========================================================================*/
+
+.bath-search .search-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bath-search .title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.bath-search .form-block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.bath-search .form-block .field {
+  padding: 10px;
+}
+
+.bath-search .form-block .prefecture-keyword {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.bath-search .form-block .eval-select {
+  margin-bottom: 30px;
+}
+
+.bath-search .form-block .eval-select .eval-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bath-search .form-block .eval-select .eval-block:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.bath-search .form-block .eval-select .select-form-title {
+  font-size: 1.5rem;
+  width: 20%;
+}
+
+.bath-search .form-block .prefecture {
+  width: 50%;
+}
+
+.bath-search .form-block .keyword {
+  width: 50%;
+}
+
+.bath-search .form-block .eval {
+  width: 20%;
+}
+
+/*// ==========================================================================
 //  ヘッダー
 // ==========================================================================*/
 

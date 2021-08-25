@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function() {
  * 以下、ログイン必要なし
  */
 
+Route::get('check_scraping', 'Bath\ScrapingController@getBath');
+
 Route::get('/', function () { return view('top'); })->name('top');
 Route::get("reset/{token}", "User\ResetEmailController@reset");
 
@@ -49,8 +51,10 @@ Route::namespace('Auth')->group(function() {
 
 Route::group(['prefix' => 'post'], function() {
     Route::get('index', function () { return view('post.index'); })->name('post.index');
-    Route::get('search', function () { return view('post.search'); })->name('post.search');
 });
+
+Route::get('bath/search', 'Bath\SearchController@show')->name('bath.search');
+Route::post('bath/search', 'Bath\SearchController@getInfo')->name('bath.search.getInfo');
 
 Route::namespace('User')->group(function() {
     Route::group(['prefix' => 'user'], function() {
