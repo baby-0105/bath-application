@@ -679,7 +679,11 @@ h1 {
   text-align: center;
 }
 
-.bath-search .title {
+/*// -----------------------------------------------------------------
+//  form-block 検索ブロック
+// -----------------------------------------------------------------*/
+
+.bath-search .main-title {
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
@@ -689,6 +693,7 @@ h1 {
   flex-direction: column;
   width: 50%;
   margin: 0 auto;
+  margin-bottom: 150px;
 }
 
 .bath-search .form-block .field {
@@ -729,6 +734,97 @@ h1 {
 
 .bath-search .form-block .eval {
   width: 20%;
+}
+
+/*// -----------------------------------------------------------------
+//  search-result 検索結果ブロック
+// -----------------------------------------------------------------*/
+
+.bath-search .search-result .list {
+  border-radius: 10px;
+  border: 1px solid #222;
+  padding: 20px;
+}
+
+.bath-search .search-result .list:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.bath-search .search-result .bath-num {
+  text-align: right;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.bath-search .search-result .list .title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.bath-search .search-result .list .mark-block {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.bath-search .search-result .list .mark-block .review {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.bath-search .search-result .list .mark-block .review .whole-review {
+  font-size: 60px;
+}
+
+.bath-search .search-result .list .mark-block .review .whole-review:after {
+  content: "-\7DCF\5408\8A55\4FA1-";
+  display: block;
+  font-size: 1.2rem;
+}
+
+.bath-search .search-result .list .mark-block .review .others-review {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  font-size: 4rem;
+}
+
+.bath-search .search-result .list .mark-block .review .others-review li:after {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.bath-search .search-result .list .mark-block .review .others-review li:nth-child(1):after {
+  content: "-\304A\6E6F\8A55\4FA1-";
+}
+
+.bath-search .search-result .list .mark-block .review .others-review li:nth-child(2):after {
+  content: "-\5CA9\76E4\6D74\8A55\4FA1-";
+}
+
+.bath-search .search-result .list .mark-block .review .others-review li:nth-child(3):after {
+  content: "-\30B5\30A6\30CA\8A55\4FA1-";
+}
+
+.bath-search .search-result .list .mark-block .mark {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.bath-search .search-result .list .text-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.bath-search .search-result .no-result {
+  font-size: 1.8rem;
+  color: red;
 }
 
 /*// ==========================================================================

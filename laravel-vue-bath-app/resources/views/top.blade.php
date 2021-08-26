@@ -35,7 +35,6 @@
                     @endif
                     <a href="">人気のお風呂</a>
                 </div>
-                {{-- TODO: コンポーネント作っても良さそう --}}
                 @if(Auth::check())
                     <div class="my-pref">お住まいの都道府県で人気のお風呂一覧</div>
                     <div class="my-region">お住まいの地方で人気のお風呂一覧</div>

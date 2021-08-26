@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Bath;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Bath\SearchRequest;
-use App\Models\Bath;
 use App\Services\Bath\SearchService;
 use App\Services\CodeNameService;
 
@@ -86,7 +85,6 @@ class SearchController extends Controller
                 ->where('sauna_eval_cd', '<=', $request->high_sauna_eval)
                 ->get();
         }
-        dd($bathQuery->get());
         return response()->json($bathQuery->get());
     }
 }

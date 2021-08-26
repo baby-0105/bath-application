@@ -22,8 +22,8 @@ class CreateBathsTable extends Migration
             $table->string('closing_day', 30)->nullable()->comment('休館日');
             $table->string('place', 30)->nullable()->comment('場所');
             $table->string('city', 30)->nullable()->comment('場所(市)');
-            $table->string('holiday-time')->nullable()->comment('営業時間(土日祝)');
-            $table->string('weekday-time')->nullable()->comment('営業時間(平日)');
+            $table->string('holiday_time')->nullable()->comment('営業時間(土日祝)');
+            $table->string('weekday_time')->nullable()->comment('営業時間(平日)');
             $table->float('eval_cd', 2, 1)->nullable()->comment('全体評価');
             $table->float('hot_water_eval_cd', 2, 1)->nullable()->comment('お湯評価');
             $table->float('rock_eval_cd', 2, 1)->nullable()->comment('岩盤浴評価');
