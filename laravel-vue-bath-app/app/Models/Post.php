@@ -33,6 +33,17 @@ class Post extends Model
     }
 
     /**
+     * 投稿を作成する
+     *
+     * @param array $newPostData 新しい投稿データ
+     * @return Post
+     */
+    public static function createPost($newPostData)
+    {
+        return self::create($newPostData);
+    }
+
+    /**
      * ログインユーザーの投稿を返す(最新投稿順)
      *
      * @return collection ログインユーザーの投稿全て
@@ -51,5 +62,17 @@ class Post extends Model
     public static function deletePost($postId)
     {
         return self::where('id', $postId)->delete();
+    }
+
+    /**
+     * 投稿の評価の平均を返す
+     *
+     * @param string $title お風呂名
+     * @param string $eval お風呂の評価
+     * @return Post
+     */
+    public static function getEvalAvg($title, $eval)
+    {
+        return self::where('title', $title)->avg($eval);
     }
 }

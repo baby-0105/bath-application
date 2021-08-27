@@ -19,6 +19,7 @@ class CreateBathsTable extends Migration
         Schema::create('baths', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('お風呂ID');
             $table->string('name', 30)->comment('お風呂名称');
+            $table->string('url', 255)->nullable()->comment('お風呂HPのURL');
             $table->string('closing_day', 30)->nullable()->comment('休館日');
             $table->string('place', 30)->nullable()->comment('場所');
             $table->string('city', 30)->nullable()->comment('場所(市)');

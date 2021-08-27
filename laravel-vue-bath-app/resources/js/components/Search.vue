@@ -77,9 +77,9 @@
                         <div class="review">
                             <p class="whole-review" v-if="bath.eval_cd !== null">{{ bath.eval_cd }}</p><p class="whole-review" v-else>--</p>
                             <ul class="others-review">
-                                <li v-if="bath.hot_water_eval_cd !== null">{{ bath.hotWaterEval }}</li><li v-else>--</li>
-                                <li v-if="bath.rock_eval_cd !== null">{{ bath.rockEval }}</li><li v-else>--</li>
-                                <li v-if="bath.sauna_eval_cd !== null">{{ bath.saunaEval }}</li><li v-else>--</li>
+                                <li v-if="bath.hot_water_eval_cd !== null">{{ bath.hot_water_eval_cd }}</li><li v-else>--</li>
+                                <li v-if="bath.rock_eval_cd !== null">{{ bath.rock_eval_cd }}</li><li v-else>--</li>
+                                <li v-if="bath.sauna_eval_cd !== null">{{ bath.sauna_eval_cd }}</li><li v-else>--</li>
                             </ul>
                         </div>
                         <ul class="mark" v-if="bath.is_rock !== null && bath.is_sauna !== null">
@@ -94,6 +94,9 @@
                             <li class="holiday" v-if="bath.holiday_time !== null">土日：{{ bath.holiday_time }}</li><li v-else>土日：記載なし</li>
                             <li class="weekday" v-if="bath.weekday_time !== null">平日：{{ bath.weekday_time }}</li><li v-else>平日：記載なし</li>
                         </ul>
+                    </div>
+                    <div class="link-block">
+                        <a class="post-link" @click="showPosts(bath.id)">みんなの投稿</a>
                     </div>
                 </li>
             </ul>
@@ -154,6 +157,11 @@
                     $('.form-block .high-sauna-eval-error').text(e.response.data.errors.high_sauna_eval);
                     $('.form-block .field-error').text(e.response.data.errors.field);
                 })
+            },
+            // TODO: これはあとで使うかも
+            showPosts(postId) {
+                let url = '/bath/' + postId;
+                axios.get(url);
             }
         }
     }

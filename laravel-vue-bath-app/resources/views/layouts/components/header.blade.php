@@ -12,17 +12,21 @@
           <span class="text">投稿する</span>
           <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">
         </a>
+        <a class="link" href="{{ route('bath.search') }}">
+          <span class="text">検索する</span>
+          <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
+        </a>
         <a class="link" href="{{ route('user.favorite') }}">
           <span class="text">お気に入り</span>
-          <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
+          <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">
         </a>
         <a class="link" href="{{ route('user.mypage') }}">
           <span class="text">MyPage</span>
-          <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">
+          <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
         </a>
         <a class="link blue-link" href="{{ url('logout') }}">
           <span class="text">ログアウト</span>
-          <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
+          <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">
         </a>
       @else
         <a class="link" href="{{ route('user.register') }}">

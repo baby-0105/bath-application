@@ -154,6 +154,17 @@
     justify-content: space-around;
     align-items: center;
     font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+
+.bath-search .search-result .list .link-block .post-link {
+    font-size: 1.5rem;
+    color: #7EDBE6;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
 
 .bath-search .search-result .no-result {

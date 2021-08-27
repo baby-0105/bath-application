@@ -13,7 +13,7 @@ class Bath extends Model
     protected $table = 'baths';
 
     protected $fillable = [
-        'id', 'name', 'closing_day', 'place', 'city', 'holiday_time', 'weekday_time', 'eval_cd', 'hot_water_eval_cd', 'rock_eval_cd',
+        'id', 'name', 'url', 'closing_day', 'place', 'city', 'holiday_time', 'weekday_time', 'eval_cd', 'hot_water_eval_cd', 'rock_eval_cd',
         'sauna_eval_cd', 'is_sauna', 'is_rock'
     ];
 
@@ -35,5 +35,17 @@ class Bath extends Model
     public static function getQueryBath()
     {
         return self::query();
+    }
+
+    /**
+     * 特定のお風呂情報を更新して返す
+     *
+     * @param string $name お風呂名
+     * @param array $updateData 更新するデータ
+     * @return Bath
+     */
+    public static function updateTheBath($name, $updateData)
+    {
+        return self::where('name', $name)->update($updateData);
     }
 }
