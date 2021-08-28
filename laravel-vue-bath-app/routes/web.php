@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('topost', 'ToPostController@show')->name('post.topost');
         Route::post('topost', 'ToPostController@submit')->name('post.submit');
         Route::post('search', 'ToPostController@search')->name('post.search');
+        Route::post('update', 'ToPostController@update')->name('post.update');
     });
 
     /**

@@ -60,22 +60,31 @@ class ToPostController extends Controller
      */
     public function submit(ToPostRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            $bathName = $this->toPostService->getBathName($request->bath_code);
-            $this->toPostService->createPost([
-                'user_id' => auth()->user()->id,
-                'title' => $bathName,
-                'thoughts' => $request->thoughts,
-                'main_image_path' => $request->saveUploadImagePath()['mainPath'],
-                'sub_picture1_path' => $request->saveUploadImagePath()['sub1Path'],
-                'sub_picture2_path' => $request->saveUploadImagePath()['sub2Path'],
-                'sub_picture3_path' => $request->saveUploadImagePath()['sub3Path'],
-                'eval_cd' => (float)$request->eval,
-                'hot_water_eval_cd' => $request->hot_water_eval,
-                'rock_eval_cd' => $request->rock_eval,
-                'sauna_eval_cd' => $request->sauna_eval,
-            ]);
+        $bathName = $this->toPostService->getBathName($request->bath_code);
+        $myPostData = [
+            'bath_id' => $request->bath_code,
+            'user_id' => auth()->user()->id,
+            'title' => $bathName,
+            'thoughts' => $request->thoughts,
+            'main_image_path' => $request->saveUploadImagePath()['mainPath'],
+            'sub_picture1_path' => $request->saveUploadImagePath()['sub1Path'],
+            'sub_picture2_path' => $request->saveUploadImagePath()['sub2Path'],
+            'sub_picture3_path' => $request->saveUploadImagePath()['sub3Path'],
+            'eval_cd' => (float)$request->eval,
+            'hot_water_eval_cd' => $request->hot_water_eval,
+            'rock_eval_cd' => $request->rock_eval,
+            'sauna_eval_cd' => $request->sauna_eval,
+        ];
+        session()->put('post.myPostData', $myPostData);
 
+        // すでに、同じお風呂を投稿している場合
+        if($this->toPostService->isExistPost($request->bath_code)) {
+            return redirect()->route('post.topost')->with(['isUpdatePost' => '投稿を更新しますか？']);
+        }
+
+        // 投稿したことのないお風呂を投稿する場合
+        DB::transaction(function () use ($myPostData, $bathName) {
+            $this->toPostService->createPost($myPostData);
             $this->toPostService->updateTheBath($bathName, [
                 'eval_cd' => $this->toPostService->getEvalAvg($bathName, 'eval_cd'),
                 'hot_water_eval_cd' => $this->toPostService->getEvalAvg($bathName, 'hot_water_eval_cd'),
@@ -102,5 +111,25 @@ class ToPostController extends Controller
             $bathQuery->where('name', 'like', "%$request->keyword%")->get();
         }
         return response()->json($bathQuery->get());
+    }
+
+    /**
+     * 投稿を更新する
+     *
+     * @return void
+     */
+    public function update()
+    {
+        $myPostData = session()->get('post.myPostData');
+        DB::transaction(function () use ($myPostData) {
+            $this->toPostService->updateSamePost($myPostData['bath_id'], $myPostData);
+            $this->toPostService->updateTheBath($myPostData['title'], [
+                'eval_cd' => $this->toPostService->getEvalAvg($myPostData['title'], 'eval_cd'),
+                'hot_water_eval_cd' => $this->toPostService->getEvalAvg($myPostData['title'], 'hot_water_eval_cd'),
+                'rock_eval_cd' => $this->toPostService->getEvalAvg($myPostData['title'], 'rock_eval_cd'),
+                'sauna_eval_cd' => $this->toPostService->getEvalAvg($myPostData['title'], 'sauna_eval_cd'),
+            ]);
+        });
+        return redirect()->route('post.mypost');
     }
 }

@@ -17,7 +17,8 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('id')->comment('お風呂ID');
+            $table->bigIncrements('id');
+            $table->integer('bath_id')->comment('お風呂ID');
             $table->integer('user_id')->comment('投稿したユーザーのID');
             $table->string('title', 30)->comment('お風呂名');
             $table->string('thoughts', 240)->nullable()->comment('感想');

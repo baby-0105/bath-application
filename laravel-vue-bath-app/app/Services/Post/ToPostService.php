@@ -35,6 +35,29 @@ class ToPostService
     }
 
     /**
+     * 投稿するお風呂がすでに投稿済みかどうかを返す
+     *
+     * @param integer $bathId お風呂ID
+     * @return boolean
+     */
+    public function isExistPost($bathId)
+    {
+        return Post::isExistPost($bathId);
+    }
+
+    /**
+     * 同じ投稿を更新する
+     *
+     * @param integer $bathId お風呂ID
+     * @param array $newPost 新しい投稿データ
+     * @return Post
+     */
+    public function updateSamePost($bathId, $newPost)
+    {
+        return Post::updateSamePost($bathId, $newPost);
+    }
+
+    /**
      * 特定のお風呂情報を更新して返す
      *
      * @param string $name お風呂名 $updateData 更新するデータ

@@ -6,7 +6,7 @@
             <p class="keyword-error error"></p>
             <p class="field-error error"></p>
             <div class="search-field">
-                <select class="select" id="" v-model="selectedPrefecture">
+                <select class="select" v-model="selectedPrefecture">
                     <option value="">都道府県を選択してください</option>
                     <option v-for="prefecture in prefectures" :key="prefecture.code" :value="prefecture.code">{{ prefecture.name }}</option>
                 </select>
@@ -14,11 +14,10 @@
                 <a class="search-btn" @click="searchBath()">検索</a>
             </div>
             <div class="search-result" v-if="baths.length > 0">
-                <select class="select" id="" v-model="selectedBath">
+                <select class="select" v-model="selectedBath" name="bath_code">
                     <option v-for="bath in baths" :key="bath.id" :value="bath.id">{{ bath.name }}</option>
                 </select>
             </div>
-            <input type="hidden" :value="selectedBath" name="bath_code">
         </div>
     </div>
 </template>
@@ -34,7 +33,7 @@
             }
         },
         props: {
-            prefectures: { type: Object },
+            prefectures: { type: Array },
         },
         methods: {
             searchBath() {

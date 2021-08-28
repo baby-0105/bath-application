@@ -17,7 +17,7 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'user_id', 'title', 'thoughts', 'main_image_path',
+        'bath_id', 'user_id', 'title', 'thoughts', 'main_image_path',
         'sub_picture1_path', 'sub_picture2_path', 'sub_picture3_path', 'sub_picture4_path',
         'eval_cd', 'hot_water_eval_cd', 'rock_eval_cd', 'sauna_eval_cd',
     ];
@@ -74,5 +74,28 @@ class Post extends Model
     public static function getEvalAvg($title, $eval)
     {
         return self::where('title', $title)->avg($eval);
+    }
+
+    /**
+     * 投稿するお風呂がすでに投稿済みかどうかを返す
+     *
+     * @param integer $bathId お風呂ID
+     * @return boolean
+     */
+    public static function isExistPost($bathId)
+    {
+        return self::where('user_id', auth()->id())->where('bath_id', $bathId)->exists();
+    }
+
+    /**
+     * 同じ投稿を更新する
+     *
+     * @param integer $bathId お風呂ID
+     * @param array $newPost 新しい投稿データ
+     * @return Post
+     */
+    public static function updateSamePost($bathId, $newPost)
+    {
+        return self::where('user_id', auth()->id())->where('bath_id', $bathId)->update($newPost);
     }
 }
