@@ -11,12 +11,14 @@ require('./post/mypost.js');
 require('./user/edit.js');
 require('./user/register.js');
 
-import Vue from 'vue'
-import Search from './components/Search'
+import Vue from 'vue';
+import Search from './components/Search';
+import ToPost from './components/ToPost';
 
 const app = new Vue({
   el: '#app',
   components: {
     Search,
+    ToPost,
   }
 })

@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('mypost', 'MyPostController@delete')->name('post.delete');
         Route::get('topost', 'ToPostController@show')->name('post.topost');
         Route::post('topost', 'ToPostController@submit')->name('post.submit');
+        Route::post('search', 'ToPostController@search')->name('post.search');
     });
 
     /**

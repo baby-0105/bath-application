@@ -27,7 +27,7 @@ class ToPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['bail', 'required', 'string', 'max:30', 'regex:/^[^#<>^;_]*$/'],
+            'bath_code' => ['bail', 'required', 'exists:baths,id'],
             'eval' => ['bail', 'required', 'exists:code_names,code,group_key,EVAL'],
             'hot_water_eval' => ['bail', 'nullable', 'exists:code_names,code,group_key,EVAL'],
             'rock_eval' => ['bail', 'nullable', 'exists:code_names,code,group_key,EVAL'],
@@ -68,7 +68,7 @@ class ToPostRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => 'お風呂名',
+            'bath_code' => 'お風呂名',
             'eval' => '全体評価',
             'hot_water_eval' => 'お湯評価',
             'rock_eval' => '岩盤浴評価',

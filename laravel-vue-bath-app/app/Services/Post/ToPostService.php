@@ -24,6 +24,17 @@ class ToPostService
     }
 
     /**
+     * 投稿を作成する
+     *
+     * @param array $newPostData 新しい投稿データ
+     * @return Post
+     */
+    public function createPost($newPostData)
+    {
+        return Post::createPost($newPostData);
+    }
+
+    /**
      * 特定のお風呂情報を更新して返す
      *
      * @param string $name お風呂名 $updateData 更新するデータ
@@ -35,13 +46,13 @@ class ToPostService
     }
 
     /**
-     * 投稿を作成する
+     * お風呂idから、お風呂名称取得
      *
-     * @param array $newPostData 新しい投稿データ
-     * @return Post
+     * @param string $id お風呂id
+     * @return Bath
      */
-    public function createPost($newPostData)
+    public function getBathName($id)
     {
-        return Post::createPost($newPostData);
+        return Bath::getBathName($id);
     }
 }

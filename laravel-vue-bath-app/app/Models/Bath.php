@@ -48,4 +48,15 @@ class Bath extends Model
     {
         return self::where('name', $name)->update($updateData);
     }
+
+    /**
+     * お風呂idから、お風呂名称取得
+     *
+     * @param string $id お風呂id
+     * @return Bath
+     */
+    public static function getBathName($id)
+    {
+        return self::where('id', $id)->value('name');
+    }
 }

@@ -5,11 +5,7 @@
         <form class="form" method="POST" action="{{ route('post.submit') }}" enctype="multipart/form-data">
             @csrf
             @error('title') <p class="error">{{ $message }}</p> @enderror
-            <div class="list">
-                <label class="field-name">お風呂名<span class="red">*</span></label>
-                <input class="field" type="text" name="title" value="{{ old('title') }}">
-            </div>
-
+            <to-post v-bind:prefectures="{{ $prefectures }}"></to-post> {{-- Vue:お風呂検索コンポーネント --}}
             @error('eval') <p class="error">{{ $message }}</p> @enderror
             @error('hot_water_eval') <p class="error">{{ $message }}</p> @enderror
             @error('rock_eval') <p class="error">{{ $message }}</p> @enderror
