@@ -16,10 +16,7 @@ $(function () {
             let path = $(this).parents('form').attr('action');
 
             e.preventDefault();
-            $nameError.text('');
-            $emailError.text('');
-            $timeoutError.text('');
-            $statusError.text('');
+            $('.sns-update-profile .error').text('');
 
             $.ajax({
                 type    : 'POST',

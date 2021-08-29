@@ -16,7 +16,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['prefix' => 'post', 'namespace' => 'Post'], function() {
         Route::get('mypost', 'MyPostController@index')->name('post.mypost');
-        Route::post('mypost', 'MyPostController@delete')->name('post.delete');
+        Route::post('mypost', 'MyPostController@delete')->name('post.mypost.delete');
+        Route::post('mypost/selectOrder', 'MyPostController@selectOrder')->name('post.mypost.selectOrder');
         Route::get('topost', 'ToPostController@show')->name('post.topost');
         Route::post('topost', 'ToPostController@submit')->name('post.submit');
         Route::post('search', 'ToPostController@search')->name('post.search');

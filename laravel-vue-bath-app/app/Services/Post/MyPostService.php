@@ -15,9 +15,9 @@ class MyPostService
      *
      * @return void
      */
-    public function getMyPost()
+    public function getLatestMyPost()
     {
-        return Post::getMyPost();
+        return Post::getLatestMyPost();
     }
 
     /**
@@ -29,5 +29,16 @@ class MyPostService
     public function deletePost($postId)
     {
         return Post::deletePost($postId);
+    }
+
+    /**
+     * ログインユーザーの投稿を評価の高い順にして返す
+     *
+     * @param string $eval 評価のカラム
+     * @return Post
+     */
+    public function getHighEvalOrder($eval)
+    {
+        return Post::getHighEvalOrder($eval);
     }
 }

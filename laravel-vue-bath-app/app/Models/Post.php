@@ -33,6 +33,16 @@ class Post extends Model
     }
 
     /**
+     * お風呂とのリレーションを返す
+     *
+     * @return void
+     */
+    public function bath()
+    {
+        return $this->belongsTo(Bath::class, 'bath_id', 'id');
+    }
+
+    /**
      * 投稿を作成する
      *
      * @param array $newPostData 新しい投稿データ
@@ -48,9 +58,20 @@ class Post extends Model
      *
      * @return collection ログインユーザーの投稿全て
      */
-    public static function getMyPost()
+    public static function getLatestMyPost()
     {
         return self::where('user_id', auth()->user()->id)->latest()->get();
+    }
+
+    /**
+     * ログインユーザーの投稿を評価の高い順にして返す
+     *
+     * @param string $eval 評価のカラム
+     * @return Post
+     */
+    public static function getHighEvalOrder($eval)
+    {
+        return self::where('user_id', auth()->user()->id)->orderBy($eval, 'desc')->get();
     }
 
     /**

@@ -6,7 +6,7 @@
             <div class="content">
                 <p class="text">こちらの投稿を削除しますか？</p>
                 <div class="btn-area">
-                    <form method="POST" action="{{ route('post.delete') }}">
+                    <form method="POST" action="{{ route('post.mypost.delete') }}">
                         @csrf
                         <input id="postId" type="hidden" name="postId" value="">
                         <button type="submit" class="btn dlt">削除</button>
@@ -20,7 +20,8 @@
             <img class="key-img @if(auth()->user()->user_info->is_release) hide @endif" src="{{ asset('svg/key-icon.svg') }}" alt="鍵マーク">
         </div>
         <div class="index">
-            <ul class="bath">
+            <select-order></select-order>
+            <ul class="bath first-view">
                 @foreach ($posts as $post)
                     <li class="list">
                         <input class="post-id" type="hidden" value="{{ $post->id }}">
@@ -44,7 +45,6 @@
                                         </div>
                                     @endif
                                 </div>
-                                <p class="prefecture"></p>
                             </div>
                             <div class="review">
                                 @if($post->thoughts) <p class="thoughts"> {{ $post->thoughts }} </p> @endif

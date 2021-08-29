@@ -14,11 +14,11 @@ require('./user/register.js');
 import Vue from 'vue';
 import Search from './components/Search';
 import ToPost from './components/ToPost';
+import SelectOrder from './components/SelectOrder';
 
 const app = new Vue({
   el: '#app',
   components: {
-    Search,
-    ToPost,
+    Search, ToPost, SelectOrder,
   }
 })
