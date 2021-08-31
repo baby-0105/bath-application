@@ -3,10 +3,9 @@
 namespace Tests\Feature\Post;
 
 use App\Models\Bath;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 /**
@@ -14,15 +13,14 @@ use Tests\TestCase;
  */
 class ToPostTest extends TestCase
 {
+
+    use DatabaseTransactions; // FactoryのテストデータをDBに保存させない
+
     public function testGetPage()
     {
         $response = $this->get('/post/topost');
         $response->assertStatus(302);
     }
-
-    // public function testResponseJson()
-    // {
-    // }
 
     /**
      * 投稿用のお風呂の検索
@@ -33,7 +31,7 @@ class ToPostTest extends TestCase
     {
         // 都道府県検索
         $place = Bath::where('place', '東京都')->first();
-        $this->assertNotNull($place); // Nullで無ければtrue
+        $this->assertNotNull($place);
         $place = Bath::where('place', '韓国')->first();
         $this->assertNull($place);
         $place = Bath::where('place', 'トウキョウ')->first();
@@ -44,23 +42,44 @@ class ToPostTest extends TestCase
         $this->assertNull($place);
 
         // キーワード検索（ひらがな/カタカナ一致）
-        $keyword1 = Bath::where('name', 'like', "%ああ%")->first(); // nameカラムに、「あ」があることの確認
+        $keyword1 = Bath::where('name', 'like', "%ああ%")->first();
         $this->assertNotNull($keyword1);
-        $keyword2 = Bath::where('name', 'like', "%a%")->first(); // nameカラムに、「a」があることの確認
+        $keyword2 = Bath::where('name', 'like', "%a%")->first();
         $this->assertNotNull($keyword2);
-        $keyword3 = Bath::where('name', 'like', "%かかかかかかk%")->first(); // nameカラムに、「かかかかかかk」がないことの確認
+        $keyword3 = Bath::where('name', 'like', "%かかかかかかk%")->first();
         $this->assertNull($keyword3);
     }
 
-    // public function testPost()
-    // {
-    //     // 画像アップロードテスト
-    //     Storage::fake('main_images');
-    //     $file = UploadedFile::fake()->image('avatar.jpg');
-    //     $response = $this->json('POST', '/post/topost', [
-    //         'main_image_path' => $file,
-    //     ]);
-    //     Storage::disk('main_images')->assertExists($file->hashName());
-    //     Storage::disk('main_images')->assertMissing('missing.jpg');
-    // }
+    /**
+     * 投稿画面 投稿処理と、投稿後リダイレクトまでのテスト
+     *
+     * @return void
+     */
+    public function testPost()
+    {
+            $user = factory(User::class)->create();
+            $post = factory(Post::class)->create();
+
+            $this->actingAs($user)->get('/post/mypost');
+
+            $data = [
+                'bath_id' => $post->bath_id,
+                'user_id' => $post->user_id,
+                'title' => $post->title,
+                'thoughts' => $post->thoughts,
+                'main_image_path' => $post->main_image_path,
+                'sub_picture1_path' => $post->sub_picture1_path,
+                'sub_picture2_path' => $post->sub_picture2_path,
+                'sub_picture3_path' => $post->sub_picture3_path,
+                'eval_cd' => $post->eval_cd,
+                'hot_water_eval_cd' => $post->hot_water_eval_cd,
+                'rock_eval_cd' => $post->rock_eval_cd,
+                'sauna_eval_cd' => $post->sauna_eval_cd,
+            ];
+
+            $response = $this->withoutMiddleware()->post('/post/topost', $data);
+
+            $response->assertRedirect('/post/mypost');
+            $this->assertDatabaseHas('posts', $data);
+    }
 }
