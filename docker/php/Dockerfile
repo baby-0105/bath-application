@@ -12,11 +12,12 @@ COPY php.ini /usr/local/etc/php/
 
 #パッケージ管理ツールapt-getの更新と必要パッケージのインストール
 RUN apt-get update \
-&& apt-get install -y git zip unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+&& apt-get install -y git zip unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev zlib1g-dev libzip-dev \
 && : 'Install PHP Extensions' \
 && docker-php-ext-install pdo_mysql bcmath \
 && docker-php-ext-configure gd --with-freetype --with-jpeg \
-&& docker-php-ext-install -j$(nproc) gd
+&& docker-php-ext-install -j$(nproc) gd \
+&& docker-php-ext-install zip
 
 WORKDIR /var/www/html
 
