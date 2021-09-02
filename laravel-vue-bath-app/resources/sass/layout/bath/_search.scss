@@ -85,9 +85,22 @@
     margin-bottom: 10px;
 }
 
-.bath-search .search-result .list .title {
-    font-size: 1.8rem;
+.bath-search .search-result .list .title-block {
+    position: relative;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.bath-search .search-result .list .title-block .title {
+    font-size: 1.8rem;
+}
+
+.bath-search .search-result .list .title-block .star-icon {
+    @include centered_vertically;
+    position: absolute;
+    right: 0;
+    width: 26px;
 }
 
 .bath-search .search-result .list .mark-block {
@@ -163,7 +176,6 @@
     text-decoration: underline;
     &:hover {
         text-decoration: none;
-        cursor: pointer;
     }
 }
 

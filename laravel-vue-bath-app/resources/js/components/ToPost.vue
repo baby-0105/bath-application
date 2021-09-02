@@ -83,7 +83,6 @@
         padding: 10px;
         border-radius: 5px;
         &:hover {
-            cursor: pointer;
             color: #ffffff;
             background: #222;
         }

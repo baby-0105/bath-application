@@ -49,6 +49,7 @@ li {
 a {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 h1 {
@@ -757,9 +758,23 @@ h1 {
   margin-bottom: 10px;
 }
 
-.bath-search .search-result .list .title {
-  font-size: 1.8rem;
+.bath-search .search-result .list .title-block {
+  position: relative;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.bath-search .search-result .list .title-block .title {
+  font-size: 1.8rem;
+}
+
+.bath-search .search-result .list .title-block .star-icon {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  right: 0;
+  width: 26px;
 }
 
 .bath-search .search-result .list .mark-block {
@@ -832,7 +847,6 @@ h1 {
 
 .bath-search .search-result .list .link-block .post-link:hover {
   text-decoration: none;
-  cursor: pointer;
 }
 
 .bath-search .search-result .no-result {

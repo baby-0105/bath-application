@@ -51,6 +51,16 @@ class User extends Authenticatable
     }
 
     /**
+     * お気に入りとのリレーションを返す
+     *
+     * @return void
+     */
+    public function favorite()
+    {
+        return $this->hasMany(Favorite::class, 'user_id', 'id');
+    }
+
+    /**
      * 本登録が完了しているかどうかを返す
      *
      * @return bool true:完了、false:未完了

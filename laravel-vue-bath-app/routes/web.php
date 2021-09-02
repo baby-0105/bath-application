@@ -24,6 +24,11 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('update', 'ToPostController@update')->name('post.update');
     });
 
+    Route::group(['prefix' => 'bath', 'namespace' => 'Bath'], function() {
+        Route::post('addFavorite', 'FavoriteController@addFavorite');
+        Route::post('unFavorite', 'FavoriteController@unFavorite');
+    });
+
     /**
      * ログイン済みの、SNS認証ユーザーの場合
      */
@@ -56,8 +61,10 @@ Route::group(['prefix' => 'post'], function() {
     Route::get('index', function () { return view('post.index'); })->name('post.index');
 });
 
-Route::get('bath/search', 'Bath\SearchController@show')->name('bath.search');
-Route::post('bath/search', 'Bath\SearchController@getInfo')->name('bath.search.getInfo');
+Route::group(['prefix' => 'bath', 'namespace' => 'Bath'], function() {
+    Route::get('search', 'SearchController@show')->name('bath.search');
+    Route::post('search', 'SearchController@getInfo')->name('bath.search.getInfo');
+});
 
 Route::namespace('User')->group(function() {
     Route::group(['prefix' => 'user'], function() {

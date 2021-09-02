@@ -85,6 +85,15 @@ class SearchController extends Controller
                 ->where('sauna_eval_cd', '<=', $request->high_sauna_eval)
                 ->get();
         }
-        return response()->json($bathQuery->get());
+        if(auth()->user()) {
+            $isFavoritedId = auth()->user()->favorite()->pluck('bath_id');
+        } else {
+            $isFavoritedId = [];
+        }
+        return response()->json([
+            'baths' => $bathQuery->get(),
+            'isFavoritedId' => $isFavoritedId,
+            'isLogin' => auth()->user(),
+        ]);
     }
 }

@@ -12,12 +12,12 @@
         </form>
         <ul class="bath">
             <li class="list" v-for="post in posts" :key="post.id">
-                <a class="dlt-post" :value="post.id" @click="dltPost(post.id)"><img class="dlt-post-img" :src="dltIcon" alt="投稿削除ボタン"></a>
+                <a class="dlt-post" :value="post.id" @click="dltPost(post.id)"><img class="dlt-post-img" :src="'../svg/dlt-icon.svg'" alt="投稿削除ボタン"></a>
                 <h4 class="title">- {{ post.title }} -</h4>
                 <div class="desc">
                     <div class="info">
                         <div class="bath-img">
-                            <img class="main-img" :src="'../storage/' + post.main_image_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂の画像 メイン" v-if="post.main_image_path"><img class="main-img" :src="oflIcon" alt="風呂の画像 メイン" v-else>
+                            <img class="main-img" :src="'../storage/' + post.main_image_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂の画像 メイン" v-if="post.main_image_path"><img class="main-img" :src="'../svg/bath-mark-light-blue.svg'" alt="風呂の画像 メイン" v-else>
                             <div class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
                                 <img v-if="post.sub_picture1_path" class="sub-img" :src="'../storage/' + post.sub_picture1_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂のサブ画像">
                                 <img v-if="post.sub_picture2_path" class="sub-img" :src="'../storage/' + post.sub_picture2_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂のサブ画像">
@@ -46,8 +46,6 @@
         data() {
             return {
                 posts: {},
-                dltIcon: '../svg/dlt-icon.svg',
-                oflIcon: '../svg/bath-mark-light-blue.svg'
             }
         },
         methods: {
