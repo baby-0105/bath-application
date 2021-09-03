@@ -26,7 +26,7 @@
         <div class="link-area">
             <a class="btn" href="{{ route('user.edit.show') }}">ユーザー情報編集</a>
             <a class="btn" href="{{ route('post.mypost') }}">My投稿</a>
-            <a class="btn" href="{{ route('user.favorite') }}">お気に入り</a>
+            <a class="btn" href="{{ route('bath.favorite.index') }}">お気に入り</a>
         </div>
     </div>
 @endsection

@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            @include('layouts.components.popup_mail_confirm');
+            @include('layouts.components.popup_mail_confirm')
 
             @yield('content')
         </div>

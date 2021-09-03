@@ -11,7 +11,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('edit', 'User\EditController@submit')->name('user.edit.submit');
         Route::get('change_email', 'User\ChangeEmailController@show')->name('user.change_email.show');
         Route::post('change_email', 'User\ChangeEmailController@sendEmail')->name('user.change_email.sendEmail');
-        Route::get('favorite', function () { return view('user.favorite'); })->name('user.favorite');
     });
 
     Route::group(['prefix' => 'post', 'namespace' => 'Post'], function() {
@@ -27,6 +26,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'bath', 'namespace' => 'Bath'], function() {
         Route::post('addFavorite', 'FavoriteController@addFavorite');
         Route::post('unFavorite', 'FavoriteController@unFavorite');
+        Route::get('favorite', 'FavoriteController@index')->name('bath.favorite.index');
     });
 
     /**

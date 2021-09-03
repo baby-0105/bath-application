@@ -17,7 +17,7 @@ class FavoriteService
      */
     public function addFavorite($data)
     {
-        Favorite::addFavorite($data);
+        return Favorite::addFavorite($data);
     }
 
     /**
@@ -28,6 +28,16 @@ class FavoriteService
      */
     public function unFavorite($bathId)
     {
-        Favorite::unFavorite($bathId);
+        return Favorite::unFavorite($bathId);
+    }
+
+    /**
+     * お気に入りにされたお風呂を返す
+     *
+     * @return Favorite
+     */
+    public function favoritedBath()
+    {
+        return Favorite::with('bath')->where('user_id', auth()->id())->get();
     }
 }

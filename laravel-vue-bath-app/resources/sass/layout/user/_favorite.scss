@@ -1,0 +1,134 @@
+/*// ==========================================================================
+//  お気に入り
+// ==========================================================================*/
+
+.favorite .no-favorited {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.favorite {
+    width: 80%;
+    margin: 0 auto;
+}
+
+// TODO: 以下、検索結果と同じCSS まとめる余地あり
+/*// -----------------------------------------------------------------
+//  search-result 検索結果ブロック
+// -----------------------------------------------------------------*/
+
+.favorite .bath .list {
+    border-radius: 10px;
+    border: 1px solid #222;
+    padding: 20px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.favorite .bath .bath-num {
+    text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.favorite .bath .list .title-block {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.favorite .bath .list .title-block .title {
+    font-size: 1.8rem;
+}
+
+.favorite .bath .list .title-block .star-icon {
+    @include centered_vertically;
+    position: absolute;
+    right: 0;
+    width: 26px;
+}
+
+.favorite .bath .list .mark-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.favorite .bath .list .mark-block .review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+}
+
+.favorite .bath .list .mark-block .review .whole-review {
+    font-size: 60px;
+
+    &:after {
+        content: '-総合評価-';
+        display: block;
+        font-size: 1.2rem;
+    }
+}
+
+.favorite .bath .list .mark-block .review .others-review {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    font-size: 4.0rem;
+}
+
+.favorite .bath .list .mark-block .review .others-review li {
+    &:after {
+        display: block;
+        font-size: 1.2rem;
+    }
+    &:nth-child(1) {
+        &:after {
+            content: '-お湯評価-';
+        }
+    }
+    &:nth-child(2) {
+        &:after {
+            content: '-岩盤浴評価-';
+        }
+    }
+    &:nth-child(3) {
+        &:after {
+            content: '-サウナ評価-';
+        }
+    }
+}
+
+.favorite .bath .list .mark-block .mark {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+}
+
+.favorite .bath .list .text-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+
+.favorite .bath .list .link-block .post-link {
+    font-size: 1.5rem;
+    color: #7EDBE6;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.favorite .bath .no-result {
+    font-size: 1.8rem;
+    color: red;
+}

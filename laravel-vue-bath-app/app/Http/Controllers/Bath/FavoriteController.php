@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bath;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Bath\FavoriteRequest;
+use App\Models\Bath;
 use App\Services\Bath\FavoriteService;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,18 @@ class FavoriteController extends Controller
     public function __construct(FavoriteService $favoriteService)
     {
         $this->favoriteService = $favoriteService;
+    }
+
+    /**
+     * お気に入り登録一覧を表示する
+     *
+     * @return void
+     */
+    public function index()
+    {
+        return view('bath.favorite')->with([
+            'favoritedBaths' => $this->favoriteService->favoritedBath(),
+        ]);
     }
 
     /**

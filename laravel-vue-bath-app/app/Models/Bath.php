@@ -24,7 +24,7 @@ class Bath extends Model
      */
     public function post()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'bath_id', 'id');
     }
 
     /**
@@ -34,7 +34,7 @@ class Bath extends Model
      */
     public function favorite()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favorite::class, 'bath_id', 'id');
     }
 
     /**
@@ -68,18 +68,5 @@ class Bath extends Model
     public static function getBathName($id)
     {
         return self::where('id', $id)->value('name');
-    }
-
-    /**
-     * お気に入りに追加しているか、どうかを返す
-     *
-     * @param Integer $bathId お風呂ID
-     * @return boolean お気に入りかどうか
-     */
-    public static function isFavorited($bathId)
-    {
-        return self::where('id', $bathId)->favorite()
-            ->where('user_id', user()->id())
-            ->exists();
     }
 }

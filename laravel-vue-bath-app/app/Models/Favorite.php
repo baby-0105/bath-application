@@ -22,7 +22,7 @@ class Favorite extends Model
      */
     public function user()
     {
-        return $this->hasMany(User::class, 'user_id', 'id');
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 
     /**
@@ -32,7 +32,7 @@ class Favorite extends Model
      */
     public function bath()
     {
-        return $this->hasMany(Bath::class, 'bath_id', 'id');
+        return $this->hasMany(Bath::class, 'id', 'bath_id');
     }
 
     /**
@@ -43,7 +43,7 @@ class Favorite extends Model
      */
     public static function addFavorite($data)
     {
-        self::create($data);
+        return self::create($data);
     }
 
     /**
@@ -54,6 +54,6 @@ class Favorite extends Model
      */
     public static function unFavorite($bathId)
     {
-        self::where('bath_id', $bathId)->delete();
+        return self::where('bath_id', $bathId)->delete();
     }
 }

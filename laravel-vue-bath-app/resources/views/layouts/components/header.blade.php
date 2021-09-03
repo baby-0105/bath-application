@@ -16,7 +16,7 @@
           <span class="text">検索する</span>
           <img class="nav-bg" src="{{ asset('svg/square-blue.svg') }}" alt="navリンクの背景">
         </a>
-        <a class="link" href="{{ route('user.favorite') }}">
+        <a class="link" href="{{ route('bath.favorite.index') }}">
           <span class="text">お気に入り</span>
           <img class="nav-bg" src="{{ asset('svg/square-light-blue.svg') }}" alt="navリンクの背景">
         </a>

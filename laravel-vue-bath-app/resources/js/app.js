@@ -15,10 +15,11 @@ import Vue from 'vue';
 import Search from './components/Search';
 import ToPost from './components/ToPost';
 import SelectOrder from './components/SelectOrder';
+import FavoritedBath from './components/FavoritedBath';
 
 const app = new Vue({
   el: '#app',
   components: {
-    Search, ToPost, SelectOrder,
+    Search, ToPost, SelectOrder, FavoritedBath,
   }
 })
