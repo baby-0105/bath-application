@@ -176,6 +176,10 @@
                     $('.form-block .high-sauna-eval-error').text(e.response.data.errors.high_sauna_eval);
                     $('.form-block .field-error').text(e.response.data.errors.field);
                 })
+                .finally(function() {
+                    const headerHeight = $('#header').height();
+                    $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
+                })
             },
             addFavorite(bathId) {
                 if(!this.isLogin) {
