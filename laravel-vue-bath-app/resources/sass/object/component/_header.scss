@@ -21,21 +21,66 @@
     width: 100px;
 }
 
+/*// -----------------------------------------------------------------
+//  nav
+// -----------------------------------------------------------------*/
+
 .header .nav {
-    display: flex;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    background-color: #fff9de;
+    transform: translateY(-300vw);
+    transition: all .3s linear;
+    &:after{
+        content: '';
+        display: block;
+        background: #fff9de;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        bottom: -50px;
+        transform: translateX(-50%);
+    }
+
+    @media screen and (max-width: 1024px) {
+        height: 80vh;
+    }
+}
+
+.nav-is-open {
+    transform: translateX(0) !important;
+}
+
+.header .nav .nav-container {
+    width: 80%;
     height: 100%;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+        justify-content: space-around;
+    }
 }
 
 .header .nav .link:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 30px;
+    @media screen and (max-width: 1024px) {
+        margin-right: 0;
+    }
 }
 
 .header .nav .link {
     position: relative;
-    height: 100%;
     display: flex;
     align-items: center;
+    text-shadow: 2px 2px 1px #ffffff;
 }
 
 .header .nav .link .text {
@@ -43,13 +88,9 @@
     z-index: 2;
 }
 
-.header .nav .link .nav-bg {
+.header .nav .batsu-icon {
+    width: 50px;
     position: absolute;
-    left: 20%;
-    transform: rotate(15deg);
-    transition: 0.5s;
-}
-
-.square-hover {
-    transform: rotate(-30deg) !important;
+    bottom: -25px;
+    z-index: 2;
 }
