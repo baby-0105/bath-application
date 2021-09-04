@@ -162,6 +162,9 @@
                     this.baths = response.data.baths;
                     this.isFavoritedId = response.data.isFavoritedId;
                     this.isLogin = response.data.isLogin;
+
+                    const headerHeight = $('#header').height();
+                    $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
                 })
                 .catch(e => {
                     $('.form-block .prefecture-error').text(e.response.data.errors.prefecture);
@@ -175,10 +178,6 @@
                     $('.form-block .row-sauna-eval-error').text(e.response.data.errors.row_sauna_eval);
                     $('.form-block .high-sauna-eval-error').text(e.response.data.errors.high_sauna_eval);
                     $('.form-block .field-error').text(e.response.data.errors.field);
-                })
-                .finally(function() {
-                    const headerHeight = $('#header').height();
-                    $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
                 })
             },
             addFavorite(bathId) {
