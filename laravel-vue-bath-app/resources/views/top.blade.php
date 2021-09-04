@@ -7,23 +7,28 @@
         </div>
     </div>
     <div id="toppage" class="top-page">
+        <div class="bg-image-block">
+            <img class="bg-image" src="{{ asset('img/OFLog-top-bg-woman.jpg') }}" alt="TOP 背景画像 女性">
+        </div>
         <div class="top-container">
             <div class="first-view">
-                <div class="search-btn-area">
-                    <a class="search-btn" href="{{ route('bath.search') }}">
-                        <span class="btn-name">検索する</span>
-                        <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
-                    </a>
-                </div>
                 <div class="title-block">
                     <p class="main-text">さぁ、今日のお風呂を探そう！</p>
                     <img class="logo" src="{{ asset('img/OFLog-logo.png') }}" alt="TOPページのロゴ">
                 </div>
-                <div class="my-post-block">
-                    <a class="search-btn" href="{{ route('post.mypost') }}">
-                        <span class="btn-name">My投稿</span>
-                        <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
-                    </a>
+                <div class="btn-block">
+                    <div class="search-btn-area">
+                        <a class="search-btn" href="{{ route('bath.search') }}">
+                            <span class="btn-name">検索する</span>
+                            <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                        </a>
+                    </div>
+                    <div class="my-post-block">
+                        <a class="search-btn" href="{{ route('post.mypost') }}">
+                            <span class="btn-name">My投稿</span>
+                            <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

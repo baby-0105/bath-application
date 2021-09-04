@@ -9,6 +9,15 @@
 .top-page {
     position: relative;
     top: -120px; /* body .container のpadding-bottomと同等にして、上下中央揃え */
+    height: 800px; /* 背景画像はみ出るため（デザイン変更あれば、また変わるかも） */
+    @media screen and (max-width: 760px) {
+        height: 100vh;
+    }
+    @media screen and (max-width: 760px) {
+        background-image: url('img/OFLog-top-bg-woman.jpg');
+        background-size: cover;
+        background-position: 70% 50%;
+    }
 }
 
 .top-page .top-container {
@@ -16,17 +25,131 @@
     margin: 0 auto;
 }
 
+.top-page .bg-image-block {
+    &:before {
+        content: "";
+        display: block;
+        border-radius: 47% 53% 16% 84% / 74% 10% 90% 26%;
+        background-color: #acd0d1;
+        position: absolute;
+        top: 80px;
+        left: 150px;
+        width: 80%;
+        height: 110%;
+        opacity: 0.7;
+        box-shadow: 0px 0px 20px 20px #acd0d1;
+        @media screen and (max-width: 1024px) {
+            height: 80%;
+            left: 100px;
+            top: 35%;
+        }
+        @media screen and (max-width: 760px) {
+            height: 60%;
+        }
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        border-radius: 26% 74% 86% 14% / 35% 59% 41% 65%;
+        background-color: #ffc041;
+        position: absolute;
+        top: 120px;
+        left: 80px;
+        width: 150px;
+        height: 100px;
+        opacity: 0.8;
+        box-shadow: 0px 0px 2px 2px #ffc041;
+        @media screen and (max-width: 1024px) {
+            top: 240px;
+        }
+        @media screen and (max-width: 760px) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.top-page .bg-image {
+    width: 85%;
+    position: absolute;
+    top: 120px;
+    right: 50px;
+    border-radius: 76% 24% 81% 19% / 29% 69% 31% 71%;
+    @media screen and (max-width: 1024px) {
+        top: 40%;
+    }
+    @media screen and (max-width: 760px) {
+        width: 100vw;
+        top: 120px;
+        right: 0;
+    }
+}
+
 .top-page .first-view {
+    color: #ffffff;
     text-align: center;
+    height: 100vh;
+}
+
+.top-page .first-view .title-block {
+    position: absolute;
+    top: 280px;
+    left: 20%;
+    @media screen and (max-width: 1024px) {
+        top: 50%;
+        left: 14%;
+    }
+    @media screen and (max-width: 760px) {
+        width: 50%;
+        left: 1%;
+    }
+    @media screen and (max-width: 760px) {
+        top: 350px;
+        width: 100%;
+    }
+}
+
+.top-page .first-view .title-block .logo {
+    @media screen and (max-width: 1024px) {
+        width: 200px;
+    }
+}
+.top-page .first-view .btn-block {
+    position: absolute;
+    top: 520px;
+    left: 20%;  /* title-blockと揃える */
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 100vh;
+    width: 420px;  /* title-blockと揃える */
+    @media screen and (max-width: 1024px) {
+        top: 75%;
+        left: 14%; /* title-blockと揃える */
+        width: 350px;  /* title-blockと揃える */
+    }
+    @media screen and (max-width: 760px) {
+        width: 100%;
+        left: 1%;
+    }
+    @media screen and (max-width: 760px) {
+        top: 500px;
+        width: 100%;
+    }
 }
 
 .top-page .main-text {
     font-size: 3.0rem;
     margin-bottom: 30px;
+    @media screen and (max-width: 1024px) {
+        font-size: 2.5rem;
+    }
+    @media screen and (max-width: 760px) {
+        font-size: 2.0rem;
+    }
 }
 
 .top-page .search-btn {
@@ -34,12 +157,19 @@
     width: 150px;
     display: block;
     border-radius: 50%;
+    @media screen and (max-width: 1024px) {
+        width: 100px;
+    }
 }
 
 .top-page .search-btn .btn-name {
     @include center_of_vertically_and_horizontally;
+    color: #ffffff;
     font-size: 3.0rem;
     white-space: nowrap;
+    @media screen and (max-width: 1024px) {
+        font-size: 2.0rem;
+    }
 }
 
 .top-page .search-btn .bath-mark {

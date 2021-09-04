@@ -24,6 +24,9 @@ body {
     position: relative;
     padding-bottom: 200px;
     box-sizing: border-box;
+    @media screen and (max-width: 760px) {
+        padding-bottom: 0;
+    }
 }
 
 body .main {
