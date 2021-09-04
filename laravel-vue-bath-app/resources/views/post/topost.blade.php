@@ -16,7 +16,7 @@
         <h2 class="title">投稿</h2>
         <form class="form" method="POST" action="{{ route('post.submit') }}" enctype="multipart/form-data">
             @csrf
-            @error('title') <p class="error">{{ $message }}</p> @enderror
+            @error('bath_code') <p class="error">{{ $message }}</p> @enderror
             <to-post v-bind:prefectures="{{ $prefectures }}"></to-post> {{-- Vue:お風呂検索コンポーネント --}}
             @error('eval') <p class="error">{{ $message }}</p> @enderror
             @error('hot_water_eval') <p class="error">{{ $message }}</p> @enderror
