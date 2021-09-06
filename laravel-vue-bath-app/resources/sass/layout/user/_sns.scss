@@ -6,10 +6,54 @@
 .register .sns {
     font-size: 1.4rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
 }
+
+.login .sns .google,
+.register .sns .google,
+.login .sns .facebook,
+.register .sns .facebook {
+    border: 3px solid #757575;
+    padding: 6px 30px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        display: block;
+        margin-right: 10px;
+    }
+    &:hover {
+        transition: all .2s ease-out;
+        color: #ffffff;
+    }
+}
+
 .login .sns .google,
 .register .sns .google {
-    margin-bottom: 10px;
+    &:before {
+        background: url('svg/google-icon.svg');
+    }
+    &:hover {
+        background: #ea4435;
+    }
+    @media screen and (max-width: 1024px) {
+        margin-bottom: 10px;
+    }
+}
+.login .sns .facebook,
+.register .sns .facebook {
+    &:before {
+        background: url('svg/facebook-icon.svg');
+    }
+    &:hover {
+        background: #1a77f2;
+    }
 }

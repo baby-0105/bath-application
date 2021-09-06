@@ -17,17 +17,17 @@
 
             <div class="list">
                 <label class="field-name">メールアドレス</label>
-                <input class="field" name="email" type="text" placeholder="メール" value="{{ old('email') }}">
+                <input class="field" name="email" type="text" value="{{ old('email') }}">
             </div>
             <div class="list password">
                 <label class="field-name">パスワード</label>
-                <input class="field" name="password" type="password" placeholder="パスワード">
+                <input class="field" name="password" type="password">
             </div>
-            <input class="btn" type="submit" value="ログイン">
+            <button class="btn" type="submit"></button>
         </form>
         <div class="sns">
-            <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログインする</a>
-            <a class="facebook" href="{{ route('login.sns', ['sns' => 'facebook']) }}">Facebookでログインする</a>
+            <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログイン</a>
+            <a class="facebook" href="{{ route('login.sns', ['sns' => 'facebook']) }}">Facebookでログイン</a>
         </div>
     </div>
 @endsection

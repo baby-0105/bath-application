@@ -24,9 +24,7 @@ body {
     position: relative;
     padding-bottom: 200px;
     box-sizing: border-box;
-    @media screen and (max-width: 760px) {
-        padding-bottom: 0;
-    }
+    background: #fff9de;
 }
 
 body .main {
@@ -45,6 +43,12 @@ a {
 
 h1 {
     font-size: 7.0rem;
+}
+
+button {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 3px solid #757575;
 }
 
 .hide { display: none; }

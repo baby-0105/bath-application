@@ -12,11 +12,10 @@
     height: 800px; /* 背景画像はみ出るため（デザイン変更あれば、また変わるかも） */
     @media screen and (max-width: 760px) {
         height: 100vh;
-    }
-    @media screen and (max-width: 760px) {
         background-image: url('img/OFLog-top-bg-woman.jpg');
         background-size: cover;
         background-position: 70% 50%;
+        margin-bottom: -200px;
     }
 }
 

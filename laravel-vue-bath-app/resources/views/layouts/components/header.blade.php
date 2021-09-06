@@ -1,7 +1,7 @@
 <header class="header" id="header">
   <div class="container">
     <a href="{{ url('/') }}"><img class="logo" src="{{ asset('img/OFLog-logo.png') }}" alt="ヘッダーのロゴ"></a>
-    <a class="burger" id="burger"><img src="{{ asset('svg/burger-menu.svg') }}" alt="ハンバーガーメニュー"></a>
+    <a class="burger" id="burger"><img class="burger-icon" src="{{ asset('svg/burger-menu.svg') }}" alt="ハンバーガーメニュー"></a>
   </div>
   <div class="nav" id="nav">
     <div class="nav-container">
@@ -14,8 +14,8 @@
         <a class="link" href="{{ route('user.mypage') }}"> MyPage </a>
         <a class="link blue-link" href="{{ url('logout') }}"> ログアウト </a>
       @else
-        <a class="link" href="{{ route('user.register') }}"> 新規登録 </a>
-        <a class="link" href="{{ route('user.login') }}"> ログイン </a>
+        <a class="link register-link" href="{{ route('user.register') }}"> 新規登録 </a>
+        <a class="link login-link" href="{{ route('user.login') }}"> ログイン </a>
       @endif
       <img class="batsu-icon" id="closeNav" src="{{ asset('svg/batsu.svg') }}" alt="バツ　アイコン">
     </div>
