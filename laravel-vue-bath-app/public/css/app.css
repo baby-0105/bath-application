@@ -61,6 +61,51 @@ button {
   background: #ffffff;
   border-radius: 10px;
   border: 3px solid #757575;
+  position: relative;
+}
+
+button:before {
+  content: "";
+  display: block;
+  background: url(/images/bath-mark-light-blue.svg?95073becd21c770eb4cf38464b079b2b);
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button:after {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+button:hover {
+  transition: all 0.2s ease-out;
+  background-color: #21ad77;
+  color: #ffffff;
+}
+
+.main-submit-btn {
+  padding: 12px 60px;
+  width: 240px;
+  margin: 0 auto;
+}
+
+input,
+select,
+textarea {
+  border-radius: 10px;
+  border: solid 2px #dddddd;
+  background: #ffffff;
+  padding: 5px;
+}
+
+input,
+select {
+  height: 55px;
 }
 
 .hide {
@@ -377,8 +422,6 @@ button {
 .user-form .list .field {
   width: 70%;
   padding: 14px;
-  border-radius: 10px;
-  border: solid 2px #dddddd;
 }
 
 @media screen and (max-width: 599px) {
@@ -396,31 +439,6 @@ button {
   width: 250px;
   padding: 12px 60px;
   margin: 0 auto;
-  position: relative;
-}
-
-.user-form .btn:before {
-  content: "";
-  display: block;
-  background: url(/images/bath-mark-light-blue.svg?95073becd21c770eb4cf38464b079b2b);
-  width: 40px;
-  height: 40px;
-  opacity: 0.8;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.user-form .btn:after {
-  position: relative;
-  font-size: 1.5rem;
-}
-
-.user-form .btn:hover {
-  transition: all 0.2s ease-out;
-  background-color: #21ad77;
-  color: #ffffff;
 }
 
 .user-form.register .btn:after {
@@ -511,7 +529,7 @@ button {
 
 .login .sns .google:before,
 .register .sns .google:before {
-  background: url(/images/google-icon.svg?8f64d9074895772cc6c5868cb5b4f992);
+  background: url(/images/google-icon.svg?4ae24f32d59e356c9bfac1482cd7c771);
 }
 
 .login .sns .google:hover,
@@ -796,8 +814,14 @@ button {
 // ==========================================================================*/
 
 .post-form {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .post-form {
+    width: 80%;
+  }
 }
 
 .post-form .title {
@@ -822,43 +846,83 @@ button {
   margin-bottom: 50px;
 }
 
+@media screen and (max-width: 760px) {
+  .post-form .list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .post-form .list .field {
-  width: 70%;
-  padding: 10px;
-  padding: 10px;
+  width: 80%;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.wide-field {
-  min-width: 70%;
-  max-width: 70%;
+@media screen and (max-width: 760px) {
+  .post-form .list .field {
+    width: 100%;
+  }
+}
+
+.post-form .list .wide-field {
+  min-width: 80%;
+  max-width: 80%;
   min-height: 80px;
+}
+
+@media screen and (max-width: 760px) {
+  .post-form .list .wide-field {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
 .post-form .list .field-name {
   font-size: 1.5rem;
   display: inline-block;
-  width: 25%;
+  width: 20%;
+}
+
+@media screen and (max-width: 760px) {
+  .post-form .list .field-name {
+    width: 100%;
+  }
 }
 
 .post-form .list .select-area {
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
 }
 
-.post-form .list .eval {
-  width: 22%;
-  padding: 10px;
+@media screen and (max-width: 760px) {
+  .post-form .list .select-area {
+    width: 100%;
+  }
 }
 
-.post-form .btn {
-  width: 20%;
-  margin: 0 auto;
-  padding: 10px;
+@media screen and (max-width: 599px) {
+  .post-form .list .select-area {
+    flex-wrap: wrap;
+    height: 150px;
+  }
+}
+
+.post-form .list .eval {
+  width: 22%;
+}
+
+@media screen and (max-width: 599px) {
+  .post-form .list .eval {
+    width: 45%;
+  }
+}
+
+.post-form .btn:after {
+  content: "\767B\9332\3059\308B";
 }
 
 /*// ==========================================================================
@@ -1048,10 +1112,6 @@ button {
   width: 50%;
   margin: 0 auto;
   margin-bottom: 150px;
-}
-
-.bath-search .form-block .field {
-  padding: 10px;
 }
 
 .bath-search .form-block .prefecture-keyword {
@@ -1260,6 +1320,7 @@ button {
   left: 50%;
   bottom: -50px;
   transform: translateX(-50%);
+  z-index: -1;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1285,6 +1346,7 @@ button {
   .header .nav .nav-container {
     flex-direction: column;
     justify-content: space-around;
+    padding-bottom: 30px;
   }
 }
 
@@ -1423,10 +1485,16 @@ button {
 // ==========================================================================*/
 
 .choose-img .img-field {
-  width: 70%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 760px) {
+  .choose-img .img-field {
+    width: 100%;
+  }
 }
 
 .choose-img .img-label {

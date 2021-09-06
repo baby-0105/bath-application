@@ -3,8 +3,11 @@
 // ==========================================================================*/
 
 .post-form {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
+    @media screen and (max-width: 1024px) {
+        width: 80%;
+    }
 }
 .post-form .title {
     text-align: center;
@@ -20,47 +23,63 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     &:last-of-type {
         margin-bottom: 50px;
+    }
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
 .post-form .list .field {
-    width: 70%;
-    padding: 10px;
-    padding: 10px;
+    width: 80%;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
 }
 
-.wide-field {
-    min-width: 70%;
-    max-width: 70%;
+.post-form .list .wide-field {
+    min-width: 80%;
+    max-width: 80%;
     min-height: 80px;
+    @media screen and (max-width: 760px) {
+        min-width: 100%;
+        max-width: 100%;
+    }
 }
 
 .post-form .list .field-name {
     font-size: 1.5rem;
     display: inline-block;
-    width: 25%;
+    width: 20%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
 }
 
 .post-form .list .select-area {
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
+    @media screen and (max-width: 599px) {
+        flex-wrap: wrap;
+        height: 150px;
+    }
 }
 
 .post-form .list .eval {
     width: 22%;
-    padding: 10px;
+    @media screen and (max-width: 599px) {
+        width: 45%;
+    }
 }
 
-.post-form .btn {
-    width: 20%;
-    margin: 0 auto;
-    padding: 10px;
-}
+.post-form .btn { &:after { content: '登録する'; }}

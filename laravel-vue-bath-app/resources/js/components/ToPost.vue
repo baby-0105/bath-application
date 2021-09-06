@@ -10,11 +10,14 @@
                     <option value="">都道府県を選択してください</option>
                     <option v-for="prefecture in prefectures" :key="prefecture.code" :value="prefecture.code">{{ prefecture.name }}</option>
                 </select>
-                <input class="keyword" v-model="keyword" placeholder="キーワードを入力してください" type="text">
-                <a class="search-btn" @click="searchBath()">検索</a>
+                <div class="tablet-field">
+                    <input class="keyword" v-model="keyword" placeholder="キーワードを入力してください" type="text">
+                    <button type="button" class="search-btn" @click="searchBath()"></button>
+                </div>
             </div>
             <div class="search-result" v-if="baths.length > 0">
-                <select class="select" v-model="selectedBath" name="bath_code">
+                <select class="select bath-select" v-model="selectedBath" name="bath_code">
+                    <option value="">お風呂を選択してください</option>
                     <option v-for="bath in baths" :key="bath.id" :value="bath.id">{{ bath.name }}</option>
                 </select>
             </div>
@@ -58,7 +61,10 @@
 
 <style lang="scss">
     .post-form .search-block {
-        width: 70%;
+        width: 80%;
+        @media screen and (max-width: 760px) {
+            width: 100%;
+        }
     }
 
     .post-form .search-field {
@@ -66,30 +72,50 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;
+        }
     }
 
     .post-form .search-field .select {
-        width: 45%;
-        padding: 10px;
+        width: 40%;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+        }
     }
 
     .post-form .search-field .keyword {
-        width: 40%;
-        padding: 10px;
+        width: 75%;
+        @media screen and (max-width: 1024px) {
+            width: 80%;
+        }
     }
 
     .post-form .search-field .search-btn {
         border: 1px solid #222;
-        padding: 10px;
         border-radius: 5px;
+        padding: 14px;
+        width: 25%;
         &:hover {
             color: #ffffff;
             background: #222;
         }
     }
 
-    .post-form .search-result .select {
-        width: 100%;
-        padding: 10px;
+    .post-form .search-field .tablet-field {
+        display: flex;
+        align-items: center;
+        width: 60%;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+            justify-content: space-between;
+        }
     }
+
+    .post-form .search-result .bath-select {
+        width: 100%;
+        background: #dfdfdf;
+    }
+
+    .post-form .search-btn { &:after { content: '検索'; }}
 </style>

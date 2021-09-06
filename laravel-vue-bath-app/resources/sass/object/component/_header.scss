@@ -50,6 +50,7 @@
         left: 50%;
         bottom: -50px;
         transform: translateX(-50%);
+        z-index: -1;
     }
     @media screen and (max-width: 1024px) {
         height: 80vh;
@@ -70,6 +71,7 @@
     @media screen and (max-width: 1024px) {
         flex-direction: column;
         justify-content: space-around;
+        padding-bottom: 30px;
     }
 }
 
