@@ -174,14 +174,8 @@ select {
 
 @media screen and (max-width: 760px) {
   .top-page .first-view .title-block {
-    width: 50%;
     left: 1%;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  .top-page .first-view .title-block {
-    top: 50%;
+    top: 40%;
     width: 100%;
   }
 }
@@ -217,13 +211,7 @@ select {
   .top-page .first-view .btn-block {
     width: 100%;
     left: 1%;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  .top-page .first-view .btn-block {
-    top: 80%;
-    width: 100%;
+    top: 70%;
   }
 }
 
@@ -291,15 +279,6 @@ select {
 @media screen and (max-width: 1024px) {
   .user-form {
     width: 80%;
-  }
-}
-
-@media screen and (min-width: 599px) {
-  .user-form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -1556,6 +1535,10 @@ select {
   display: block;
 }
 
+/*// ==========================================================================
+//  ポップアップ
+// ==========================================================================*/
+
 .popup {
   height: 100vh;
   width: 100%;
@@ -1579,14 +1562,32 @@ select {
   text-align: center;
 }
 
+@media screen and (max-width: 1024px) {
+  .popup .content {
+    width: 80%;
+  }
+}
+
 .popup .title {
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
 
+@media screen and (max-width: 760px) {
+  .popup .title {
+    font-size: 2rem;
+  }
+}
+
 .popup .text {
   font-size: 1.8rem;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 760px) {
+  .popup .text {
+    font-size: 1.5rem;
+  }
 }
 
 .popup .content .list {
@@ -1596,9 +1597,21 @@ select {
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 760px) {
+  .popup .content .list {
+    flex-direction: column;
+  }
+}
+
 .popup .content label {
   font-size: 1.6rem;
   width: 20%;
+}
+
+@media screen and (max-width: 760px) {
+  .popup .content label {
+    width: 100%;
+  }
 }
 
 .popup .content .input {
@@ -1606,12 +1619,14 @@ select {
   padding: 10px;
 }
 
-.popup .content .btn {
-  padding: 5px;
+@media screen and (max-width: 760px) {
+  .popup .content .input {
+    width: 100%;
+  }
 }
 
-.popup .btn {
-  padding: 5px;
+.popup .content .btn {
+  padding: 12px 30px;
 }
 
 /*// ==========================================================================

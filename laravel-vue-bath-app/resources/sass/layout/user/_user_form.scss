@@ -8,9 +8,6 @@
     @media screen and (max-width: 1024px) {
         width: 80%;
     }
-    @media screen and (min-width: 599px) {
-        @include center_of_vertically_and_horizontally;
-    }
 }
 .user-form .title {
     text-align: center;
