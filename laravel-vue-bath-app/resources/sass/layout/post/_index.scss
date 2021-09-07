@@ -58,6 +58,10 @@
     position: absolute;
     right: 30px;
     top: 20px;
+    @media screen and (max-width: 599px) {
+        right: -10px;
+        top: -10px;
+    }
 }
 
 .post-index .index .bath .list .dlt-post-img {
@@ -70,7 +74,11 @@
 .post-index .index .desc {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.5rem;
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
 }
 
 .post-index .index .desc .info {
@@ -79,28 +87,39 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 1024px) {
+        flex-direction: initial;
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    @media screen and (max-width: 599px) {
+        flex-direction: column;
+    }
 }
 
 .post-index .index .desc .bath-img {
     display: flex;
     justify-content: center;
+    width: 100%;
+    @media screen and (max-width: 1024px) {
+        width: 30%;
+    }
+    @media screen and (max-width: 599px) {
+        width: 90%;
+    }
 }
 
 .post-index .index .desc .main-img {
-    width: 250px;
-    height: 200px;
+    width: 80%;
     margin-right: 10px;
+
 }
 
 .post-index .index .desc .sub-imgs {
-    width: 50px;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.post-index .index .desc .sub-img {
-    height: 50px;
 }
 
 .post-index .index .desc .review {
@@ -108,16 +127,33 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    @media screen and (max-width: 1024px) {
+        width: 90%;
+    }
 }
 
 .post-index .index .desc .review .thoughts {
     text-align: left;
     font-size: 2.0rem;
+    border: 2px solid #dfdfdf;
+    border-radius: 10px;
+    padding: 10px;
+    background: #e9e9e9;
+    @media screen and (max-width: 760px) {
+        font-size: 1.5rem;
+    }
 }
 
 .post-index .index .desc .review-num {
     display: flex;
     align-items: center;
+    @media screen and (max-width: 1024px) {
+        width: 60%;
+    }
+    @media screen and (max-width: 760px) {
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
 .post-index .index .desc .review-num li {
     &:first-child {
@@ -127,6 +163,13 @@
             content: '-総合評価-';
             display: block;
             font-size: 1.2rem;
+        }
+        @media screen and (max-width: 760px) {
+            width: 50%;
+        }
+        @media screen and (max-width: 599px) {
+            width: 25%;
+            font-size: 4rem;
         }
     }
 
@@ -152,10 +195,29 @@
                 content: '-サウナ評価-';
             }
         }
+        @media screen and (max-width: 599px) {
+            width: 25%;
+            font-size: 3rem;
+        }
     }
 }
 
 .post-index .index .post-time {
     font-size: 1.4rem;
     color: rgba(108, 122, 137, 1);
+}
+
+.post-index .index .select-order .select {
+    margin-bottom: 20px;
+    width: 30%;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    font-size: 1.6rem;
+    @media screen and (max-width: 1024px) {
+        width: 50%;
+    }
+    @media screen and (max-width: 599px) {
+        width: 100%;
+    }
 }

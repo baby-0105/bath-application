@@ -22,13 +22,13 @@ html {
 body {
     min-height: 100vh;
     position: relative;
-    padding-bottom: 200px;
     box-sizing: border-box;
     background: #fff9de;
 }
 
 body .main {
     padding-top: 120px;
+    padding-bottom: 180px;
 }
 
 li {
@@ -91,3 +91,13 @@ select {
 
 .hide { display: none; }
 .show { display: block; }
+.tablet-block {
+    @media screen and (min-width: 1025px) {
+        display: none !important;
+    }
+}
+.pc-block {
+    @media screen and (max-width: 1024px) {
+        display: none !important;
+    }
+}

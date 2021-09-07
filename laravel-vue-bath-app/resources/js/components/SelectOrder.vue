@@ -24,10 +24,16 @@
                                 <img v-if="post.sub_picture3_path" class="sub-img" :src="'../storage/' + post.sub_picture3_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂のサブ画像">
                             </div>
                         </div>
+                        <ul class="review-num tablet-block">
+                            <li>{{ post.eval_cd }}</li>
+                            <li v-if="post.hot_water_eval_cd"> {{ post.hot_water_eval_cd }}</li><li v-else>--</li>
+                            <li v-if="post.rock_eval_cd"> {{ post.rock_eval_cd }} </li><li v-else>--</li>
+                            <li v-if="post.sauna_eval_cd"> {{ post.sauna_eval_cd }}</li><li v-else>--</li>
+                        </ul>
                     </div>
                     <div class="review">
                         <p class="thoughts" v-if="post.thoughts"> {{ post.thoughts }} </p>
-                        <ul class="review-num">
+                        <ul class="review-num pc-block">
                             <li>{{ post.eval_cd }}</li>
                             <li v-if="post.hot_water_eval_cd"> {{ post.hot_water_eval_cd }}</li><li v-else>--</li>
                             <li v-if="post.rock_eval_cd"> {{ post.rock_eval_cd }} </li><li v-else>--</li>
@@ -73,12 +79,4 @@
 </script>
 
 <style>
-    .post-index .index .select-order .select {
-        margin-bottom: 20px;
-        width: 30%;
-        padding: 10px;
-        display: block;
-        margin-left: auto;
-        font-size: 1.6rem;
-    }
 </style>

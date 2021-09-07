@@ -15,9 +15,9 @@
     justify-content: space-between;
     height: 100px;
     padding: 10px;
-    @media screen and (max-width: 760px) {
-        height: 120px; /* 謎の余白ができるためfooterで埋める */
-    }
+    // @media screen and (max-width: 760px) {
+    //     height: 120px; /* 謎の余白ができるためfooterで埋める */
+    // }
 }
 
 .footer .logo {

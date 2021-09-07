@@ -45,10 +45,16 @@
                                         </div>
                                     @endif
                                 </div>
+                                <ul class="review-num tablet-block">
+                                    <li>{{ $post->eval_cd }}</li>
+                                    <li>@if($post->hot_water_eval_cd) {{ $post->hot_water_eval_cd }} @else  -- @endif</li>
+                                    <li>@if($post->rock_eval_cd) {{ $post->rock_eval_cd }} @else  -- @endif</li>
+                                    <li>@if($post->sauna_eval_cd) {{ $post->sauna_eval_cd }} @else  -- @endif</li>
+                                </ul>
                             </div>
                             <div class="review">
                                 @if($post->thoughts) <p class="thoughts"> {{ $post->thoughts }} </p> @endif
-                                <ul class="review-num">
+                                <ul class="review-num pc-block">
                                     <li>{{ $post->eval_cd }}</li>
                                     <li>@if($post->hot_water_eval_cd) {{ $post->hot_water_eval_cd }} @else  -- @endif</li>
                                     <li>@if($post->rock_eval_cd) {{ $post->rock_eval_cd }} @else  -- @endif</li>

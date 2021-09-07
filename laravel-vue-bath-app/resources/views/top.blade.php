@@ -7,9 +7,6 @@
         </div>
     </div>
     <div id="toppage" class="top-page">
-        <div class="bg-image-block">
-            <img class="bg-image" src="{{ asset('img/OFLog-top-bg-woman.jpg') }}" alt="TOP 背景画像 女性">
-        </div>
         <div class="top-container">
             <div class="first-view">
                 <div class="title-block">
