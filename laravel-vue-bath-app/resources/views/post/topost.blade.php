@@ -1,15 +1,15 @@
 @extends('app')
 @section('content')
-    <div class="popup @if(session('isUpdatePost')) flex @else hide @endif" id="popup">
+    <div class="topost-popup popup @if(session('isUpdatePost')) flex @else hide @endif" id="popup">
         <div class="content">
             <p class="text">選択したお風呂は、以前に投稿しています。</p>
             <p class="text">{{ session('isUpdatePost') }}</p>
             <form method="POST" action="{{ route('post.update') }}">
                 @csrf
-                <input type="hidden" name="">
-                <button>更新する</button>
-                <button class="close" id="close">閉じる</button>
+                <input type="hidden">
+                <button class="btn update"></button>
             </form>
+            <button class="btn close" id="close"></button>
         </div>
     </div>
     <div class="post-form post-topost" id="toPost">

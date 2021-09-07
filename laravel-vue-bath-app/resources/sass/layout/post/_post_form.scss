@@ -32,6 +32,13 @@
     }
 }
 
+.post-form .choose-img .img-field {
+    width: 80%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
+}
+
 .post-form .list .field {
     width: 80%;
     font-size: 1.5rem;

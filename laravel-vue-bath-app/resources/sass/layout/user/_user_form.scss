@@ -26,7 +26,7 @@
     &:last-of-type {
         margin-bottom: 50px;
     }
-    @media screen and (max-width: 599px) {
+    @media screen and (max-width: 760px) {
         flex-direction: column;
     }
 }
@@ -35,14 +35,14 @@
     font-size: 1.4rem;
     display: inline-block;
     width: 25%;
-    @media screen and (max-width: 599px) {
+    @media screen and (max-width: 760px) {
         width: 100%;
     }
 }
 .user-form .list .field {
     width: 70%;
     padding: 14px;
-    @media screen and (max-width: 599px) {
+    @media screen and (max-width: 760px) {
         width: 100%;
     }
 }
@@ -50,6 +50,9 @@
 .user-form .list .select {
     width: 70%;
     padding: 10px;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
 }
 
 .user-form .btn {

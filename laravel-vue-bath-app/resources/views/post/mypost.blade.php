@@ -9,9 +9,9 @@
                     <form method="POST" action="{{ route('post.mypost.delete') }}">
                         @csrf
                         <input id="postId" type="hidden" name="postId" value="">
-                        <button type="submit" class="btn dlt">削除</button>
+                        <button class="btn dlt"　type="submit"></button>
                     </form>
-                    <button class="btn close" id="close">閉じる</button>
+                    <button class="btn close" id="close"></button>
                 </div>
             </div>
         </div>

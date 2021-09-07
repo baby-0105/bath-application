@@ -4,7 +4,7 @@
             <div class="content">
                 <p class="text">まだ、ログインが完了していません。</p>
                 <p class="text">ログインを完了させてください。</p>
-                <button class="close" id="close">閉じる</button>
+                <button class="btn close" id="close">閉じる</button>
             </div>
         </div>
         <div class="form-block">

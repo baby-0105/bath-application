@@ -304,7 +304,7 @@ select {
   margin-bottom: 50px;
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 760px) {
   .user-form .list {
     flex-direction: column;
   }
@@ -316,7 +316,7 @@ select {
   width: 25%;
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 760px) {
   .user-form .list .field-name {
     width: 100%;
   }
@@ -327,7 +327,7 @@ select {
   padding: 14px;
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 760px) {
   .user-form .list .field {
     width: 100%;
   }
@@ -336,6 +336,12 @@ select {
 .user-form .list .select {
   width: 70%;
   padding: 10px;
+}
+
+@media screen and (max-width: 760px) {
+  .user-form .list .select {
+    width: 100%;
+  }
 }
 
 .user-form .btn {
@@ -646,10 +652,32 @@ select {
   min-height: 80px;
 }
 
+@media screen and (max-width: 760px) {
+  .user-edit .form .introduce {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
+
 .user-edit .form .is-release {
   display: flex;
   justify-content: space-around;
   font-size: 1.4rem;
+}
+
+.user-edit .form .is-release label {
+  display: flex;
+  align-items: center;
+}
+
+.user-edit .choose-img .img-field {
+  width: 70%;
+}
+
+@media screen and (max-width: 760px) {
+  .user-edit .choose-img .img-field {
+    width: 100%;
+  }
 }
 
 /*// ==========================================================================
@@ -824,6 +852,16 @@ select {
   .post-form .list {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+.post-form .choose-img .img-field {
+  width: 80%;
+}
+
+@media screen and (max-width: 760px) {
+  .post-form .choose-img .img-field {
+    width: 100%;
   }
 }
 
@@ -1629,21 +1667,35 @@ select {
   padding: 12px 30px;
 }
 
+.popup .btn.close:after {
+  content: "\9589\3058\308B";
+}
+
+.sns-update-profile .btn:after {
+  content: "\767B\9332\3059\308B";
+}
+
+.popup-delete .btn.dlt:after {
+  content: "\524A\9664";
+}
+
+.topost-popup .btn.update:after {
+  content: "\66F4\65B0\3059\308B";
+}
+
+.popup-delete .btn.close,
+.topost-popup .btn.close {
+  margin-top: 8px;
+}
+
 /*// ==========================================================================
 //  画像選択フィールド
 // ==========================================================================*/
 
 .choose-img .img-field {
-  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-@media screen and (max-width: 760px) {
-  .choose-img .img-field {
-    width: 100%;
-  }
 }
 
 .choose-img .img-label {
@@ -1672,7 +1724,7 @@ select {
 }
 
 .choose-img .img-label .preview-img {
-  height: 200px;
+  width: 90%;
 }
 
 .choose-img .flex {

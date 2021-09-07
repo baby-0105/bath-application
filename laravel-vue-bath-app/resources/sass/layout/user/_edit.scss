@@ -6,10 +6,26 @@
     max-width: 70%;
     min-width: 70%;
     min-height: 80px;
+    @media screen and (max-width: 760px) {
+        max-width: 100%;
+        min-width: 100%;
+    }
 }
 
 .user-edit .form .is-release {
     display: flex;
     justify-content: space-around;
     font-size: 1.4rem;
+}
+
+.user-edit .form .is-release label {
+    display: flex;
+    align-items: center;
+}
+
+.user-edit .choose-img .img-field {
+    width: 70%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
 }

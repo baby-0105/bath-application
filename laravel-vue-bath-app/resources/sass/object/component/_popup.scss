@@ -72,3 +72,11 @@
 .popup .content .btn {
     padding: 12px 30px;
 }
+.popup .btn.close { &:after { content: '閉じる'; }}
+.sns-update-profile .btn { &:after { content: '登録する'; }}
+.popup-delete .btn.dlt { &:after { content: '削除'; }}
+.topost-popup .btn.update { &:after { content: '更新する'; }}
+.popup-delete .btn.close,
+.topost-popup .btn.close {
+    margin-top: 8px;
+}
