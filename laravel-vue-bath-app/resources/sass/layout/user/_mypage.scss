@@ -9,6 +9,11 @@
 
 .mypage {
     padding: 0 100px;
+    @media screen and (max-width: 760px) {
+        padding: 0;
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 .mypage .user-info {
@@ -20,12 +25,19 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 30px;
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
 }
 
 .mypage .person {
     display: flex;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: 760px) {
+        margin-bottom: 20px;
+    }
 }
 
 .mypage .person .user-icon {
@@ -39,6 +51,9 @@
 
 .mypage .person .name {
     font-size: 3.0rem;
+    @media screen and (max-width: 599px) {
+        font-size: 2.0rem;
+    }
 }
 
 .mypage .person .key-img {
@@ -51,6 +66,12 @@
     color: gray;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 760px) {
+        margin-left: auto;
+    }
+    @media screen and (max-width: 599px) {
+        font-size: 2.0rem;
+    }
 }
 
 .mypage .user-info .intro {
@@ -59,7 +80,13 @@
     padding: 10px;
     width: 70%;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 1.8rem;
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+    @media screen and (max-width: 599px) {
+        font-size: 1.5rem;
+    }
 }
 
 /*// -----------------------------------------------------------------
@@ -69,7 +96,15 @@
 .mypage .link-area {
     display: flex;
     justify-content: space-around;
-    font-size: 18px;
+    font-size: 1.8rem;
+    @media screen and (max-width: 1024px) {
+        font-size: 1.8rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    @media screen and (max-width: 599px) {
+        font-size: 1.5rem;
+    }
 }
 
 .mypage .link-area .btn {
@@ -80,9 +115,13 @@
     color: #ffffff;
     width: 200px;
     text-align: center;
-
     &:hover {
         background: #ffffff;
         color: #f99f48;
+    }
+    @media screen and (max-width: 1024px) {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
     }
 }
