@@ -1,0 +1,175 @@
+/*// ==========================================================================
+//  お風呂一覧（お気に入りお風呂一覧 / 検索結果お風呂一覧）
+// ==========================================================================*/
+
+.bath-index .list {
+    border-radius: 10px;
+    border: 6px solid #dceaea;
+    padding: 20px;
+    background: url('svg/bath-mark-orange-thin.svg');
+    background-size: 100% 100%;
+    background-position: center;
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    @media screen and (max-width: 760px) {
+        padding: 10px;
+    }
+}
+
+.bath-index .bath-num {
+    text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.bath-index .list .title-block {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.bath-index .list .title-block .title {
+    @include text_bath_mark_of_both_side;
+    font-size: 2.0rem;
+}
+
+.bath-index .list .title-block .star-icon {
+    @include centered_vertically;
+    position: absolute;
+    right: 0;
+    width: 26px;
+    @media screen and (max-width: 599px) {
+        right: -25px;
+        top: -13px;
+    }
+}
+
+.bath-index .list .mark-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.bath-index .list .mark-block .review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    @media screen and (max-width: 1024px) {
+        width: 80%;
+    }
+    @media screen and (max-width: 760px) {
+        justify-content: space-around;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+.bath-index .list .mark-block .review .whole-review {
+    font-size: 60px;
+    &:after {
+        content: '-総合評価-';
+        display: block;
+        font-size: 1.2rem;
+    }
+}
+
+.bath-index .list .mark-block .review .others-review {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    font-size: 4.0rem;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+.bath-index .list .mark-block .review .others-review li {
+    &:after {
+        display: block;
+        font-size: 1.2rem;
+    }
+    &:nth-child(1) {
+        &:after {
+            content: '-お湯評価-';
+        }
+    }
+    &:nth-child(2) {
+        &:after {
+            content: '-岩盤浴評価-';
+        }
+    }
+    &:nth-child(3) {
+        &:after {
+            content: '-サウナ評価-';
+        }
+    }
+}
+
+.bath-index .list .mark-block .mark {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+}
+
+.bath-index .list .text-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    @media screen and (max-width: 760px) {
+        flex-wrap: wrap;
+    }
+}
+.bath-index .list .text-info .place {
+    display: flex;
+    &:before {
+        content: '';
+        background-image: url('svg/location.svg');
+        width: 20px;
+        margin-right: 5px;
+    }
+    @media screen and (max-width: 760px) {
+        width: 50%;
+        justify-content: center;
+    }
+}
+.bath-index .list .text-info .closing-day {
+    position: relative;
+    &:before {
+        content: '';
+        background-image: url('img/calender.png');
+        width: 50px;
+        opacity: .1;
+        height: 50px;
+        position: absolute;
+        @include center_of_vertically_and_horizontally;
+    }
+    @media screen and (max-width: 760px) {
+        width: 50%;
+    }
+}
+.bath-index .list .text-info .time {
+    @media screen and (max-width: 760px) {
+        margin-top: 20px;
+    }
+}
+
+.bath-index .list .link-block .post-link {
+    font-size: 1.5rem;
+    color: #7edbe6;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.bath-index .no-result {
+    font-size: 1.8rem;
+    color: red;
+}

@@ -709,120 +709,11 @@ select {
 }
 
 /*// -----------------------------------------------------------------
-//  search-result 検索結果ブロック
+//  favorite お気に入り一覧 お風呂
 // -----------------------------------------------------------------*/
 
-.favorite .bath .list {
-  border-radius: 10px;
-  border: 1px solid #222;
-  padding: 20px;
-}
-
-.favorite .bath .list:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.favorite .bath .bath-num {
-  text-align: right;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.favorite .bath .list .title-block {
-  position: relative;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-.favorite .bath .list .title-block .title {
-  font-size: 1.8rem;
-}
-
-.favorite .bath .list .title-block .star-icon {
-  transform: translateY(-50%);
-  top: 50%;
-  position: absolute;
-  right: 0;
-  width: 26px;
-}
-
-.favorite .bath .list .mark-block {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.favorite .bath .list .mark-block .review {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50%;
+.favorite .bath .list .text-info .closing-day {
   text-align: center;
-}
-
-.favorite .bath .list .mark-block .review .whole-review {
-  font-size: 60px;
-}
-
-.favorite .bath .list .mark-block .review .whole-review:after {
-  content: "-\7DCF\5408\8A55\4FA1-";
-  display: block;
-  font-size: 1.2rem;
-}
-
-.favorite .bath .list .mark-block .review .others-review {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-  font-size: 4rem;
-}
-
-.favorite .bath .list .mark-block .review .others-review li:after {
-  display: block;
-  font-size: 1.2rem;
-}
-
-.favorite .bath .list .mark-block .review .others-review li:nth-child(1):after {
-  content: "-\304A\6E6F\8A55\4FA1-";
-}
-
-.favorite .bath .list .mark-block .review .others-review li:nth-child(2):after {
-  content: "-\5CA9\76E4\6D74\8A55\4FA1-";
-}
-
-.favorite .bath .list .mark-block .review .others-review li:nth-child(3):after {
-  content: "-\30B5\30A6\30CA\8A55\4FA1-";
-}
-
-.favorite .bath .list .mark-block .mark {
-  display: flex;
-  justify-content: space-around;
-  width: 20%;
-}
-
-.favorite .bath .list .text-info {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 1.6rem;
-  margin-bottom: 30px;
-}
-
-.favorite .bath .list .link-block .post-link {
-  font-size: 1.5rem;
-  color: #7EDBE6;
-  text-decoration: underline;
-}
-
-.favorite .bath .list .link-block .post-link:hover {
-  text-decoration: none;
-}
-
-.favorite .bath .no-result {
-  font-size: 1.8rem;
-  color: red;
 }
 
 /*// ==========================================================================
@@ -1356,38 +1247,66 @@ select {
   content: "\691C\7D22\3059\308B";
 }
 
-/*// -----------------------------------------------------------------
-//  search-result 検索結果ブロック
-// -----------------------------------------------------------------*/
+/*// ==========================================================================
+//  お風呂一覧（お気に入りお風呂一覧 / 検索結果お風呂一覧）
+// ==========================================================================*/
 
-.bath-search .search-result .list {
+.bath-index .list {
   border-radius: 10px;
-  border: 1px solid #222;
+  border: 6px solid #dceaea;
   padding: 20px;
+  background: url(/images/bath-mark-orange-thin.svg?266c6073eb4fbca7b4dd7f2d6b7021b8);
+  background-size: 100% 100%;
+  background-position: center;
 }
 
-.bath-search .search-result .list:not(:last-child) {
+.bath-index .list:not(:last-child) {
   margin-bottom: 20px;
 }
 
-.bath-search .search-result .bath-num {
+@media screen and (max-width: 760px) {
+  .bath-index .list {
+    padding: 10px;
+  }
+}
+
+.bath-index .bath-num {
   text-align: right;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.bath-search .search-result .list .title-block {
+.bath-index .list .title-block {
   position: relative;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
 
-.bath-search .search-result .list .title-block .title {
-  font-size: 1.8rem;
+.bath-index .list .title-block .title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
 }
 
-.bath-search .search-result .list .title-block .star-icon {
+.bath-index .list .title-block .title:before,
+.bath-index .list .title-block .title:after {
+  content: "";
+  background: url(/images/bath-icon-no-circle.svg?24a0bb70cb5604b685dd1339b6d927d2);
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.bath-index .list .title-block .title:before {
+  margin-right: 5px;
+}
+
+.bath-index .list .title-block .title:after {
+  margin-left: 5px;
+}
+
+.bath-index .list .title-block .star-icon {
   transform: translateY(-50%);
   top: 50%;
   position: absolute;
@@ -1395,61 +1314,89 @@ select {
   width: 26px;
 }
 
-.bath-search .search-result .list .mark-block {
+@media screen and (max-width: 599px) {
+  .bath-index .list .title-block .star-icon {
+    right: -25px;
+    top: -13px;
+  }
+}
+
+.bath-index .list .mark-block {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 30px;
 }
 
-.bath-search .search-result .list .mark-block .review {
+.bath-index .list .mark-block .review {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 50%;
 }
 
-.bath-search .search-result .list .mark-block .review .whole-review {
+@media screen and (max-width: 1024px) {
+  .bath-index .list .mark-block .review {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .bath-index .list .mark-block .review {
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.bath-index .list .mark-block .review .whole-review {
   font-size: 60px;
 }
 
-.bath-search .search-result .list .mark-block .review .whole-review:after {
+.bath-index .list .mark-block .review .whole-review:after {
   content: "-\7DCF\5408\8A55\4FA1-";
   display: block;
   font-size: 1.2rem;
 }
 
-.bath-search .search-result .list .mark-block .review .others-review {
+.bath-index .list .mark-block .review .others-review {
   display: flex;
   justify-content: space-between;
   width: 70%;
   font-size: 4rem;
 }
 
-.bath-search .search-result .list .mark-block .review .others-review li:after {
+@media screen and (max-width: 760px) {
+  .bath-index .list .mark-block .review .others-review {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+.bath-index .list .mark-block .review .others-review li:after {
   display: block;
   font-size: 1.2rem;
 }
 
-.bath-search .search-result .list .mark-block .review .others-review li:nth-child(1):after {
+.bath-index .list .mark-block .review .others-review li:nth-child(1):after {
   content: "-\304A\6E6F\8A55\4FA1-";
 }
 
-.bath-search .search-result .list .mark-block .review .others-review li:nth-child(2):after {
+.bath-index .list .mark-block .review .others-review li:nth-child(2):after {
   content: "-\5CA9\76E4\6D74\8A55\4FA1-";
 }
 
-.bath-search .search-result .list .mark-block .review .others-review li:nth-child(3):after {
+.bath-index .list .mark-block .review .others-review li:nth-child(3):after {
   content: "-\30B5\30A6\30CA\8A55\4FA1-";
 }
 
-.bath-search .search-result .list .mark-block .mark {
+.bath-index .list .mark-block .mark {
   display: flex;
   justify-content: space-around;
   width: 20%;
 }
 
-.bath-search .search-result .list .text-info {
+.bath-index .list .text-info {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -1457,17 +1404,70 @@ select {
   margin-bottom: 30px;
 }
 
-.bath-search .search-result .list .link-block .post-link {
+@media screen and (max-width: 760px) {
+  .bath-index .list .text-info {
+    flex-wrap: wrap;
+  }
+}
+
+.bath-index .list .text-info .place {
+  display: flex;
+}
+
+.bath-index .list .text-info .place:before {
+  content: "";
+  background-image: url(/images/location.svg?a323f55b3eeff1d64b020c72c596d98d);
+  width: 20px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 760px) {
+  .bath-index .list .text-info .place {
+    width: 50%;
+    justify-content: center;
+  }
+}
+
+.bath-index .list .text-info .closing-day {
+  position: relative;
+}
+
+.bath-index .list .text-info .closing-day:before {
+  content: "";
+  background-image: url(/images/calender.png?809f6963f038ed6b9e34a4db29403ad1);
+  width: 50px;
+  opacity: 0.1;
+  height: 50px;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 760px) {
+  .bath-index .list .text-info .closing-day {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .bath-index .list .text-info .time {
+    margin-top: 20px;
+  }
+}
+
+.bath-index .list .link-block .post-link {
   font-size: 1.5rem;
-  color: #7EDBE6;
+  color: #7edbe6;
   text-decoration: underline;
 }
 
-.bath-search .search-result .list .link-block .post-link:hover {
+.bath-index .list .link-block .post-link:hover {
   text-decoration: none;
 }
 
-.bath-search .search-result .no-result {
+.bath-index .no-result {
   font-size: 1.8rem;
   color: red;
 }

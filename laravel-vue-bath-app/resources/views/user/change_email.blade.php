@@ -9,7 +9,7 @@
                 <label class="field-name">新しいメールアドレス</label>
                 <input class="field" type="text" name="new_email" value="">
             </div>
-            <button class="btn" type="submit"></button>
+            <button class="btn main-submit-btn" type="submit"></button>
         </form>
         <div class="other-links">
             <a href="{{ route('user.edit.show') }}" class="link">ユーザー情報を変更する</a>

@@ -75,13 +75,13 @@
             <button class="main-submit-btn field" @click="getBathsInfo()"></button>
         </div>
 
-        <div class="search-result">
+        <div class="search-result bath-index">
             <ul class="bath">
                 <p class="bath-num" v-if="baths.length > 0">お風呂件数：{{ baths.length }}件</p>
                 <li class="list" v-for="bath in baths" :key="bath.index">
                     <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
                     <div class="title-block">
-                        <h4 class="title">- {{ bath.name }} -</h4>
+                        <h4 class="title">{{ bath.name }}</h4>
                         <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)"><img class="star-icon" :src="'../svg/star-yellow.svg'" alt="お気に入り 星アイコン 黄色"></a>
                         <a v-else @click="addFavorite(bath.id)"><img class="star-icon" :src="'../svg/star-gray.svg'" alt="お気に入り 星アイコン 灰色"></a>
                     </div>
@@ -101,11 +101,11 @@
                     </div>
                     <div class="text-info">
                         <p class="place">{{ bath.place }} {{ bath.city }}</p>
-                        <p class="closing-day">休館日：{{ bath.closing_day }}</p>
-                        <ul class="time">
+                        <p class="closing-day">{{ bath.closing_day }}</p>
+                        <!-- <ul class="time">
                             <li class="holiday" v-if="bath.holiday_time !== null">土日：{{ bath.holiday_time }}</li><li v-else>土日：記載なし</li>
                             <li class="weekday" v-if="bath.weekday_time !== null">平日：{{ bath.weekday_time }}</li><li v-else>平日：記載なし</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <!-- <div class="link-block">
                         <a class="post-link">みんなの投稿</a>

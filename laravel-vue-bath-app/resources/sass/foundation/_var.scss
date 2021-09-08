@@ -43,6 +43,22 @@
   top: 50%;
 }
 
+// 文字の横に温泉マーク
+@mixin text_bath_mark_of_both_side {
+  display: flex;
+  align-items: center;
+  &:before,
+  &:after {
+      content: '';
+      background: url('svg/bath-icon-no-circle.svg');
+      width: 20px;
+      height: 20px;
+      display: block;
+  }
+  &:before { margin-right: 5px; }
+  &:after { margin-left: 5px; }
+}
+
 /*
   変数定義
 ---------------------------------------------------- */

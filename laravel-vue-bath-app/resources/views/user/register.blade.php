@@ -32,7 +32,7 @@
                 <label class="field-name">パスワード（確認用）</label>
                 <input class="field" type="password" name="password_confirmation" placeholder="パスワードと同じものを入力してください">
             </div>
-            <button id="registerBtn" class="btn" type="submit"></button>
+            <button id="registerBtn" class="btn main-submit-btn" type="submit"></button>
         </form>
         <div class="sns">
             <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログイン</a>

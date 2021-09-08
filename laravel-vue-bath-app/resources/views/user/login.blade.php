@@ -23,7 +23,7 @@
                 <label class="field-name">パスワード</label>
                 <input class="field" name="password" type="password">
             </div>
-            <button class="btn" type="submit"></button>
+            <button class="btn main-submit-btn" type="submit"></button>
         </form>
         <div class="sns">
             <a class="google" href="{{ route('login.sns', ['sns' => 'google']) }}">Googleでログイン</a>

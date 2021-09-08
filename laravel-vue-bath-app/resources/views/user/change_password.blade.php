@@ -19,7 +19,7 @@
                 <label class="field-name">新しいパスワード（確認用）</label>
                 <input class="field" type="password" name="new_password_confirmation" value="">
             </div>
-            <button class="btn" type="submit"></button>
+            <button class="btn main-submit-btn" type="submit"></button>
         </form>
         <div class="other-links">
             <a href="{{ route('user.edit.show') }}" class="link">ユーザー情報を変更する</a>
