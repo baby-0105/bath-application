@@ -350,6 +350,13 @@ select {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 599px) {
+  .user-form .btn {
+    width: 50%;
+    padding: 12px 0;
+  }
+}
+
 .user-form.register .btn:after {
   content: "\767B\9332\3059\308B";
 }
@@ -377,6 +384,13 @@ select {
   margin-top: 50px;
 }
 
+@media screen and (max-width: 599px) {
+  .user-form .other-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .user-form .other-links .link {
   color: #7edbe6;
   text-decoration: underline;
@@ -384,6 +398,12 @@ select {
 
 .user-form .other-links .link:hover {
   text-decoration: none;
+}
+
+@media screen and (max-width: 599px) {
+  .user-form .other-links .link:first-child {
+    margin-bottom: 20px;
+  }
 }
 
 /*// ==========================================================================
