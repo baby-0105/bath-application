@@ -94,6 +94,13 @@ button:hover {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 599px) {
+  .main-submit-btn {
+    width: 50%;
+    padding: 12px 0;
+  }
+}
+
 input,
 select,
 textarea {
@@ -341,19 +348,6 @@ select {
 @media screen and (max-width: 760px) {
   .user-form .list .select {
     width: 100%;
-  }
-}
-
-.user-form .btn {
-  width: 250px;
-  padding: 12px 60px;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 599px) {
-  .user-form .btn {
-    width: 50%;
-    padding: 12px 0;
   }
 }
 
@@ -1274,14 +1268,46 @@ select {
 .bath-search .form-block {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 150px;
+}
+
+@media screen and (max-width: 1024px) {
+  .bath-search .form-block {
+    width: 100%;
+  }
 }
 
 .bath-search .form-block .prefecture-keyword {
   display: flex;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .prefecture-keyword {
+    flex-direction: column;
+  }
+}
+
+.bath-search .form-block .prefecture {
+  width: 50%;
+}
+
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .prefecture {
+    width: 100%;
+  }
+}
+
+.bath-search .form-block .keyword {
+  width: 50%;
+}
+
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .keyword {
+    width: 100%;
+  }
 }
 
 .bath-search .form-block .eval-select {
@@ -1298,21 +1324,36 @@ select {
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .eval-select .eval-block {
+    flex-wrap: wrap;
+  }
+}
+
 .bath-search .form-block .eval-select .select-form-title {
   font-size: 1.5rem;
   width: 20%;
 }
 
-.bath-search .form-block .prefecture {
-  width: 50%;
-}
-
-.bath-search .form-block .keyword {
-  width: 50%;
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .eval-select .select-form-title {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 .bath-search .form-block .eval {
   width: 20%;
+}
+
+@media screen and (max-width: 760px) {
+  .bath-search .form-block .eval {
+    width: 40%;
+  }
+}
+
+.bath-search .form-block .main-submit-btn:after {
+  content: "\691C\7D22\3059\308B";
 }
 
 /*// -----------------------------------------------------------------

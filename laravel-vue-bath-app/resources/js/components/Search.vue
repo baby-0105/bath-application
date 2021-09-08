@@ -72,7 +72,7 @@
                     </select>
                 </div>
             </div>
-            <button class="main-submit-btn field" @click="getBathsInfo()">検索する</button>
+            <button class="main-submit-btn field" @click="getBathsInfo()"></button>
         </div>
 
         <div class="search-result">

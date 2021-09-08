@@ -20,46 +20,64 @@
 .bath-search .form-block {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 150px;
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
 }
 
 .bath-search .form-block .prefecture-keyword {
     display: flex;
     margin-bottom: 20px;
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+    }
+}
+.bath-search .form-block .prefecture {
+    width: 50%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
+}
+.bath-search .form-block .keyword {
+    width: 50%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+    }
 }
 
 .bath-search .form-block .eval-select {
     margin-bottom: 30px;
 }
-
 .bath-search .form-block .eval-select .eval-block {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     &:not(:last-child) {
         margin-bottom: 10px;
     }
+    @media screen and (max-width: 760px) {
+        flex-wrap: wrap;
+    }
 }
-
 .bath-search .form-block .eval-select .select-form-title {
     font-size: 1.5rem;
     width: 20%;
+    @media screen and (max-width: 760px) {
+        width: 100%;
+        text-align: left;
+    }
 }
-
-.bath-search .form-block .prefecture {
-    width: 50%;
-}
-
-.bath-search .form-block .keyword {
-    width: 50%;
-}
-
 .bath-search .form-block .eval {
     width: 20%;
+    @media screen and (max-width: 760px) {
+        width: 40%;
+    }
 }
+
+.bath-search .form-block .main-submit-btn { &:after { content: '検索する'; }}
 
 /*// -----------------------------------------------------------------
 //  search-result 検索結果ブロック

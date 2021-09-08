@@ -47,7 +47,7 @@
                     @endforeach
                 </div>
             </div>
-            <button class="btn" type="submit"></button>
+            <button class="btn main-submit-btn" type="submit"></button>
         </form>
         <div class="other-links">
             <a href="{{ route('user.change_password.show') }}" class="link @if(isset(auth()->user()->sns_id)) hide @endif">パスワードを変更する</a>
