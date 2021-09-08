@@ -1292,7 +1292,7 @@ select {
 .bath-index .list .title-block .title:before,
 .bath-index .list .title-block .title:after {
   content: "";
-  background: url(/images/bath-icon-no-circle.svg?24a0bb70cb5604b685dd1339b6d927d2);
+  background: url(/images/bath-icon-no-circle.svg?a55113ce8df1ed8394e29c0228521637);
   width: 20px;
   height: 20px;
   display: block;
