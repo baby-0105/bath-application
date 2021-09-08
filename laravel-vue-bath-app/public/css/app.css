@@ -1333,6 +1333,7 @@ select {
   justify-content: space-between;
   align-items: center;
   width: 50%;
+  text-align: center;
 }
 
 @media screen and (max-width: 1024px) {
