@@ -59,6 +59,18 @@
   &:after { margin-left: 5px; }
 }
 
+// 擬似要素の背景画像
+@mixin bg_img_of_pseudo_ele($width, $height, $url) {
+  position: relative;
+  &:before {
+      @include center_of_vertically_and_horizontally;
+      content: '';
+      width: $width;
+      height: $height;
+      background: url($url);
+  }
+}
+
 /*
   変数定義
 ---------------------------------------------------- */

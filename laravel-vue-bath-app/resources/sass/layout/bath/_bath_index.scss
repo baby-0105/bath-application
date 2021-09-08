@@ -141,15 +141,9 @@
     }
 }
 .bath-index .list .text-info .closing-day {
-    position: relative;
+    @include bg_img_of_pseudo_ele(50px, 50px, 'img/calender.png');
     &:before {
-        content: '';
-        background-image: url('img/calender.png');
-        width: 50px;
         opacity: .1;
-        height: 50px;
-        position: absolute;
-        @include center_of_vertically_and_horizontally;
     }
     @media screen and (max-width: 760px) {
         width: 50%;

@@ -29,7 +29,7 @@
 
 .top-page .first-view .title-block {
     position: absolute;
-    top: 280px;
+    top: 40%;
     left: 20%;
     @media screen and (max-width: 1024px) {
         top: 50%;
@@ -49,7 +49,7 @@
 }
 .top-page .first-view .btn-block {
     position: absolute;
-    top: 520px;
+    top: 70%;
     left: 20%;  /* title-blockと揃える */
     display: flex;
     justify-content: space-around;
