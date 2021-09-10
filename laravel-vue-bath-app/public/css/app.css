@@ -88,7 +88,9 @@ button:hover {
 }
 
 .btn.submit:before,
-.btn.update:before {
+.btn.update:before,
+.main-submit-btn:before,
+.btn.search-btn:before {
   background: url(/images/bath-mark-light-blue.svg?95073becd21c770eb4cf38464b079b2b);
 }
 

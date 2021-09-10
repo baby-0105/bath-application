@@ -68,7 +68,7 @@ button {
         color: #ffffff;
     }
 }
-.btn.submit, .btn.update { &:before { background: url('svg/bath-mark-light-blue.svg'); }}
+.btn.submit, .btn.update, .main-submit-btn, .btn.search-btn { &:before { background: url('svg/bath-mark-light-blue.svg'); }}
 .btn.close               { &:before { background: url('svg/bath-mark-gray.svg'); }}
 .btn.dlt                 { &:before { background: url('svg/bath-mark-red.svg'); }}
 

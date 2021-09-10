@@ -12,7 +12,7 @@
                 </select>
                 <div class="tablet-field">
                     <input class="keyword" v-model="keyword" placeholder="キーワードを入力してください" type="text">
-                    <button type="button" class="search-btn" @click="searchBath()"></button>
+                    <button type="button" class="btn search-btn" @click="searchBath()"></button>
                 </div>
             </div>
             <div class="search-result" v-if="baths.length > 0">
