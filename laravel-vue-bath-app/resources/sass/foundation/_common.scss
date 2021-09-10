@@ -53,7 +53,6 @@ button {
     &:before {
         content: '';
         display: block;
-        background: url('svg/bath-mark-light-blue.svg');
         width: 40px;
         height: 40px;
         opacity: 0.8;
@@ -69,6 +68,9 @@ button {
         color: #ffffff;
     }
 }
+.btn.submit, .btn.update { &:before { background: url('svg/bath-mark-light-blue.svg'); }}
+.btn.close               { &:before { background: url('svg/bath-mark-gray.svg'); }}
+.btn.dlt                 { &:before { background: url('svg/bath-mark-red.svg'); }}
 
 .main-submit-btn {
     padding: 12px 60px;

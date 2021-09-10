@@ -71,6 +71,7 @@
 
 .popup .content .btn {
     padding: 12px 30px;
+    width: 25%;
 }
 .popup .btn.close { &:after { content: '閉じる'; }}
 .sns-update-profile .btn { &:after { content: '登録する'; }}

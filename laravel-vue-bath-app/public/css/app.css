@@ -67,7 +67,6 @@ button {
 button:before {
   content: "";
   display: block;
-  background: url(/images/bath-mark-light-blue.svg?95073becd21c770eb4cf38464b079b2b);
   width: 40px;
   height: 40px;
   opacity: 0.8;
@@ -86,6 +85,19 @@ button:hover {
   transition: all 0.2s ease-out;
   background-color: #21ad77;
   color: #ffffff;
+}
+
+.btn.submit:before,
+.btn.update:before {
+  background: url(/images/bath-mark-light-blue.svg?95073becd21c770eb4cf38464b079b2b);
+}
+
+.btn.close:before {
+  background: url(/images/bath-mark-gray.svg?f21a283e9d5afc696f1ad5c0d4e8de25);
+}
+
+.btn.dlt:before {
+  background: url(/images/bath-mark-red.svg?7698424564974a20f3eaada0414ef632);
 }
 
 .main-submit-btn {
@@ -920,10 +932,6 @@ select {
   width: 25px;
 }
 
-.post-index .index .bath .list .dlt-post-img:hover {
-  width: 30px;
-}
-
 .post-index .index .desc {
   display: flex;
   justify-content: space-between;
@@ -1595,7 +1603,7 @@ select {
 }
 
 .header .nav .link.register-link {
-  background: url(/images/new-icon.svg?f72331da892b73b6ace2abf35e7f22e0);
+  background: url(/images/new-icon.svg?93dee6121ac03cec0fbb1c3cbbfe79dd);
   background-size: 100% 100%;
   height: 25%;
 }
@@ -1776,6 +1784,7 @@ select {
 
 .popup .content .btn {
   padding: 12px 30px;
+  width: 25%;
 }
 
 .popup .btn.close:after {
