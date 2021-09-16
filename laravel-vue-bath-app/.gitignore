@@ -3,6 +3,7 @@
 /public/storage
 /public/js
 /public/css
+/public/.htaccess
 /storage/*.key
 /vendor
 ../vendor/
@@ -14,3 +15,5 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 storage/logs
+/config/app.php
+/config/services.php
