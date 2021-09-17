@@ -19,3 +19,8 @@ $ vendor/bin/phpunit --filter メソッド名
 
 $ vendor/bin/phpunit ./tests/Unit/テストファイル名
 ```
+
+## 本番環境用
+```
+# npm run prod
+```
