@@ -162,6 +162,7 @@
                     this.baths = response.data.baths;
                     this.isFavoritedId = response.data.isFavoritedId;
                     this.isLogin = response.data.isLogin;
+                    // console.log(response.config.data);
 
                     const headerHeight = $('#header').height();
                     $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
