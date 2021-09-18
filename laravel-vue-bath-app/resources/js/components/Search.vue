@@ -144,7 +144,8 @@
         },
         methods: {
             getBathsInfo() {
-                const url = '/bath/search/';
+                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
+                const url = '/bath/search';
                 $('.form-block .error').text('');
                 axios.post(url, {
                     prefecture: this.selectedPrefecture,
@@ -162,7 +163,6 @@
                     this.baths = response.data.baths;
                     this.isFavoritedId = response.data.isFavoritedId;
                     this.isLogin = response.data.isLogin;
-                    // console.log(response.config.data);
 
                     const headerHeight = $('#header').height();
                     $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
