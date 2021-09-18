@@ -22,5 +22,5 @@ $ vendor/bin/phpunit ./tests/Unit/テストファイル名
 
 ## 本番環境用
 ```
-# npm run prod
+# npm run prod → 必須(本番環境でcss/jsの読み取りを早くする→圧縮)
 ```
