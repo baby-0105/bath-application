@@ -56,6 +56,7 @@
         },
         methods: {
             onChange: function(e) {
+                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/post/mypost/selectOrder';
                 $('#myPost .error').text('');
                 axios.post(url, {
