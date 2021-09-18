@@ -49,6 +49,7 @@
         },
         methods: {
             addFavorite(bathId) {
+                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/bath/addFavorite';
                 $('.favorite .error').text('');
                 axios.post(url, {
