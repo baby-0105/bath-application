@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <div class="bath-index">
         <ul class="bath">
             <p class="bath-num" v-if="favorited.length > 0">お気に入り件数：{{ favorited.length }}件</p>
