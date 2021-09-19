@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
         <link rel="shortcut icon" href="{{ asset('/images/favicon.png') }}">
+        <link rel="dns-prefetch" href="//oflog.top"> {{-- DNSのキャッシュ --}}
+        <link rel="prefetch" href="//oflog.top"> {{-- 静的リソースのキャッシュ --}}
         <title>OFLog ~あなたの風呂活に新たな彩を~</title>
     </head>
 

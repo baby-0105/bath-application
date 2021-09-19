@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,4 +19,15 @@ mix.js([
     .sourceMaps()
     .autoload({
         "jquery": ['$', 'window.jQuery'],
+    })
+    .webpackConfig({
+        plugins: [
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+                algorithm: 'gzip',
+                test: /\.js$|\.css$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8,
+            })
+        ]
     });
