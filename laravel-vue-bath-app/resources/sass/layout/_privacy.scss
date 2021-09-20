@@ -1,0 +1,66 @@
+/*// ==========================================================================
+//  プライバシーポリシー
+// ==========================================================================*/
+
+
+.privacy-policy p,
+.privacy-policy .main-title,
+.privacy-policy .terms-title,
+.privacy-policy .text {
+    font-family: initial;
+}
+
+.privacy-policy {
+    width: 80%;
+    margin: 0 auto;
+    @media screen and (max-width: 600px) {
+        width: 90%;
+    }
+}
+
+.privacy-policy .main-title {
+    font-size: 4.0rem;
+    text-align: center;
+    margin-bottom: 50px;
+    @media screen and (max-width: 600px) {
+        font-size: 3.0rem;
+    }
+}
+
+.privacy-policy .text {
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+.privacy-policy .main-text {
+    margin-bottom: 20px;
+}
+
+.privacy-policy .term {
+    margin-bottom: 15px;
+}
+
+.privacy-policy .term .terms-title {
+    font-size: 2.0rem;
+}
+
+.privacy-policy .term .paragraph1 {
+    margin-left: 30px;
+    @media screen and (max-width: 600px) {
+        margin-left: 15px;
+    }
+}
+.privacy-policy .term .paragraph2 {
+    margin-left: 60px;
+    @media screen and (max-width: 600px) {
+        margin-left: 30px;
+    }
+}
+.privacy-policy .term .paragraph3 {
+    margin-left: 90px;
+    @media screen and (max-width: 600px) {
+        margin-left: 45px;
+    }
+}
+
+.privacy-policy .last-text { text-align: right; }
