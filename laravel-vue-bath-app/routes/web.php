@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('check_scraping', 'Bath\ScrapingController@getBath');
 
 Route::get('/', function () { return view('top'); })->name('top');
+Route::get('/privacy', function () { return view('privacy'); })->name('privacy');
 Route::get("reset/{token}", "User\ResetEmailController@reset");
 
 Route::group(['prefix' => 'user'], function() {

@@ -26,7 +26,17 @@
     margin-left: auto;
 }
 
+.footer .link-block {
+    display: block;
+    text-align: center;
+}
+
+.footer .link-block .privacy {
+    font-size: 1.4rem;
+}
+
 .footer .copy-right {
+    font-size: 1.2rem;
     text-align: center;
     display: block;
 }
