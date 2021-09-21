@@ -11,6 +11,11 @@
     @media screen and (max-width: 760px) {
         padding: 20px;
     }
+    &:hover {
+        background: rgba(222,222,222,.5);
+        box-shadow: 0 0 3px 3px rgba(222,222,222,.5);
+        transition: 2s;
+    }
 }
 
 .header .container {
