@@ -11,6 +11,7 @@ class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $name;
     protected $email;
     protected $encodeToken;
 
@@ -19,8 +20,9 @@ class EmailVerification extends Mailable
      *
      * @return void
      */
-    public function __construct($email, $encodeToken)
+    public function __construct($name, $email, $encodeToken)
     {
+        $this->name        = $name;
         $this->email       = $email;
         $this->encodeToken = $encodeToken;
     }
@@ -35,7 +37,11 @@ class EmailVerification extends Mailable
         return $this
             ->to(['email' => $this->email])
             ->subject('【OFLog】本登録確認メール')
-            ->view('email.register_verify')
-            ->with(['token' => $this->encodeToken,]);
+            ->text('email.register_verify')
+            ->with([
+                'name'  => $this->name,
+                'email' => $this->email,
+                'token' => $this->encodeToken,
+            ]);
     }
 }
