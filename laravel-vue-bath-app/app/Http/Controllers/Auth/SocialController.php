@@ -71,14 +71,14 @@ class SocialController extends Controller
 
             // DBカラ → セッション保存
             if(empty($data['selectAuthUser'])) {
-                return view('top')->with($data); // ->with('snsUpdateProfile', '認証が完了しました')
+                return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました')->with($data);
             }
             // ログイン（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user->id, $sns);
-                return view('top'); // ※ redirect：初回session保持できない / view：->with('message', 'ログインしました')を、表示できない
+                return redirect()->route('top')->with('message', 'ログインしました');
             }
-            return view('top')->with($data); // ->with('message', '認証が完了しました')
+            return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
         }
         catch (Exception $e) {
             return redirect()->route('user.login')->with('message', '認証ができませんでした。');

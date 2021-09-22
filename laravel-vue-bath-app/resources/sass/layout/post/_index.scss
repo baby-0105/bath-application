@@ -220,18 +220,3 @@
     font-size: 1.4rem;
     color: rgba(108, 122, 137, 1);
 }
-
-.post-index .index .select-order .select {
-    margin-bottom: 20px;
-    width: 30%;
-    padding: 10px;
-    display: block;
-    margin-left: auto;
-    font-size: 1.6rem;
-    @media screen and (max-width: 1024px) {
-        width: 50%;
-    }
-    @media screen and (max-width: 599px) {
-        width: 100%;
-    }
-}
