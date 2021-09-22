@@ -32,10 +32,11 @@ class RegisterService{
             return $user;
         });
 
-        $email       = $user->email;
-        $encodeToken = base64_encode($user->email_verify_token);
-
-        Mail::send(new EmailVerification($email, $encodeToken));
+        Mail::send(new EmailVerification(
+            $user->name,
+            $user->email,
+            base64_encode($user->email_verify_token)
+        ));
     }
 
     /**
