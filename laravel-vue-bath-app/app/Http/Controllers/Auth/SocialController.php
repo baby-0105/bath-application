@@ -62,22 +62,23 @@ class SocialController extends Controller
                 'nonVerify' => $this->socialService->isNonVerify(session('name')),
                 'selectAuthUser' => $this->socialService->selectAuthUser($user, $sns)
             ];
+            session([
+                'register.sns_id' => $user->id,
+                'register.sns' => $sns,
+                'register.name' => $user->name,
+                'register.email' => $user->email,
+            ]);
+
             // DBカラ → セッション保存
             if(empty($data['selectAuthUser'])) {
-                session([
-                    'register.sns_id' => $user->id,
-                    'register.sns' => $sns,
-                    'register.name' => $user->name,
-                    'register.email' => $user->email,
-                ]);
-                return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました')->with($data);
+                return view('top')->with($data); // ->with('snsUpdateProfile', '認証が完了しました')
             }
             // ログイン（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user->id, $sns);
-                return redirect()->route('top')->with('message', 'ログインしました');
+                return view('top'); // ※ redirect：初回session保持できない / view：->with('message', 'ログインしました')を、表示できない
             }
-            return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
+            return view('top')->with($data); // ->with('message', '認証が完了しました')
         }
         catch (Exception $e) {
             return redirect()->route('user.login')->with('message', '認証ができませんでした。');
