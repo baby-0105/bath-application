@@ -17,33 +17,44 @@
                 <div class="desc">
                     <div class="info">
                         <div class="bath-img">
-                            <img class="main-img" :src="'../storage/' + post.main_image_path + '?' + post.updated_at.replace(/[^0-9]/g, '')" alt="風呂の画像 メイン" v-if="post.main_image_path"><img class="main-img" :src="'../svg/bath-mark-light-blue.svg'" alt="風呂の画像 メイン" v-else>
-                            <div class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
+                            <div class="main-img-block">
                                 <img
-                                    v-if="post.sub_picture1_path"
-                                    class="sub-img sub-img1"
-                                    :src="'../storage/' + post.sub_picture1_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
-                                    alt="風呂のサブ画像"
-                                    @mouseover="changeToMainImg"
-                                    @mouseleave="changeToSubImg"
-                                >
+                                    class="main-img"
+                                    :src="'../storage/' + post.main_image_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                    alt="風呂の画像 メイン"
+                                    v-if="post.main_image_path">
                                 <img
-                                    v-if="post.sub_picture2_path"
-                                    class="sub-img sub-img2"
-                                    :src="'../storage/' + post.sub_picture2_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
-                                    alt="風呂のサブ画像"
-                                    @mouseover="changeToMainImg"
-                                    @mouseleave="changeToSubImg"
-                                >
-                                <img
-                                    v-if="post.sub_picture3_path"
-                                    class="sub-img sub-img3"
-                                    :src="'../storage/' + post.sub_picture3_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
-                                    alt="風呂のサブ画像"
-                                    @mouseover="changeToMainImg"
-                                    @mouseleave="changeToSubImg"
-                                >
+                                    class="main-img"
+                                    :src="'../svg/bath-mark-light-blue.svg'"
+                                    alt="風呂の画像 メイン"
+                                    v-else>
                             </div>
+                            <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                    <img
+                                        v-if="post.sub_picture1_path"
+                                        class="sub-img"
+                                        :src="'../storage/' + post.sub_picture1_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        alt="風呂のサブ画像"
+                                    >
+                                </li>
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                    <img
+                                        v-if="post.sub_picture2_path"
+                                        class="sub-img"
+                                        :src="'../storage/' + post.sub_picture2_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        alt="風呂のサブ画像"
+                                    >
+                                </li>
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                    <img
+                                        v-if="post.sub_picture3_path"
+                                        class="sub-img"
+                                        :src="'../storage/' + post.sub_picture3_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        alt="風呂のサブ画像"
+                                    >
+                                </li>
+                            </ul>
                         </div>
                         <ul class="review-num tablet-block">
                             <li>{{ post.eval_cd }}</li>
@@ -98,14 +109,13 @@
                 $('#myPost .popup-delete #postId').attr('value', postId);
             },
             changeToMainImg(e) {
-                console.log(e);
-                let src      = e.target.getAttribute("src"),
-                    $mainImg = $('#selectOrderBlock .sub-img').parents('.sub-imgs').prev('.main-img');
+                let subImgSrc = e.target.getAttribute("src"),
+                    $mainImg  = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');;
                 this.mainImgSrc = $mainImg.attr('src');
-                $mainImg.attr('src', src);
+                $mainImg.attr('src', subImgSrc);
             },
-            changeToSubImg() {
-                let $mainImg = $('#selectOrderBlock .sub-img').parents('.sub-imgs').prev('.main-img');
+            changeToSubImg(e) {
+                let $mainImg = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');;
                 $mainImg.attr('src', this.mainImgSrc);
             }
         },

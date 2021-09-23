@@ -16,15 +16,15 @@ $(function () {
 
         let hoverSubImg = (function() {
             let mainImgSrc;
-            $('#myPost .sub-img').hover(
+            $('#myPost .sub-img-list').hover(
                 function() { // マウス乗った時
-                    let src = $(this).attr('src');
-                    const $mainImg = $(this).parents('.sub-imgs').prev('.main-img');
+                    let subImgSrc = $(this).find('.sub-img').attr('src'),
+                        $mainImg = $(this).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
                     mainImgSrc = $mainImg.attr('src');
-                    $mainImg.attr('src', src);
+                    $mainImg.attr('src', subImgSrc);
                 },
                 function() { // マウス外れた時
-                    const $mainImg = $(this).parents('.sub-imgs').prev('.main-img');
+                    const $mainImg = $(this).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
                     $mainImg.attr('src', mainImgSrc);
                 }
             );
