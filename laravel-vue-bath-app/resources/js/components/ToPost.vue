@@ -41,7 +41,7 @@
         methods: {
             searchBath() {
                 axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
-                const url = '/post/search/';
+                const url = '/post/search';
                 $('.bath-search .error').text('');
                 axios.post(url, {
                     prefecture: this.selectedPrefecture,

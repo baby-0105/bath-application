@@ -28,9 +28,7 @@ class SocialController extends Controller
      * @param SocialService $socialService SNS認証サービス インスタンス
      * @return void
      */
-    public function __construct(
-        SocialService $socialService
-    )
+    public function __construct(SocialService $socialService)
     {
         $this->socialService = $socialService;
     }
