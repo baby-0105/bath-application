@@ -20,8 +20,8 @@
                             <div class="main-img-block">
                                 <img
                                     class="main-img"
-                                    :src="'../storage/' + post.main_image_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
                                     alt="風呂の画像 メイン"
+                                    :src="imgSrc(post.main_image_path, post.updated_at)"
                                     v-if="post.main_image_path">
                                 <img
                                     class="main-img"
@@ -30,27 +30,27 @@
                                     v-else>
                             </div>
                             <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
                                         v-if="post.sub_picture1_path"
                                         class="sub-img"
-                                        :src="'../storage/' + post.sub_picture1_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        :src="imgSrc(post.sub_picture1_path, post.updated_at)"
                                         alt="風呂のサブ画像"
                                     >
                                 </li>
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
                                         v-if="post.sub_picture2_path"
                                         class="sub-img"
-                                        :src="'../storage/' + post.sub_picture2_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        :src="imgSrc(post.sub_picture2_path, post.updated_at)"
                                         alt="風呂のサブ画像"
                                     >
                                 </li>
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="changeToSubImg">
+                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
                                         v-if="post.sub_picture3_path"
                                         class="sub-img"
-                                        :src="'../storage/' + post.sub_picture3_path + '?' + post.updated_at.replace(/[^0-9]/g, '')"
+                                        :src="imgSrc(post.sub_picture3_path, post.updated_at)"
                                         alt="風呂のサブ画像"
                                     >
                                 </li>
@@ -84,11 +84,18 @@
         data() {
             return {
                 posts: {},
-                mainImgSrc: '',
+                firstMainImg: '',
+            }
+        },
+        computed: {
+            imgSrc: function() {
+                return function(path, updatedAt) {
+                    return '../storage/' + path+ '?' + updatedAt.replace(/[^0-9]/g, '');
+                }
             }
         },
         methods: {
-            onChange: function(e) {
+            onChange(e) {
                 axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/post/mypost/selectOrder';
                 $('#myPost .error').text('');
@@ -103,19 +110,19 @@
                     $('#myPost .select-order-error').text(e.response.data.errors.selectOrder);
                 })
             },
-            dltPost: function(postId) {
+            dltPost(postId) {
                 $('#myPost .popup-delete').removeClass('hide');
                 $('#myPost .popup-delete').addClass('flex');
                 $('#myPost .popup-delete #postId').attr('value', postId);
             },
             changeToMainImg(e) {
-                let subImgSrc = e.target.getAttribute("src"),
-                    $mainImg  = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');;
+                let subImgSrc = $(e.target).attr('src'),
+                    $mainImg  = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
                 this.mainImgSrc = $mainImg.attr('src');
                 $mainImg.attr('src', subImgSrc);
             },
-            changeToSubImg(e) {
-                let $mainImg = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');;
+            backToSubImg(e) {
+                let $mainImg = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
                 $mainImg.attr('src', this.mainImgSrc);
             }
         },
