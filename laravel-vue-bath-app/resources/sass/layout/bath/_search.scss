@@ -52,12 +52,17 @@
     margin-bottom: 30px;
 }
 .bath-search .form-block .eval-select .eval-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     &:not(:last-child) {
         margin-bottom: 10px;
     }
+}
+.bath-search .form-block .eval-select .eval-block .error-block .error {
+    width: 100%;
+}
+.bath-search .form-block .eval-select .eval-block .eval-select-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     @media screen and (max-width: 760px) {
         flex-wrap: wrap;
     }

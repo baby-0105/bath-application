@@ -8,70 +8,33 @@
             </div>
         </div>
         <div class="form-block">
-            <p class="prefecture-error error"></p>
-            <p class="keyword-error error"></p>
-            <p class="field-error error"></p>
+            <p class="prefecture-error error"></p> <p class="keyword-error error"></p> <p class="field-error error"></p>
             <div class="prefecture-keyword">
                 <select class="prefecture field" name="prefecture" v-model="selectedPrefecture">
-                    <option value=""  hidden>都道府県を選択してください</option>
+                    <option value="" hidden>都道府県を選択してください</option>
                     <option v-for="prefecture in selectData.prefectures" :key="prefecture.code" :value="prefecture.code">{{ prefecture.name }}</option>
                 </select>
                 <input class="keyword field" type="search" name="keyword" v-model="keyword" placeholder="キーワードを入力してください">
             </div>
-            <div class="eval-select">
-                <p class="row-eval-error error"></p><p class="high-eval-error error"></p>
-                <div class="eval-block">
-                    <label for="" class="select-form-title">全体評価</label>
-                    <select class="eval field" name="eval" v-model="eval.rowSelectedEval">
-                        <option value="">全体評価</option>
-                        <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                    <span>〜</span>
-                    <select class="eval field" name="eval" v-model="eval.highSelectedEval">
-                        <option value="">全体評価</option>
-                        <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                </div>
-                <p class="row-hot-water-eval-error error"></p><p class="high-hot-water-eval-error error"></p>
-                <div class="eval-block">
-                    <label for="" class="select-form-title">お湯評価</label>
-                    <select class="eval field" name="hot_water_eval" v-model="eval.rowSelectedHotWaterEval">
-                        <option value="">お湯評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                    <span>〜</span>
-                    <select class="eval field" name="hot_water_eval" v-model="eval.highSelectedHotWaterEval">
-                        <option value="">お湯評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                </div>
-                <p class="row-rock-eval-error error"></p><p class="high-rock-eval-error error"></p>
-                <div class="eval-block">
-                    <label for="" class="select-form-title">岩盤浴評価</label>
-                    <select class="eval field" name="rock_eval" v-model="eval.rowSelectedRockEval">
-                        <option value="">岩盤浴評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                    <span>〜</span>
-                    <select class="eval field" name="rock_eval" v-model="eval.highSelectedRockEval">
-                        <option value="">岩盤浴評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                </div>
-                <p class="row-sauna-eval-error error"></p><p class="high-sauna-eval-error error"></p>
-                <div class="eval-block">
-                    <label for="" class="select-form-title">サウナ評価</label>
-                    <select class="eval field" name="sauna_eval" v-model="eval.rowSelectedSaunaEval">
-                        <option value="">サウナ評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                    <span>〜</span>
-                    <select class="eval field" name="sauna_eval" v-model="eval.highSelectedSaunaEval">
-                        <option value="">サウナ評価</option>
-                        <option v-for="e in selectData.eval" v-bind:key="e.code" :value="e.code">{{ e.name }}</option>
-                    </select>
-                </div>
-            </div>
+            <ul class="eval-select">
+                <li v-for="evalBlock in evalBlocks" :key="evalBlock.name" class="eval-block">
+                    <div class="error-block">
+                        <p :class="evalBlock.errorRow + '-eval-error error'"></p><p :class="evalBlock.errorHigh + '-eval-error error'"></p>
+                    </div>
+                    <div class="eval-select-block">
+                        <label for="" class="select-form-title">{{ evalBlock.name }}</label>
+                        <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.rowSelectedEval">
+                            <option value="">{{ evalBlock.name }}</option>
+                            <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
+                        </select>
+                        <span>〜</span>
+                        <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.highSelectedEval">
+                            <option value="">{{ evalBlock.name }}</option>
+                            <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
             <button class="main-submit-btn field" @click="getBathsInfo()"></button>
         </div>
 
@@ -82,22 +45,19 @@
                     <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
                     <div class="title-block">
                         <h4 class="title">{{ bath.name }}</h4>
-                        <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)"><img class="star-icon" :src="'../svg/star-yellow.svg'" alt="お気に入り 星アイコン 黄色"></a>
-                        <a v-else @click="addFavorite(bath.id)"><img class="star-icon" :src="'../svg/star-gray.svg'" alt="お気に入り 星アイコン 灰色"></a>
+                        <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)">
+                            <img class="star-icon" :src="'../svg/star-yellow.svg'" alt="お気に入り 星アイコン 黄色">
+                        </a>
+                        <a v-else @click="addFavorite(bath.id)">
+                            <img class="star-icon" :src="'../svg/star-gray.svg'" alt="お気に入り 星アイコン 灰色">
+                        </a>
                     </div>
                     <div class="mark-block">
-                        <div class="review">
-                            <p class="whole-review" v-if="bath.eval_cd !== null">{{ bath.eval_cd }}</p><p class="whole-review" v-else>--</p>
-                            <ul class="others-review">
-                                <li v-if="bath.hot_water_eval_cd !== null">{{ bath.hot_water_eval_cd }}</li><li v-else>--</li>
-                                <li v-if="bath.rock_eval_cd !== null">{{ bath.rock_eval_cd }}</li><li v-else>--</li>
-                                <li v-if="bath.sauna_eval_cd !== null">{{ bath.sauna_eval_cd }}</li><li v-else>--</li>
-                            </ul>
-                        </div>
-                        <ul class="mark" v-if="bath.is_rock !== null && bath.is_sauna !== null">
+                        <review-result :bath="bath"></review-result>
+                        <!-- <ul class="mark" v-if="bath.is_rock !== null && bath.is_sauna !== null">
                             <li class="rock" v-if="bath.is_rock !== null">岩盤浴有</li>
                             <li class="sauna" v-if="bath.is_sauna !== null">サウナ有</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="text-info">
                         <p class="place">{{ bath.place }} {{ bath.city }}</p>
@@ -118,21 +78,22 @@
 </template>
 
 <script>
+    import ReviewResult from './ReviewResult';
+
     export default {
+        components: {
+            'review-result': ReviewResult,
+        },
         data() {
             return {
+                evalBlocks: {
+                    all:      { name: '全体評価', nameTag: 'eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row', errorHigh: 'high' },
+                    hotWater: { name: 'お湯評価', nameTag: 'hot_water_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-hot-water', errorHigh: 'high-hot-water' },
+                    rock:     { name: '岩盤浴評価', nameTag: 'rock_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-rock', errorHigh: 'high-rock' },
+                    sauna:    { name: 'サウナ評価', nameTag: 'sauna_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-sauna', errorHigh: 'high-sauna' },
+                },
                 selectedPrefecture: '',
                 keyword: '',
-                eval: {
-                    rowSelectedEval: '',
-                    rowSelectedHotWaterEval: '',
-                    rowSelectedRockEval: '',
-                    rowSelectedSaunaEval: '',
-                    highSelectedEval: '',
-                    highSelectedHotWaterEval: '',
-                    highSelectedRockEval: '',
-                    highSelectedSaunaEval: '',
-                },
                 baths: {},
                 isFavoritedId: {},
                 resFavoritedId: '',
@@ -150,14 +111,14 @@
                 axios.post(url, {
                     prefecture: this.selectedPrefecture,
                     keyword: this.keyword,
-                    row_eval: this.eval.rowSelectedEval,
-                    row_hot_water_eval: this.eval.rowSelectedHotWaterEval,
-                    row_rock_eval: this.eval.rowSelectedRockEval,
-                    row_sauna_eval: this.eval.rowSelectedSaunaEval,
-                    high_eval: this.eval.highSelectedEval,
-                    high_hot_water_eval: this.eval.highSelectedHotWaterEval,
-                    high_rock_eval: this.eval.highSelectedRockEval,
-                    high_sauna_eval: this.eval.highSelectedSaunaEval,
+                    row_eval: this.evalBlocks.all.rowSelectedEval,
+                    row_hot_water_eval: this.evalBlocks.hotWater.rowSelectedEval,
+                    row_rock_eval: this.evalBlocks.rock.rowSelectedEval,
+                    row_sauna_eval: this.evalBlocks.sauna.rowSelectedEval,
+                    high_eval: this.evalBlocks.all.highSelectedEval,
+                    high_hot_water_eval: this.evalBlocks.hotWater.highSelectedEval,
+                    high_rock_eval: this.evalBlocks.rock.highSelectedEval,
+                    high_sauna_eval: this.evalBlocks.sauna.highSelectedEval,
                 })
                 .then(response => {
                     this.baths = response.data.baths;
