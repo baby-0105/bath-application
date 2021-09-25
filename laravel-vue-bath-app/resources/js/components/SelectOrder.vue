@@ -73,7 +73,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="post-time">{{ post.updated_at.replace(/-/g, '/') }}</p>
+                <p class="post-time">{{ postTime(post.updated_at) }}</p>
             </li>
         </ul>
     </div>
@@ -88,9 +88,14 @@
             }
         },
         computed: {
-            imgSrc: function() {
-                return function(path, updatedAt) {
-                    return '../storage/' + path+ '?' + updatedAt.replace(/[^0-9]/g, '');
+            imgSrc() {
+                return function(path, time) {
+                    return '../storage/' + path+ '?' + time.replace(/[^0-9]/g, '');
+                }
+            },
+            postTime() {
+                return function(time) {
+                    return time.replace(/-/g, '/');
                 }
             }
         },
