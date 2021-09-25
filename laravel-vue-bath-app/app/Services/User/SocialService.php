@@ -27,11 +27,16 @@ class SocialService{
 	/**
 	 * DBとの一致確認処理
 	 *
-	 * @return void
+	 * @return boolean 
 	 */
 	public function matchConfirmation($user, $sns)
 	{
-		return User::where('sns_id', $user->id)->orWhere('email', $user->email)->first()->where('sns', $sns)->value('sns') == $sns;
+		return User::where('sns_id', $user->id)
+					->orWhere('email', $user->email)
+					->first()
+					->where('sns', $sns)
+					->value('sns')
+					== $sns;
     }
 
 	/**
