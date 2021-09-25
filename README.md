@@ -25,3 +25,9 @@ $ vendor/bin/phpunit ./tests/Unit/テストファイル名
 # npm run prod → 必須(本番環境でcss/jsの読み取りを早くする→圧縮)
 ```
 
+## スクレイピング
+```
+http://localhost:8000/check_scraping アクセス
+```
+
+終了後消す
