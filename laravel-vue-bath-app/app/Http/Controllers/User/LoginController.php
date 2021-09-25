@@ -7,6 +7,7 @@ use App\Http\Requests\User\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 /**
  * ログインコントローラー
@@ -44,7 +45,8 @@ class LoginController extends Controller
         $this->setCredentials($request);
         if (Auth::attempt($this->credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('top')->with('message', 'ログインが完了しました。');
+            $request->session()->flash('message', 'ログインが完了しました。');
+            return view('top');
         }
 
         $validator = [
@@ -73,6 +75,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return view('top');  // redirect()->route('top')
+        return view('top');
     }
 }

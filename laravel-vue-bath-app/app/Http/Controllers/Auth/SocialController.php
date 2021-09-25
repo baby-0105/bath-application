@@ -8,10 +8,11 @@ use App\Mail\UserSnsRegisterMailSent;
 use App\Models\User;
 use App\Services\User\SocialService;
 use Illuminate\Support\Facades\Auth;
-use Socialite;
-use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Socialite;
+use Exception;
 
 /**
  * SNS認証用 コントローラー
@@ -54,29 +55,33 @@ class SocialController extends Controller
     {
         try {
             // 既にログイン済み
-            if(auth()->user()) { return redirect()->route('top')->with('message', 'すでにログイン済みです。'); }
+            if(auth()->user()) {
+                Session::flash('message', 'すでにログイン済みです。');
+                return view('top');
+            }
+
             $user = Socialite::driver($sns)->stateless()->user(); // stateless()：セッションでのstateのnullエラー防止
-            $data = [
-                'nonVerify' => $this->socialService->isNonVerify(session('name')),
-                'selectAuthUser' => $this->socialService->selectAuthUser($user, $sns)
-            ];
             session([
                 'register.sns_id' => $user->id,
                 'register.sns' => $sns,
                 'register.name' => $user->name,
                 'register.email' => $user->email,
+                'register.nonVerify' => $this->socialService->isNonVerify(session('name')),
+                'register.selectAuthUser' => $this->socialService->selectAuthUser($user, $sns)
             ]);
 
-            // DBカラ → セッション保存
-            if(empty($data['selectAuthUser'])) {
-                return redirect()->route('top')->with('snsUpdateProfile', '認証が完了しました')->with($data);
+            // ユーザー登録モーダル表示
+            if(empty($this->socialService->selectAuthUser($user, $sns))) {
+                Session::flash('snsUpdateProfile', '認証が完了しました');
+                return view('top');
             }
-            // ログイン（snsカラム一致時）
+
+            // ログイン処理（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user->id, $sns);
-                return redirect()->route('top')->with('message', 'ログインしました');
+                Session::flash('message', 'ログインしました');
+                return view('top');
             }
-            return redirect()->route('top')->with('message', '認証が完了しました')->with($data);
         }
         catch (Exception $e) {
             return redirect()->route('user.login')->with('message', '認証ができませんでした。');

@@ -55,7 +55,7 @@ Route::group(['prefix' => 'user'], function() {
 Route::namespace('Auth')->group(function() {
     Route::get('/login/{sns}', 'SocialController@redirectToProvider')->where('sns', 'facebook|google')->name('login.sns');
     Route::get('/login/{sns}/callback', 'SocialController@handleProviderCallback')->where('sns', 'facebook|google');
-    Route::post('/', 'SocialController@updateProfile')->name('update.profile');
+    Route::post('', 'SocialController@updateProfile')->name('update.profile');
 });
 
 Route::group(['prefix' => 'post'], function() {
