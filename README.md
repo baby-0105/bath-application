@@ -29,5 +29,3 @@ $ vendor/bin/phpunit ./tests/Unit/テストファイル名
 ```
 http://localhost:8000/check_scraping アクセス
 ```
-
-終了後消す
