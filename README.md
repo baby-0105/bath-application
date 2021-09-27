@@ -26,6 +26,10 @@ $ vendor/bin/phpunit ./tests/Unit/テストファイル名
 ```
 
 ## スクレイピング
+
+http://localhost:8000/check_scraping
+
 ```
-http://localhost:8000/check_scraping アクセス
+テーブルから、シーダ作成
+$ php artisan iseed {table_name}
 ```

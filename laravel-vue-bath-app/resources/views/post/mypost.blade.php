@@ -26,7 +26,7 @@
                     <li class="list">
                         <input class="post-id" type="hidden" value="{{ $post->id }}">
                         <a class="dlt-post"><img class="dlt-post-img" src="{{ asset('svg/dlt-icon.svg') }}" alt="投稿削除ボタン"></a>
-                        <h4 class="title">- {{ $post->title }} -</h4>
+                        <h4 class="title">{{ $post->title }}</h4>
                         <div class="desc">
                             <div class="info">
                                 <div class="bath-img">

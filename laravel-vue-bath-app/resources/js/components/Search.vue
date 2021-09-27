@@ -16,7 +16,12 @@
                 </select>
                 <input class="keyword field" type="search" name="keyword" v-model="keyword" placeholder="キーワードを入力してください">
             </div>
+            <p class="error"></p>
             <ul class="eval-select">
+                <p v-if="isInValidAllEval" class="error">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidHotWaterEval" class="error">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidRockEval" class="error">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidSaunaEval" class="error">サウナ体評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
                 <li v-for="evalBlock in evalBlocks" :key="evalBlock.name" class="eval-block">
                     <div class="error-block">
                         <p :class="evalBlock.errorRow + '-eval-error error'"></p><p :class="evalBlock.errorHigh + '-eval-error error'"></p>
@@ -24,12 +29,12 @@
                     <div class="eval-select-block">
                         <label for="" class="select-form-title">{{ evalBlock.name }}</label>
                         <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.rowSelectedEval">
-                            <option value="">{{ evalBlock.name }}</option>
+                            <option value="">{{ evalBlock.name }}(低)</option>
                             <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
                         </select>
                         <span>〜</span>
                         <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.highSelectedEval">
-                            <option value="">{{ evalBlock.name }}</option>
+                            <option value="">{{ evalBlock.name }}(高)</option>
                             <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
                         </select>
                     </div>
@@ -44,7 +49,7 @@
                 <li class="list" v-for="bath in baths" :key="bath.index">
                     <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
                     <div class="title-block">
-                        <h4 class="title">{{ bath.name }}</h4>
+                        <a :href="bath.url" target="_blank" rel="noopener noreferrer"><h4 class="title">{{ bath.name }}</h4></a>
                         <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)">
                             <img class="star-icon" :src="'../svg/star-yellow.svg'" alt="お気に入り 星アイコン 黄色">
                         </a>
@@ -61,7 +66,8 @@
                     </div>
                     <div class="text-info">
                         <p class="place">{{ bath.place }} {{ bath.city }}</p>
-                        <p class="closing-day">{{ bath.closing_day }}</p>
+                        <a class="link" :href="bath.url" target="_blank" rel="noopener noreferrer">HPはこちら</a>
+                        <!-- <p class="closing-day">{{ bath.closing_day }}</p> -->
                         <!-- <ul class="time">
                             <li class="holiday" v-if="bath.holiday_time !== null">土日：{{ bath.holiday_time }}</li><li v-else>土日：記載なし</li>
                             <li class="weekday" v-if="bath.weekday_time !== null">平日：{{ bath.weekday_time }}</li><li v-else>平日：記載なし</li>
@@ -102,6 +108,28 @@
         },
         props: {
             selectData: { type: Object },
+        },
+        computed: {
+            isInValidAllEval() {
+                if(this.evalBlocks.all.rowSelectedEval != '' && this.evalBlocks.all.highSelectedEval != '') {
+                    return this.evalBlocks.all.rowSelectedEval > this.evalBlocks.all.highSelectedEval;
+                }
+            },
+            isInValidHotWaterEval() {
+                if(this.evalBlocks.hotWater.rowSelectedEval != '' && this.evalBlocks.hotWater.highSelectedEval != '') {
+                    return this.evalBlocks.hotWater.rowSelectedEval > this.evalBlocks.hotWater.highSelectedEval;
+                }
+            },
+            isInValidRockEval() {
+                if(this.evalBlocks.rock.rowSelectedEval != '' && this.evalBlocks.rock.highSelectedEval != '') {
+                    return this.evalBlocks.rock.rowSelectedEval > this.evalBlocks.rock.highSelectedEval;
+                }
+            },
+            isInValidSaunaEval() {
+                if(this.evalBlocks.sauna.rowSelectedEval != '' && this.evalBlocks.sauna.highSelectedEval != '') {
+                    return this.evalBlocks.sauna.rowSelectedEval > this.evalBlocks.sauna.highSelectedEval;
+                }
+            }
         },
         methods: {
             getBathsInfo() {

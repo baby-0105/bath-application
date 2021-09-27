@@ -3,6 +3,7 @@
 // ==========================================================================*/
 
 .bath-index .list {
+    display: block;
     border-radius: 10px;
     border: 6px solid #dceaea;
     padding: 20px;
@@ -138,6 +139,16 @@
     @media screen and (max-width: 760px) {
         width: 50%;
         justify-content: center;
+    }
+}
+.bath-index .list .text-info .link {
+    @include bg_img_of_pseudo_ele(64px, 64px, 'svg/home-icon.svg');
+    color:#7edbe6;
+    &:before {
+        opacity: .1;
+    }
+    &:hover {
+        text-decoration: underline;
     }
 }
 .bath-index .list .text-info .closing-day {
