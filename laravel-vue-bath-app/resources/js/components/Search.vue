@@ -16,7 +16,12 @@
                 </select>
                 <input class="keyword field" type="search" name="keyword" v-model="keyword" placeholder="キーワードを入力してください">
             </div>
+            <p class="error"></p>
             <ul class="eval-select">
+                <p v-if="isInValidAllEval" class="error">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidHotWaterEval" class="error">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidRockEval" class="error">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
+                <p v-if="isInValidSaunaEval" class="error">サウナ体評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
                 <li v-for="evalBlock in evalBlocks" :key="evalBlock.name" class="eval-block">
                     <div class="error-block">
                         <p :class="evalBlock.errorRow + '-eval-error error'"></p><p :class="evalBlock.errorHigh + '-eval-error error'"></p>
@@ -24,12 +29,12 @@
                     <div class="eval-select-block">
                         <label for="" class="select-form-title">{{ evalBlock.name }}</label>
                         <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.rowSelectedEval">
-                            <option value="">{{ evalBlock.name }}</option>
+                            <option value="">{{ evalBlock.name }}(低)</option>
                             <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
                         </select>
                         <span>〜</span>
                         <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.highSelectedEval">
-                            <option value="">{{ evalBlock.name }}</option>
+                            <option value="">{{ evalBlock.name }}(高)</option>
                             <option v-for="e in selectData.eval" :key="e.code" :value="e.code">{{ e.name }}</option>
                         </select>
                     </div>
@@ -103,6 +108,28 @@
         },
         props: {
             selectData: { type: Object },
+        },
+        computed: {
+            isInValidAllEval() {
+                if(this.evalBlocks.all.rowSelectedEval != '' && this.evalBlocks.all.highSelectedEval != '') {
+                    return this.evalBlocks.all.rowSelectedEval > this.evalBlocks.all.highSelectedEval;
+                }
+            },
+            isInValidHotWaterEval() {
+                if(this.evalBlocks.hotWater.rowSelectedEval != '' && this.evalBlocks.hotWater.highSelectedEval != '') {
+                    return this.evalBlocks.hotWater.rowSelectedEval > this.evalBlocks.hotWater.highSelectedEval;
+                }
+            },
+            isInValidRockEval() {
+                if(this.evalBlocks.rock.rowSelectedEval != '' && this.evalBlocks.rock.highSelectedEval != '') {
+                    return this.evalBlocks.rock.rowSelectedEval > this.evalBlocks.rock.highSelectedEval;
+                }
+            },
+            isInValidSaunaEval() {
+                if(this.evalBlocks.sauna.rowSelectedEval != '' && this.evalBlocks.sauna.highSelectedEval != '') {
+                    return this.evalBlocks.sauna.rowSelectedEval > this.evalBlocks.sauna.highSelectedEval;
+                }
+            }
         },
         methods: {
             getBathsInfo() {

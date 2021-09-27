@@ -13,7 +13,7 @@
         <ul class="bath">
             <li class="list" v-for="post in posts" :key="post.id">
                 <a class="dlt-post" :value="post.id" @click="dltPost(post.id)"><img class="dlt-post-img" :src="'../svg/dlt-icon.svg'" alt="投稿削除ボタン"></a>
-                <h4 class="title">- {{ post.title }} -</h4>
+                <h4 class="title">{{ post.title }}</h4>
                 <div class="desc">
                     <div class="info">
                         <div class="bath-img">
