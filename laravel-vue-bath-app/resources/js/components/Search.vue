@@ -44,7 +44,7 @@
                 <li class="list" v-for="bath in baths" :key="bath.index">
                     <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
                     <div class="title-block">
-                        <h4 class="title">{{ bath.name }}</h4>
+                        <a :href="bath.url" target="_blank" rel="noopener noreferrer"><h4 class="title">{{ bath.name }}</h4></a>
                         <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)">
                             <img class="star-icon" :src="'../svg/star-yellow.svg'" alt="お気に入り 星アイコン 黄色">
                         </a>
@@ -61,7 +61,8 @@
                     </div>
                     <div class="text-info">
                         <p class="place">{{ bath.place }} {{ bath.city }}</p>
-                        <p class="closing-day">{{ bath.closing_day }}</p>
+                        <a class="link" :href="bath.url" target="_blank" rel="noopener noreferrer">HPはこちら</a>
+                        <!-- <p class="closing-day">{{ bath.closing_day }}</p> -->
                         <!-- <ul class="time">
                             <li class="holiday" v-if="bath.holiday_time !== null">土日：{{ bath.holiday_time }}</li><li v-else>土日：記載なし</li>
                             <li class="weekday" v-if="bath.weekday_time !== null">平日：{{ bath.weekday_time }}</li><li v-else>平日：記載なし</li>
