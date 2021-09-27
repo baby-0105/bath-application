@@ -42,7 +42,8 @@ Route::group(['middleware' => 'auth'], function() {
  * 以下、ログイン必要なし
  */
 
-Route::get('check_scraping', 'Bath\ScrapingController@getBath');
+// Route::get('check_scraping', 'Bath\ScrapingController@getBath');
+// Route::post('check_scraping', 'Bath\ScrapingController@getUrl')->name('check_scraping.getUrl');
 
 Route::get('/', function () { return view('top'); })->name('top');
 Route::get('/privacy', function () { return view('privacy'); })->name('privacy');
