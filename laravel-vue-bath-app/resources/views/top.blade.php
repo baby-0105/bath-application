@@ -1,8 +1,5 @@
 @extends('app')
 @section('content')
-    {{-- @php
-        dd(session()->all());
-    @endphp --}}
     <div class="popup @if(session('message')) flex @else hide @endif" id="popup">
         <div class="content">
             <p class="text">{{ session('message') }}</p>
