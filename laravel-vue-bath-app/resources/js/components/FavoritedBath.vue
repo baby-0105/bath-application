@@ -3,7 +3,7 @@
         <ul class="bath">
             <p class="bath-num" v-if="favorited.length > 0">お気に入り件数：{{ favorited.length }}件</p>
             <li class="list" v-for="favorite in favorited" :key="favorite.id">
-                <p v-if="isFavorited(favorite.bath[0].id, responseId)" class="favorite-error error"></p>
+                <p v-show="isFavorited(favorite.bath[0].id, responseId)" class="favorite-error error"></p>
                 <div class="title-block">
                     <h4 class="title">{{ favorite.bath[0].name }}</h4>
                     <a v-if="unFavoritedId.includes(favorite.bath[0].id)" @click="addFavorite(favorite.bath[0].id)">

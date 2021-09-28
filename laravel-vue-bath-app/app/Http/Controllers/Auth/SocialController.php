@@ -78,7 +78,7 @@ class SocialController extends Controller
             // ログイン処理（snsカラム一致時）
             else if ($this->socialService->matchConfirmation($user, $sns)) {
                 $this->socialService->toLoginUser($user->id, $sns);
-                Session::flash('message', 'ログインしました');
+                Session::flash('message', $user->name.'さん、ようこそOFLogへ。');
                 return view('top');
             }
         }

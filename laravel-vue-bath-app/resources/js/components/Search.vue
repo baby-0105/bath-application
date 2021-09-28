@@ -18,10 +18,10 @@
             </div>
             <p class="error"></p>
             <ul class="eval-select">
-                <p v-if="isInValidAllEval" class="error">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
-                <p v-if="isInValidHotWaterEval" class="error">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
-                <p v-if="isInValidRockEval" class="error">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
-                <p v-if="isInValidSaunaEval" class="error">サウナ体評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
+                <p v-show="isInValidAllEval" class="error">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
+                <p v-show="isInValidHotWaterEval" class="error">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
+                <p v-show="isInValidRockEval" class="error">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
+                <p v-show="isInValidSaunaEval" class="error">サウナ体評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
                 <li v-for="evalBlock in evalBlocks" :key="evalBlock.name" class="eval-block">
                     <div class="error-block">
                         <p :class="evalBlock.errorRow + '-eval-error error'"></p><p :class="evalBlock.errorHigh + '-eval-error error'"></p>
@@ -45,7 +45,7 @@
 
         <div class="search-result bath-index">
             <ul class="bath">
-                <p class="bath-num" v-if="baths.length > 0">お風呂件数：{{ baths.length }}件</p>
+                <p class="bath-num" v-show="baths.length > 0">お風呂件数：{{ baths.length }}件</p>
                 <li class="list" v-for="bath in baths" :key="bath.index">
                     <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
                     <div class="title-block">

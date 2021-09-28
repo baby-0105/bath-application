@@ -11,6 +11,10 @@
 
 <script>
     export default {
+        data() {
+            return {
+            }
+        },
         props: [ 'bath' ],
         computed: {
             isEvaluated() {

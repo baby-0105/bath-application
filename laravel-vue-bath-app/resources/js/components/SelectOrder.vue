@@ -32,26 +32,26 @@
                             <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
                                 <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
-                                        v-if="post.sub_picture1_path"
                                         class="sub-img"
+                                        alt="風呂のサブ画像"
                                         :src="imgSrc(post.sub_picture1_path, post.updated_at)"
-                                        alt="風呂のサブ画像"
+                                        v-if="post.sub_picture1_path"
                                     >
                                 </li>
                                 <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
-                                        v-if="post.sub_picture2_path"
                                         class="sub-img"
+                                        alt="風呂のサブ画像"
                                         :src="imgSrc(post.sub_picture2_path, post.updated_at)"
-                                        alt="風呂のサブ画像"
+                                        v-if="post.sub_picture2_path"
                                     >
                                 </li>
                                 <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
                                     <img
-                                        v-if="post.sub_picture3_path"
                                         class="sub-img"
-                                        :src="imgSrc(post.sub_picture3_path, post.updated_at)"
                                         alt="風呂のサブ画像"
+                                        :src="imgSrc(post.sub_picture3_path, post.updated_at)"
+                                        v-if="post.sub_picture3_path"
                                     >
                                 </li>
                             </ul>
