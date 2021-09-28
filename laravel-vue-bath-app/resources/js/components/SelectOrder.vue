@@ -1,13 +1,12 @@
 <template>
     <div class="select-order" id="selectOrderBlock">
-        <p class="status-error error"></p><p class="timeout-error error"></p><p class="select-order-error error"></p>
-        <form method="POST" action="">
+        <p class="error" v-for="error in errors" :key="error.id">{{ error[0] }}</p>
+        <form method="POST">
             <select name="selectOrder" class="select" id="selectOrder" @change="onChange">
-                <option value="new" selected>最新の投稿順</option>
-                <option value="eval">総合評価 順</option>
-                <option value="hot_water_eval">お湯評価 順</option>
-                <option value="rock_eval">岩盤浴評価 順</option>
-                <option value="sauna_eval">サウナ評価 順</option>
+                <option v-for="selectOrder in selectOrders"
+                        :key="selectOrder.id"
+                        :value="selectOrder.value">
+                {{ selectOrder.name }}</option>
             </select>
         </form>
         <ul class="bath">
@@ -85,6 +84,14 @@
             return {
                 posts: {},
                 firstMainImg: '',
+                selectOrders: {
+                    new         : { id: 1, name: '最新の投稿順', value: 'new' },
+                    eval        : { id: 2, name: '全体評価 順', value: 'eval' },
+                    hotWaterEval: { id: 3, name: 'お湯評価 順', value: 'hot_water_eval' },
+                    rockEval    : { id: 4, name: '岩盤浴評価 順', value: 'rock_eval' },
+                    saunaEval   : { id: 5, name: 'サウナ評価 順', value: 'sauna_eval' },
+                },
+                errors: {}
             }
         },
         computed: {
@@ -103,7 +110,7 @@
             onChange(e) {
                 axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/post/mypost/selectOrder';
-                $('#myPost .error').text('');
+                this.errors = '';
                 axios.post(url, {
                     selectOrder: e.target.value,
                 })
@@ -112,7 +119,7 @@
                     $('#myPost .bath.first-view').addClass('hide');
                 })
                 .catch(e => {
-                    $('#myPost .select-order-error').text(e.response.data.errors.selectOrder);
+                    this.errors = e.response.data.errors;
                 })
             },
             dltPost(postId) {

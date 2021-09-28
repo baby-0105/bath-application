@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="form-block">
-            <p class="prefecture-error error"></p> <p class="keyword-error error"></p> <p class="field-error error"></p>
+            <p class="error" v-for="error in errors.search" :key="error.id">{{ error[0] }}</p>
             <div class="prefecture-keyword">
                 <select class="prefecture field" name="prefecture" v-model="selectedPrefecture">
                     <option value="" hidden>都道府県を選択してください</option>
@@ -16,16 +16,12 @@
                 </select>
                 <input class="keyword field" type="search" name="keyword" v-model="keyword" placeholder="キーワードを入力してください">
             </div>
-            <p class="error"></p>
             <ul class="eval-select">
-                <p v-show="isInValidAllEval" class="error">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
-                <p v-show="isInValidHotWaterEval" class="error">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
-                <p v-show="isInValidRockEval" class="error">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
-                <p v-show="isInValidSaunaEval" class="error">サウナ体評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
-                <li v-for="evalBlock in evalBlocks" :key="evalBlock.name" class="eval-block">
-                    <div class="error-block">
-                        <p :class="evalBlock.errorRow + '-eval-error error'"></p><p :class="evalBlock.errorHigh + '-eval-error error'"></p>
-                    </div>
+                <p class="error" v-show="isInValidAllEval">全体評価(低)は、全体評価(高)より'小さい数字'を選択してください。</p>
+                <p class="error" v-show="isInValidHotWaterEval">お湯評価(低)は、お湯評価(高)より'小さい数字'を選択してください。</p>
+                <p class="error" v-show="isInValidRockEval">岩盤浴評価(低)は、岩盤浴評価(高)より'小さい数字'を選択してください。</p>
+                <p class="error" v-show="isInValidSaunaEval">サウナ評価(低)は、サウナ評価(高)より'小さい数字'を選択してください。</p>
+                <li v-for="evalBlock in evalBlocks" :key="evalBlock.id" class="eval-block">
                     <div class="eval-select-block">
                         <label for="" class="select-form-title">{{ evalBlock.name }}</label>
                         <select class="eval field" :name="evalBlock.nameTag" v-model="evalBlock.rowSelectedEval">
@@ -47,7 +43,7 @@
             <ul class="bath">
                 <p class="bath-num" v-show="baths.length > 0">お風呂件数：{{ baths.length }}件</p>
                 <li class="list" v-for="bath in baths" :key="bath.index">
-                    <p v-if="bath.id == resFavoritedId" class="favorite-error error"></p>
+                    <p v-if="bath.id == resFavoritedId" class="error">{{ errors.favorite[0] }}</p>
                     <div class="title-block">
                         <a :href="bath.url" target="_blank" rel="noopener noreferrer"><h4 class="title">{{ bath.name }}</h4></a>
                         <a v-if="isFavoritedId.includes(bath.id)" @click="unFavorite(bath.id)">
@@ -93,10 +89,10 @@
         data() {
             return {
                 evalBlocks: {
-                    all:      { name: '全体評価', nameTag: 'eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row', errorHigh: 'high' },
-                    hotWater: { name: 'お湯評価', nameTag: 'hot_water_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-hot-water', errorHigh: 'high-hot-water' },
-                    rock:     { name: '岩盤浴評価', nameTag: 'rock_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-rock', errorHigh: 'high-rock' },
-                    sauna:    { name: 'サウナ評価', nameTag: 'sauna_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-sauna', errorHigh: 'high-sauna' },
+                    all:      { id: 1, name: '全体評価', nameTag: 'eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row', errorHigh: 'high' },
+                    hotWater: { id: 2, name: 'お湯評価', nameTag: 'hot_water_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-hot-water', errorHigh: 'high-hot-water' },
+                    rock:     { id: 3, name: '岩盤浴評価', nameTag: 'rock_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-rock', errorHigh: 'high-rock' },
+                    sauna:    { id: 4, name: 'サウナ評価', nameTag: 'sauna_eval', rowSelectedEval: '', highSelectedEval: '', errorRow: 'row-sauna', errorHigh: 'high-sauna' },
                 },
                 selectedPrefecture: '',
                 keyword: '',
@@ -104,6 +100,10 @@
                 isFavoritedId: {},
                 resFavoritedId: '',
                 isLogin: '',
+                errors: {
+                    search: {},
+                    favorite: {}
+                },
             }
         },
         props: {
@@ -135,7 +135,6 @@
             getBathsInfo() {
                 axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/bath/search';
-                $('.form-block .error').text('');
                 axios.post(url, {
                     prefecture: this.selectedPrefecture,
                     keyword: this.keyword,
@@ -157,29 +156,21 @@
                     $("html,body").animate({scrollTop:$('.search-result').offset().top - headerHeight}, 1000);
                 })
                 .catch(e => {
-                    $('.form-block .prefecture-error').text(e.response.data.errors.prefecture);
-                    $('.form-block .keyword-error').text(e.response.data.errors.keyword);
-                    $('.form-block .row-eval-error').text(e.response.data.errors.row_eval);
-                    $('.form-block .high-eval-error').text(e.response.data.errors.high_eval);
-                    $('.form-block .row-hot-water-eval-error').text(e.response.data.errors.row_hot_water_eval);
-                    $('.form-block .high-hot-water-eval-error').text(e.response.data.errors.high_hot_water_eval);
-                    $('.form-block .row-rock-eval-error').text(e.response.data.errors.row_rock_eval);
-                    $('.form-block .high-rock-eval-error').text(e.response.data.errors.high_rock_eval);
-                    $('.form-block .row-sauna-eval-error').text(e.response.data.errors.row_sauna_eval);
-                    $('.form-block .high-sauna-eval-error').text(e.response.data.errors.high_sauna_eval);
-                    $('.form-block .field-error').text(e.response.data.errors.field);
+                    this.errors.search = e.response.data.errors;
+                    $("html,body").animate({scrollTop: 0}, 1000);
                 })
             },
             addFavorite(bathId) {
+                // 未ログイン時
                 if(!this.isLogin) {
                     const $popup = $('#bathSearch .popup');
                     $popup.addClass('flex');
                     $popup.removeClass('hide');
                     return false;
                 }
-
+                // ログイン完了時
                 const url = '/bath/addFavorite';
-                $('.search-result .error').text('');
+                this.errors.favorite = '';
                 axios.post(url, {
                     bathId: bathId,
                 })
@@ -188,24 +179,23 @@
                     this.resFavoritedId = response.data;
                 })
                 .catch(e => {
-                    $('.search-result .favorite-error').text(e.response.data.errors.bathId);
+                    this.errors.favorite = e.response.data.errors.bathId;
                 })
             },
             unFavorite(bathId) {
                 const url = '/bath/unFavorite';
-                $('.search-result .error').text('');
+                this.errors.favorite = '';
                 axios.post(url, {
                     bathId: bathId,
                 })
                 .then(response => {
                     let val = response.data,
                         index = this.isFavoritedId.indexOf(val);
-
                     this.isFavoritedId.splice(index, 1);
                     this.resFavoritedId = response.data;
                 })
                 .catch(e => {
-                    $('.search-result .favorite-error').text(e.response.data.errors.bathId);
+                    this.errors.favorite = e.response.data.errors.bathId;
                 })
             }
         }

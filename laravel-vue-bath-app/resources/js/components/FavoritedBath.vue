@@ -3,7 +3,7 @@
         <ul class="bath">
             <p class="bath-num" v-if="favorited.length > 0">お気に入り件数：{{ favorited.length }}件</p>
             <li class="list" v-for="favorite in favorited" :key="favorite.id">
-                <p v-show="isFavorited(favorite.bath[0].id, responseId)" class="favorite-error error"></p>
+                <p class="error" v-show="isFavorited(favorite.bath[0].id, responseId)" v-for="error in errors" :key="error.id">{{ error[0] }}</p>
                 <div class="title-block">
                     <h4 class="title">{{ favorite.bath[0].name }}</h4>
                     <a v-if="unFavoritedId.includes(favorite.bath[0].id)" @click="addFavorite(favorite.bath[0].id)">
@@ -44,6 +44,7 @@
             return {
                 unFavoritedId: [],
                 responseId: '',
+                errors: {},
             }
         },
         props: {
@@ -60,7 +61,7 @@
             addFavorite(bathId) {
                 axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
                 const url = '/bath/addFavorite';
-                $('.favorite .error').text('');
+                this.errors = '';
                 axios.post(url, {
                     bathId: bathId,
                 })
@@ -71,12 +72,12 @@
                     this.unFavoritedId.splice(index, 1);
                 })
                 .catch(e => {
-                    $('.favorite .favorite-error').text(e.response.data.errors.bathId);
+                    this.errors = e.response.data.errors;
                 })
             },
             unFavorite(bathId) {
                 const url = '/bath/unFavorite';
-                $('.favorite .error').text('');
+                this.errors = '';
                 axios.post(url, {
                     bathId: bathId,
                 })
@@ -85,7 +86,7 @@
                     this.unFavoritedId.push(response.data);
                 })
                 .catch(e => {
-                    $('.favorite .favorite-error').text(e.response.data.errors.bathId);
+                    this.errors = e.response.data.errors;
                 })
             }
         }
