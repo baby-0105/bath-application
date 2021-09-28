@@ -66,7 +66,6 @@ class SocialController extends Controller
                 'register.name' => $user->name,
                 'register.email' => $user->email,
                 'register.nonVerify' => $this->socialService->isNonVerify(session('name')),
-                'register.selectAuthUser' => $this->socialService->selectAuthUser($user, $sns)
             ]);
 
             // ユーザー登録モーダル表示
@@ -83,7 +82,8 @@ class SocialController extends Controller
             }
         }
         catch (Exception $e) {
-            return redirect()->route('user.login')->with('message', '認証ができませんでした。');
+            Session::flash('message', '認証ができませんでした');
+            return view('user.login');
         }
     }
 

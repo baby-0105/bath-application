@@ -17,13 +17,13 @@
                     <div class="search-btn-area">
                         <a class="search-btn" href="{{ route('bath.search') }}">
                             <span class="btn-name">検索する</span>
-                            <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                            <img class="bath-mark" src="{{ asset('images/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                         </a>
                     </div>
                     <div class="my-post-block">
                         <a class="search-btn" href="{{ route('post.mypost') }}">
                             <span class="btn-name">My投稿</span>
-                            <img class="bath-mark" src="{{ asset('svg/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
+                            <img class="bath-mark" src="{{ asset('images/bath-mark-light-blue.svg') }}" alt="温泉マークのボタン">
                         </a>
                     </div>
                 </div>

@@ -44,6 +44,6 @@ class ChangePasswordController extends Controller
     public function submit(ChangePasswordRequest $request)
     {
         $this->userService->updateUser([ 'password' => Hash::make($request->new_password) ]);
-        return redirect()->route('user.mypage')->with('message', 'パスワードを変更しました。');
+        return redirect()->route('user.mypage')->with('changeMessage', 'パスワードを変更しました。');
     }
 }

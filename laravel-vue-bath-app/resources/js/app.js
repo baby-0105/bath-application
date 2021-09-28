@@ -1,6 +1,5 @@
 require('./bootstrap');
 require('./common.js');
-require('./top');
 
 require('./components/header.js');
 require('./components/popup.js');
