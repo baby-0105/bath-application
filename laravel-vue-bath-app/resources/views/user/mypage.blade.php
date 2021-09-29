@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
-    <div class="popup @if(session('message')) flex @else hide @endif" id="popup">
+    <div class="popup @if(session('changeMessage')) flex @else hide @endif" id="popup">
         <div class="content">
-            <p class="text">{{ session('message') }}</p>
+            <p class="text">{{ session('changeMessage') }}</p>
             <button class="btn close" id="close"></button>
         </div>
     </div>

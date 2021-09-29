@@ -27,7 +27,7 @@ class SocialService{
 	/**
 	 * DBとの一致確認処理
 	 *
-	 * @return boolean 
+	 * @return boolean
 	 */
 	public function matchConfirmation($user, $sns)
 	{

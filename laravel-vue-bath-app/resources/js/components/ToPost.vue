@@ -2,13 +2,14 @@
     <div class="bath-search list">
         <label class="field-name">お風呂検索<span class="red">*</span></label>
         <div class="search-block">
-            <p class="prefecture-error error"></p>
-            <p class="keyword-error error"></p>
-            <p class="field-error error"></p>
+            <p class="error" v-for="error in errors" :key="error.id">{{ error[0] }}</p>
             <div class="search-field">
                 <select class="select" v-model="selectedPrefecture">
                     <option value="">都道府県を選択してください</option>
-                    <option v-for="prefecture in prefectures" :key="prefecture.code" :value="prefecture.code">{{ prefecture.name }}</option>
+                    <option v-for="prefecture in prefectures"
+                            :key="prefecture.code"
+                            :value="prefecture.code">
+                    {{ prefecture.name }}</option>
                 </select>
                 <div class="tablet-field">
                     <input class="keyword" v-model="keyword" placeholder="キーワードを入力してください" type="text">
@@ -33,6 +34,7 @@
                 keyword: '',
                 selectedBath: '',
                 baths: {},
+                errors: {}
             }
         },
         props: {
@@ -40,9 +42,9 @@
         },
         methods: {
             searchBath() {
-                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
+                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
                 const url = '/post/search';
-                $('.bath-search .error').text('');
+                this.errors = '';
                 axios.post(url, {
                     prefecture: this.selectedPrefecture,
                     keyword: this.keyword,
@@ -51,9 +53,7 @@
                     this.baths = response.data;
                 })
                 .catch(e => {
-                    $('.bath-search .prefecture-error').text(e.response.data.errors.prefecture);
-                    $('.bath-search .keyword-error').text(e.response.data.errors.keyword);
-                    $('.bath-search .field-error').text(e.response.data.errors.field);
+                    this.errors = e.response.data.errors;
                 })
             },
         }
