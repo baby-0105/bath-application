@@ -60,7 +60,7 @@ class Post extends Model
      */
     public static function getLatestMyPost()
     {
-        return self::where('user_id', auth()->user()->id)->latest()->get();
+        return self::where('user_id', auth()->user()->id)->with('bath')->latest()->get();
     }
 
     /**
