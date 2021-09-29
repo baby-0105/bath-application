@@ -8,6 +8,9 @@
         <link rel="shortcut icon" href="{{ asset('/images/favicon.png') }}">
         <link rel="dns-prefetch" href="//oflog.top"> {{-- DNSのキャッシュ --}}
         <link rel="prefetch" href="//oflog.top"> {{-- 静的リソースのキャッシュ --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
         <title>OFLog ~あなたの風呂活に新たな彩を~</title>
     </head>
 
