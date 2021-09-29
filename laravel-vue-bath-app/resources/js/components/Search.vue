@@ -1,12 +1,6 @@
 <template>
     <div>
-        <div class="popup hide" id="popup">
-            <div class="content">
-                <p class="text">まだ、ログインが完了していません。</p>
-                <p class="text">ログインを完了させてください。</p>
-                <button class="btn close" id="close"></button>
-            </div>
-        </div>
+        <is-not-login :hidePopup="hidePopup"></is-not-login> <!-- 未ログインモーダル -->
         <div class="form-block">
             <p class="error" v-for="error in errors.search" :key="error.id">{{ error[0] }}</p>
             <div class="prefecture-keyword">
@@ -81,10 +75,12 @@
 
 <script>
     import ReviewResult from './ReviewResult';
+    import isNotLogin from './popup/isNotLogin';
 
     export default {
         components: {
             'review-result': ReviewResult,
+            'is-not-login': isNotLogin
         },
         data() {
             return {
@@ -104,6 +100,7 @@
                     search: {},
                     favorite: {}
                 },
+                hidePopup: '',
             }
         },
         props: {
@@ -163,9 +160,7 @@
             addFavorite(bathId) {
                 // 未ログイン時
                 if(!this.isLogin) {
-                    const $popup = $('#bathSearch .popup');
-                    $popup.addClass('flex');
-                    $popup.removeClass('hide');
+                    this.hidePopup = false;
                     return false;
                 }
                 // ログイン完了時

@@ -112,8 +112,10 @@
 
 .post-index .index .desc .main-img-block {
     width: 80%;
-    height: 200px;
     position: relative;
+    @media screen and (max-width: 599px) {
+        height: 200px;
+    }
 }
 
 .post-index .index .desc .main-img {
@@ -135,6 +137,11 @@
 
 .post-index .index .desc .sub-imgs .sub-img-list {
     height: 30%;
+    align-items: center;
+    display: flex;
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
     @media screen and (max-width: 599px) {
         width: 100%;
         &:not(:last-child) {

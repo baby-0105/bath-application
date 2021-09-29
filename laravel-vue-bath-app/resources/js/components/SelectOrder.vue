@@ -10,7 +10,7 @@
             </select>
         </form>
         <ul class="bath">
-            <li class="list" v-for="post in posts" :key="post.id">
+            <li class="list" v-for="(post, index) in posts" :key="post.id" @mouseover="getIndex(index)" @mouseleave="dltIndex(index)">
                 <a class="dlt-post" :value="post.id" @click="dltPost(post.id)"><img class="dlt-post-img" :src="'../svg/dlt-icon.svg'" alt="投稿削除ボタン"></a>
                 <h4 class="title">{{ post.title }}</h4>
                 <div class="desc">
@@ -20,38 +20,48 @@
                                 <img
                                     class="main-img"
                                     alt="風呂の画像 メイン"
-                                    :src="imgSrc(post.main_image_path, post.updated_at)"
-                                    v-if="post.main_image_path">
+                                    :src="hoverdImg"
+                                    v-if="post.main_image_path && index === hoverdIndex && hoverdImg">
                                 <img
                                     class="main-img"
-                                    :src="'../svg/bath-mark-light-blue.svg'"
                                     alt="風呂の画像 メイン"
-                                    v-else>
+                                    :src="imgSrc(post.main_image_path, post.updated_at)"
+                                    v-else-if="post.main_image_path">
+                                <img class="main-img-only" alt="風呂の画像 メイン" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                             </div>
                             <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
+                                <li class="sub-img-list">
                                     <img
+                                        @mouseover="changeToMainImg"
+                                        @mouseleave="backToSubImg"
                                         class="sub-img"
                                         alt="風呂のサブ画像"
                                         :src="imgSrc(post.sub_picture1_path, post.updated_at)"
                                         v-if="post.sub_picture1_path"
                                     >
+                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
+                                <li class="sub-img-list">
                                     <img
+                                        @mouseover="changeToMainImg"
+                                        @mouseleave="backToSubImg"
                                         class="sub-img"
                                         alt="風呂のサブ画像"
                                         :src="imgSrc(post.sub_picture2_path, post.updated_at)"
                                         v-if="post.sub_picture2_path"
                                     >
+                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
-                                <li class="sub-img-list" @mouseover="changeToMainImg" @mouseleave="backToSubImg">
+                                <li class="sub-img-list">
                                     <img
+                                        @mouseover="changeToMainImg"
+                                        @mouseleave="backToSubImg"
                                         class="sub-img"
                                         alt="風呂のサブ画像"
                                         :src="imgSrc(post.sub_picture3_path, post.updated_at)"
                                         v-if="post.sub_picture3_path"
                                     >
+                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
                             </ul>
                         </div>
@@ -91,7 +101,9 @@
                     rockEval    : { id: 4, name: '岩盤浴評価 順', value: 'rock_eval' },
                     saunaEval   : { id: 5, name: 'サウナ評価 順', value: 'sauna_eval' },
                 },
-                errors: {}
+                errors: {},
+                hoverdImg: '',
+                hoverdIndex: '',
             }
         },
         computed: {
@@ -108,7 +120,7 @@
         },
         methods: {
             onChange(e) {
-                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT
+                axios.defaults.baseURL = process.env.VUE_APP_API_ENDPOINT;
                 const url = '/post/mypost/selectOrder';
                 this.errors = '';
                 axios.post(url, {
@@ -127,16 +139,10 @@
                 $('#myPost .popup-delete').addClass('flex');
                 $('#myPost .popup-delete #postId').attr('value', postId);
             },
-            changeToMainImg(e) {
-                let subImgSrc = $(e.target).attr('src'),
-                    $mainImg  = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
-                this.mainImgSrc = $mainImg.attr('src');
-                $mainImg.attr('src', subImgSrc);
-            },
-            backToSubImg(e) {
-                let $mainImg = $(e.target).parents('.sub-imgs').prev('.main-img-block').find('.main-img');
-                $mainImg.attr('src', this.mainImgSrc);
-            }
+            getIndex(index) { this.hoverdIndex = index; },
+            dltIndex() { this.hoverdIndex = ''; },
+            changeToMainImg(e) { this.hoverdImg = e.target.getAttribute('src'); },
+            backToSubImg() { this.hoverdImg = ''; }
         },
     }
 </script>
@@ -155,5 +161,9 @@
         @media screen and (max-width: 599px) {
             width: 100%;
         }
+    }
+
+    .select-order .bath .main-img-only {
+        max-height: 200px;
     }
 </style>
