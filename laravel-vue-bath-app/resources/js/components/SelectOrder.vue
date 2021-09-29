@@ -1,7 +1,7 @@
 <template>
     <div class="select-order" id="selectOrderBlock">
         <p class="error" v-for="error in errors" :key="error.id">{{ error[0] }}</p>
-        <form method="POST">
+        <form>
             <select name="selectOrder" class="select" id="selectOrder" @change="onChange">
                 <option v-for="selectOrder in selectOrders"
                         :key="selectOrder.id"
@@ -92,7 +92,6 @@
     export default {
         data() {
             return {
-                posts: {},
                 firstMainImg: '',
                 selectOrders: {
                     new         : { id: 1, name: '最新の投稿順', value: 'new' },
@@ -105,6 +104,9 @@
                 hoverdImg: '',
                 hoverdIndex: '',
             }
+        },
+        props: {
+            posts: { type: Array },
         },
         computed: {
             imgSrc() {
