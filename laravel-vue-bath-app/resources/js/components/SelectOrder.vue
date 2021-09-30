@@ -1,8 +1,8 @@
 <template>
-    <div class="select-order" id="selectOrderBlock">
+    <div class="select-order">
         <p class="error" v-for="error in errors" :key="error.id">{{ error[0] }}</p>
         <form>
-            <select name="selectOrder" class="select" id="selectOrder" @change="onChange">
+            <select name="selectOrder" class="select" @change="onChange">
                 <option v-for="selectOrder in selectOrders"
                         :key="selectOrder.id"
                         :value="selectOrder.value">
