@@ -19,15 +19,15 @@
                             <div class="main-img-block">
                                 <img
                                     class="main-img"
-                                    alt="風呂の画像 メイン"
+                                    alt="風呂メイン画像"
                                     :src="hoverdImg"
                                     v-if="post.main_image_path && index === hoverdIndex && hoverdImg">
                                 <img
                                     class="main-img"
-                                    alt="風呂の画像 メイン"
+                                    alt="風呂メイン画像"
                                     :src="imgSrc(post.main_image_path, post.updated_at)"
                                     v-else-if="post.main_image_path">
-                                <img class="main-img-only" alt="風呂の画像 メイン" :src="'../svg/bath-mark-light-blue.svg'" v-else>
+                                <img class="main-img-only" alt="風呂メイン画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                             </div>
                             <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
                                 <li class="sub-img-list">
