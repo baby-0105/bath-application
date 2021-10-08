@@ -19,15 +19,15 @@
                             <div class="main-img-block">
                                 <img
                                     class="main-img"
-                                    alt="風呂メイン画像"
+                                    alt="風呂 メイン画像"
                                     :src="hoverdImg"
                                     v-if="post.main_image_path && index === hoverdIndex && hoverdImg">
                                 <img
                                     class="main-img"
-                                    alt="風呂メイン画像"
+                                    alt="風呂 メイン画像"
                                     :src="imgSrc(post.main_image_path, post.updated_at)"
                                     v-else-if="post.main_image_path">
-                                <img class="main-img-only" alt="風呂メイン画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
+                                <img class="main-img-only" alt="風呂 メイン画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                             </div>
                             <ul class="sub-imgs" v-if="post.sub_picture1_path || post.sub_picture2_path || post.sub_picture3_path">
                                 <li class="sub-img-list">
@@ -35,22 +35,22 @@
                                         @mouseover="changeToMainImg"
                                         @mouseleave="backToSubImg"
                                         class="sub-img"
-                                        alt="風呂のサブ画像"
+                                        alt="風呂 サブ画像"
                                         :src="imgSrc(post.sub_picture1_path, post.updated_at)"
                                         v-if="post.sub_picture1_path"
                                     >
-                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
+                                    <img class="sub-img" alt="風呂 サブ画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
                                 <li class="sub-img-list">
                                     <img
                                         @mouseover="changeToMainImg"
                                         @mouseleave="backToSubImg"
                                         class="sub-img"
-                                        alt="風呂のサブ画像"
+                                        alt="風呂 サブ画像"
                                         :src="imgSrc(post.sub_picture2_path, post.updated_at)"
                                         v-if="post.sub_picture2_path"
                                     >
-                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
+                                    <img class="sub-img" alt="風呂 サブ画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
                                 <li class="sub-img-list">
                                     <img
@@ -61,7 +61,7 @@
                                         :src="imgSrc(post.sub_picture3_path, post.updated_at)"
                                         v-if="post.sub_picture3_path"
                                     >
-                                    <img class="sub-img" alt="風呂の画像 サブ" :src="'../svg/bath-mark-light-blue.svg'" v-else>
+                                    <img class="sub-img" alt="風呂 サブ画像" :src="'../svg/bath-mark-light-blue.svg'" v-else>
                                 </li>
                             </ul>
                         </div>
